@@ -1,0 +1,8 @@
+docutils
+Pillow
+PyPDF2
+requests
+sphinx_rtd_theme
+matplotlib
+beautifulsoup4
+pathos
