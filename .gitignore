@@ -198,6 +198,5 @@ pythontex-files-*/
 *.sav
 
 # PDF files
-docs/*pdf
 README.html
 mailmap
