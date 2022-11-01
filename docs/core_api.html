@@ -1,0 +1,514 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2. Core APIs &mdash; iv_tanim 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. Core Functionality" href="core_functionality.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> iv_tanim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core_functionality.html">1. Core Functionality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Core APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#autocrop-image-module">2.1. autocrop_image module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.autocrop_image.autocrop_image"><code class="docutils literal notranslate"><span class="pre">autocrop_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.autocrop_image.autocrop_perproc"><code class="docutils literal notranslate"><span class="pre">autocrop_perproc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf"><code class="docutils literal notranslate"><span class="pre">crop_pdf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="docutils literal notranslate"><span class="pre">crop_pdf_singlepage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.autocrop_image.get_boundingbox"><code class="docutils literal notranslate"><span class="pre">get_boundingbox()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#convert-image-module">2.2. convert_image module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.create_images2mp4dict"><code class="docutils literal notranslate"><span class="pre">create_images2mp4dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.make_aspected_mp4video"><code class="docutils literal notranslate"><span class="pre">make_aspected_mp4video()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.mp4fromimages"><code class="docutils literal notranslate"><span class="pre">mp4fromimages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.mp4togif"><code class="docutils literal notranslate"><span class="pre">mp4togif()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.pdf2png"><code class="docutils literal notranslate"><span class="pre">pdf2png()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iv_tanim.core.convert_image.png2png"><code class="docutils literal notranslate"><span class="pre">png2png()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iv_tanim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Core APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/core_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="core-apis">
+<h1><span class="section-number">2. </span>Core APIs<a class="headerlink" href="#core-apis" title="Permalink to this heading">¶</a></h1>
+<p>This document describes the <code class="docutils literal notranslate"><span class="pre">IV_TANIM</span></code> core API, which provides the low-level back-end for the CLI front ends described in <a class="reference internal" href="core_functionality.html#core-functionality"><span class="std std-ref">Core Functionality</span></a>. These modules live under <code class="docutils literal notranslate"><span class="pre">iv_tanim.core</span></code>.</p>
+<p>I have redesigned the Python logging functionality in the following way,</p>
+<ul class="simple">
+<li><p>custom format of the logging output, formatted as <code class="docutils literal notranslate"><span class="pre">'%(levelname)s</span> <span class="pre">%(module)s.%(funcName)s</span> <span class="pre">(%(lineno)d):</span> <span class="pre">%(message)s'</span></code>. See the <a class="reference external" href="https://docs.python.org/3/howto/logging-cookbook.html">logging cookbook</a> for more information on what this format means.</p></li>
+<li><p>Some of the <a class="reference internal" href="core_functionality.html#core-functionality"><span class="std std-ref">Core Functionality</span></a> command line tools have an extra argument flag, <code class="docutils literal notranslate"><span class="pre">--level</span></code>, that specifies whether to print out logging output and the following debug levels: <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, or <code class="docutils literal notranslate"><span class="pre">ERROR</span></code>.</p></li>
+</ul>
+<div class="section" id="autocrop-image-module">
+<h2><span class="section-number">2.1. </span>autocrop_image module<a class="headerlink" href="#autocrop-image-module" title="Permalink to this heading">¶</a></h2>
+<p>This module provides low-level functionality that implements automatic cropping of lossy (<a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>) and <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> images.</p>
+<p>This <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> autocropping functionality is copied over from <a class="reference external" href="https://gist.github.com/jpscaletti/7321281">this repo</a>. That repository is based off <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> to calculate the <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>. This functionality requires a working <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> (using the <code class="docutils literal notranslate"><span class="pre">gs</span></code> executable) to calculate the bounding box, and the <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/">PyPDF2</a> module to read and manipulate <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg" width="100%" /></a>
+<p>Three methods – <a class="reference internal" href="#iv_tanim.core.autocrop_image.get_boundingbox" title="iv_tanim.core.autocrop_image.get_boundingbox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_boundingbox</span></code></a>, <a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf" title="iv_tanim.core.autocrop_image.crop_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf</span></code></a>, and  <a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf_singlepage" title="iv_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf_singlepage</span></code></a> – are the higher level hooks to the <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> autocropping functionality.</p>
+<span class="target" id="module-iv_tanim.core.autocrop_image"></span><dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.autocrop_image.autocrop_image">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfilename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doShow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixEven</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.autocrop_image.autocrop_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>performs an autocropping of lossy images, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, or <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>,  with a defined background. The default background color is white. This then creates an automatically cropped image and stores into a new or the same file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input image file’s name.</p></li>
+<li><p><strong>outputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the output image file’s name. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then stores image into <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>.</p></li>
+<li><p><strong>color</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the background color over which to perform automatic cropping. Default is <code class="docutils literal notranslate"><span class="pre">white</span></code>.</p></li>
+<li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the optional new width of the output image. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then do not resize the image.</p></li>
+<li><p><strong>doShow</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then display the autocropped image using the computer’s default image viewer (for example <a class="reference external" href="https://en.wikipedia.org/wiki/Preview_(macOS)">Preview</a> on Mac OS X), otherwise output the autocropped into a file. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>trans</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then preserves the transparency of the input image. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>fixEven</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then changes the width and height of the autocropped image so that both are divisible by 2. This functionality exists in order to create a movie (using <a class="reference external" href="https://ffmpeg.org">FFMPEG</a>) from a sequence of image files; each image’s width and height should all be the same, and <em>both divisible by 2</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> of image processing status. <code class="docutils literal notranslate"><span class="pre">True</span></code> if able to perform the autocropping operation, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.autocrop_image.autocrop_perproc" title="iv_tanim.core.autocrop_image.autocrop_perproc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autocrop_perproc</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.autocrop_image.autocrop_perproc">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_perproc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.autocrop_image.autocrop_perproc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Designed to use Python’s multiprocessing design to autocrop lossy images per processor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>, (input file name) <code class="docutils literal notranslate"><span class="pre">outputfilename</span></code> (output file name), <code class="docutils literal notranslate"><span class="pre">color</span></code> (background color), and <code class="docutils literal notranslate"><span class="pre">fixEven</span></code> (if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then resize the output image to have even-pixeled width and height).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code> and success status (<code class="docutils literal notranslate"><span class="pre">True</span></code> for success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.autocrop_image.autocrop_image" title="iv_tanim.core.autocrop_image.autocrop_image"><code class="xref py py-meth docutils literal notranslate"><span class="pre">autocrop_image</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.autocrop_image.crop_pdf">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.autocrop_image.crop_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a possible multi-page <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file that consists of <span class="math notranslate nohighlight">\(N \ge 1\)</span> pages, creates <span class="math notranslate nohighlight">\(N\)</span> separate single-page autocropped <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files for each page in the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. Given a file with name <code class="docutils literal notranslate"><span class="pre">inputfile</span></code>, the collection of output files are named <code class="docutils literal notranslate"><span class="pre">outputfile&lt;idx&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;idx&gt;</span></code> is the page number. This uses <code class="xref py py-class docutils literal notranslate"><span class="pre">PdfFileReader</span></code> to read in, and <code class="xref py py-class docutils literal notranslate"><span class="pre">PdfFileWriter</span></code> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
+<p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> Perl script.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
+<li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the prefix of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the prefix is the part of <code class="docutils literal notranslate"><span class="pre">inputfile</span></code> with the <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> suffix removed.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf_singlepage" title="iv_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf_singlepage</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.autocrop_image.crop_pdf_singlepage">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf_singlepage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.autocrop_image.crop_pdf_singlepage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <em>single-paged</em> <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file, creates an autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. This uses <code class="xref py py-class docutils literal notranslate"><span class="pre">PdfFileReader</span></code> to read in, and <code class="xref py py-class docutils literal notranslate"><span class="pre">PdfFileWriter</span></code> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
+<p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> PERL script.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
+<li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the name of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file replaces the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.autocrop_image.crop_pdf" title="iv_tanim.core.autocrop_image.crop_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.autocrop_image.get_boundingbox">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">get_boundingbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdfpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hiresbb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.autocrop_image.get_boundingbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file, returns its <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>. Requires working <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> (<code class="docutils literal notranslate"><span class="pre">gs</span></code> executable) to calculate it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_boundingbox</span><span class="p">(</span><span class="s1">&#39;/path/to/mypdf.pdf&#39;</span><span class="p">)</span>   <span class="c1"># doctest: +SKIP</span>
+<span class="p">[[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">555</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">555</span><span class="p">]]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pdfpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
+<li><p><strong>hiresbb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns the <code class="docutils literal notranslate"><span class="pre">hiresBoundingbox</span></code>; otherwise returns <code class="docutils literal notranslate"><span class="pre">Boundingbox</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>, one per <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> page.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.11)"><strong>IOError</strong></a> – if the <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> executable could noty be found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="convert-image-module">
+<h2><span class="section-number">2.2. </span>convert_image module<a class="headerlink" href="#convert-image-module" title="Permalink to this heading">¶</a></h2>
+<p>This module provides the low-level functionality that uses utility functions to create <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> movies from a sequence of images, creates animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> files, and creates square movies (useful for upload to <a class="reference external" href="https://www.instagram.com">Instagram</a>).</p>
+<span class="target" id="module-iv_tanim.core.convert_image"></span><dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.create_images2mp4dict">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">create_images2mp4dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Users/islam5/Applications/src/iv_tanim/docsrc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocrop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.create_images2mp4dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates a complicated and low-level <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of set up, when creating an <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from a collection of images. Here are things needed to make this work. <code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4frompngs</span></code> uses this <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> to create the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p>
+<ol class="arabic simple">
+<li><p>The collection of image files exist in a directory named <code class="docutils literal notranslate"><span class="pre">dirname</span></code>.</p></li>
+<li><p>The format of the image files as frames of a movie must have a name like <code class="docutils literal notranslate"><span class="pre">PREFIX0000.&lt;image_suffix&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">PREFIX0401.&lt;image_suffix&gt;</span></code>.</p></li>
+<li><p>The first image file must have a zero-padded value of zero. There must also be <em>no</em> number gaps in the sequence of image files as frames. For example, if there are image files <code class="docutils literal notranslate"><span class="pre">PREFIX0200.&lt;image_suffix&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">PREFIX0202.&lt;image_suffix&gt;</span></code> but <em>no</em> <code class="docutils literal notranslate"><span class="pre">PREFIX0201.&lt;image_suffix&gt;</span></code>, this process will fail.</p></li>
+</ol>
+<p>In case of success, this method returns a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> with these five keys and values.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">status</span></code>: the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a> <code class="docutils literal notranslate"><span class="pre">&quot;SUCCESS&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code>: the sorted <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of image file names as movie frames.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autocrop</span></code>: <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> on whether to autocrop the image files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fps</span></code>: the <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> number of frames per second in the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actual</span> <span class="pre">prefix</span></code>: the input (<code class="docutils literal notranslate"><span class="pre">ffmpeg</span> <span class="pre">-i</span> <span class="pre">&lt;arg&gt;</span></code>) argument that goes into <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> when creating the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> from a collection of image files as frames.</p></li>
+</ul>
+<p>In case of failure, the <code class="docutils literal notranslate"><span class="pre">status</span></code> key contains the reason for the failure. <a class="reference internal" href="#iv_tanim.core.convert_image.mp4fromimages" title="iv_tanim.core.convert_image.mp4fromimages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4fromimages</span></code></a> returns this failure message and does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the base name of each image file as frame, before the integer frame number and <code class="docutils literal notranslate"><span class="pre">.&lt;image_suffix&gt;</span></code> suffix.</p></li>
+<li><p><strong>image_suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the image suffix through which to look. Default is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</p></li>
+<li><p><strong>dirname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the directory in which these image files live. Default is the current working directory.</p></li>
+<li><p><strong>fps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the number of frames per seconds for the movie. Must be <span class="math notranslate nohighlight">\(\ge 1\)</span>.</p></li>
+<li><p><strong>autocrop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – whether to automatically crop out white space in the image files as frames. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> described above.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.convert_image.mp4fromimages" title="iv_tanim.core.convert_image.mp4fromimages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4fromimages</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.make_aspected_mp4video">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">make_aspected_mp4video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'square'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.make_aspected_mp4video" title="Permalink to this definition">¶</a></dt>
+<dd><p>More <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> voodoo, this time to create a square (or 9/16 aspect or 16/9 aspect) <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file for upload into <a class="reference external" href="https://www.instagram.com">Instagram</a>.</p>
+<p>This requires a working <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> and <code class="docutils literal notranslate"><span class="pre">ffprobe</span></code> executable to work. The input file must be <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a>.</p>
+<p>Here are resources that I used to get this working.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://superuser.com/questions/1212106/add-border-to-video-ffmpeg">Padding movie file with FFmpeg</a>.</p></li>
+<li><p><a class="reference external" href="https://tanimislam.github.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid input <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
+<li><p><strong>output_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid output <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
+<li><p><strong>aspect</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the aspect ratio to choose. Must be one of “square”, “916” is 9/16 (width 9 units, height 16 units), and “169” is 16/9 (width 16 units, height 9 units). Default is “square”.</p></li>
+<li><p><strong>background</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the background color to use for padding. Must be either “white” or “black”. Default is “white”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.mp4fromimages">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4fromimages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images2mp4dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.mp4fromimages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from the low-level input specification <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that <code class="xref py py-meth docutils literal notranslate"><span class="pre">create_png2mp4dict</span></code> creates. Requires the existence of the <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> executable, and <code class="docutils literal notranslate"><span class="pre">status</span></code> value in the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> <em>must</em> be <code class="docutils literal notranslate"><span class="pre">&quot;SUCCESS&quot;</span></code>. Otherwise, this method does not create a movie file.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">dirname</span></code> is the directory in which the image files live, and <code class="docutils literal notranslate"><span class="pre">PREFIX</span></code> is the prefix of all the image files, the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file is named <code class="docutils literal notranslate"><span class="pre">dirname/PREFIX.mp4</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>images2mp4dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary specification for creating a specific <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from a collection of image files as frames.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.convert_image.create_images2mp4dict" title="iv_tanim.core.convert_image.create_images2mp4dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_images2mp4dict</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.mp4togif">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4togif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gif_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.mp4togif" title="Permalink to this definition">¶</a></dt>
+<dd><p>This consists of voodoo <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> magic that converts <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> to animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> reasonably well. Don’t ask me how most of it works, just be on-your-knees-kissing-the-dirt grateful that MILLIONS of people hack onto and into <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> so that this information is available, and the workflow works.</p>
+<p>This requires a working <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> and <code class="docutils literal notranslate"><span class="pre">ffprobe</span></code> executable to work. If the input file is named <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;.mp4</span></code>, the output animated GIF file is named <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;.gif</span></code>.</p>
+<p>Here are resources that I used to get this working.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html">Tutorial on high quality movie to animated GIF conversion</a>. I hope this doesn’t go away!</p></li>
+<li><p><a class="reference external" href="https://tanimislam.github.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
+<li><p><strong>gif_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the (optional) name of the animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> file. If not provided, then creates a GIF file of some default name.</p></li>
+<li><p><strong>duration</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – duration, in seconds, of <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file to use to make the animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a>. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is provided, use the full movie. If provided, then must be <span class="math notranslate nohighlight">\(\ge 1\)</span> seconds.</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – scaling of input width and height of <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file. Default is 1.0. Must be <span class="math notranslate nohighlight">\(\ge 0\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#iv_tanim.core.convert_image.make_aspected_mp4video" title="iv_tanim.core.convert_image.make_aspected_mp4video"><code class="xref py py-meth docutils literal notranslate"><span class="pre">make_aspected_mp4video</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.pdf2png">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">pdf2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_pdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.pdf2png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> image file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
+<li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
+<li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iv_tanim.core.convert_image.png2png" title="iv_tanim.core.convert_image.png2png"><code class="xref py py-meth docutils literal notranslate"><span class="pre">png2png</span></code></a>.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iv_tanim.core.convert_image.png2png">
+<span class="sig-prename descclassname"><span class="pre">iv_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">png2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_png_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.convert_image.png2png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
+<li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
+<li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.3.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#iv_tanim.core.convert_image.pdf2png" title="iv_tanim.core.convert_image.pdf2png"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pdf2png</span></code></a>.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="core_functionality.html" class="btn btn-neutral float-left" title="1. Core Functionality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Tanim Islam.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
