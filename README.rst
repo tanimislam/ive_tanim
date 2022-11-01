@@ -38,7 +38,7 @@ Both installation workflows install |ivtanim| into your user Python folder (``~/
 .. _HandBrakeCLI: https://handbrake.fr
 .. _`older NPR API`: https://www.npr.org/api/index
 .. _`NPR One API`: https://dev.npr.org/api
-.. _iv_tanim_doc: https://tanimislam.github.io/nprstuff
+.. _iv_tanim_doc: https://tanimislam.github.io/iv_tanim
 .. _M4A: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 .. _MP3: https://en.wikipedia.org/wiki/MP3
 .. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
