@@ -176,7 +176,7 @@ def make_aspected_mp4video( input_mp4_file, output_mp4_file, aspect = 'square', 
     .. _MP4: https://en.wikipedia.org/wiki/MPEG-4_Part_14
     .. _MKV: https://en.wikipedia.org/wiki/Matroska
     .. _padding_movie: https://superuser.com/questions/1212106/add-border-to-video-ffmpeg
-    .. _ffprobe_json: https://tanimislam.github.io/blog/ffprobe-to-get-output-in-json-format.html
+    .. _ffprobe_json: https://tanimislam.gitlab.io/blog/ffprobe-to-get-output-in-json-format.html
     """
     from shutil import which
     import shutil
