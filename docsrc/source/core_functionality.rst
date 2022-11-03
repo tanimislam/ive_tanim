@@ -192,7 +192,7 @@ Here are two examples, for the default *square* aspect ratio and *white* letterb
 
 convertImage fromimages
 ------------------------
-``convertImatge fromuimages`` creates an MP4_ movie file from a collection of image files as frames. Say the files live in a directory ``dirname``, the prefix of the image files is ``PREFIX``, and the suffix of the image files is ``png`` so that the PNG_ images are named, say, ``PREFIX0000.png`` sequentially to ``PREFIX0401.png``. This command will create an MP4_ file, named ``PREFIX.mp4``, in ``dirname``.
+``convertImage fromimages`` creates an MP4_ movie file from a collection of image files as frames. Say the files live in a directory ``dirname``, the prefix of the image files is ``PREFIX``, and the suffix of the image files is ``png`` so that the PNG_ images are named, say, ``PREFIX0000.png`` sequentially to ``PREFIX0401.png``. This command will create an MP4_ file, named ``PREFIX.mp4``, in ``dirname``.
 
 Its help screen, when running ``convertImage fromimages -h``, is,
 

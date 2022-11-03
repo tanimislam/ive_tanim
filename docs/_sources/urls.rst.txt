@@ -34,6 +34,7 @@
 .. _Imgur: https://imgur.com
 .. _setting_up_google_credentials: https://tanimislam.github.io/howdy/howdy-config/howdy_services_config.html#summary-of-setting-up-google-credentials
 .. _PyPDF2: https://pypdf2.readthedocs.io/en/latest/
+.. _Instagram: https://instagram.com
 
 ..
 .. these are magazine URLS

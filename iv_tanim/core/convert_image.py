@@ -262,7 +262,7 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
     assert( scale > 0.0 )
     #
     ## assert this is an MP4 file
-    assert( 'ISO Media,' in magic.from_file( input_mp4_file ) )
+    assert( 'ISO Media,' in magic.from_file( os.path.realpath( input_mp4_file ) ) )
     #
     ## GIF output and PALETTE file
     if gif_file is None: gif_file = input_mp4_file.replace('.mp4', '.gif' )
