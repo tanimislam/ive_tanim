@@ -10,6 +10,12 @@ This repository, |ivtanim| (pronounced ``ivy``), carves out the image-video low-
 
 The comprehensive documentation lives in HTML created with `Sphinx <https://www.sphinx-doc.org/en/master/>`_, and now in the `IV_TANIM Sphinx Page <iv_tanim_doc_>`_ for this project. To generate the documentation, go to the ``docs`` subdirectory. In that directory, run ``make html``. Load ``docs/build/html/index.html`` into a browser to see the documentation.
 
+There's also a demonstration presentation! I am/have (depending on whether you're from the past/future) made a presentation to the `Sacramento Python Meetup <sacpy_>`_ on Thursday, ``3 NOVEMBER 2022``.
+
+* Link to the `powerpoint presentation <https://tanimislam.sfo3.digitaloceanspaces.com/presentations/sacpy_202211.pptx>`_.
+
+* Link to the `keynote presentation <https://tanimislam.sfo3.digitaloceanspaces.com/presentations/sacpy_202211.key>`_.
+
 Installation Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Installing this Python module is easy.
@@ -51,6 +57,8 @@ Both installation workflows install |ivtanim| into your user Python folder (``~/
 .. _SVG: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
 .. _Github: https://github.com
 .. _NPRSTUFF: https://github.com/tanimislam/nprstuff
+.. _sacpy: http://sacpy.org
+
 
 .. |ivtanim| replace:: ``IV_TANIM``
 
