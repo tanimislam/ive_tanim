@@ -68,7 +68,7 @@ def mp4fromimages( images2mp4dict ):
     
 def create_images2mp4dict( prefix, image_suffix = 'png', dirname = os.getcwd( ), fps = 5, autocrop = False ):
     """
-    This method creates a complicated and low-level :py:class:`dict` of set up, when creating an MP4_ file from a collection of images. Here are things needed to make this work. :py:meth:`mp4frompngs <iv_tanim.core.convert_image.mp4frompngs>` uses this :py:class:`dict` to create the MP4_ file.
+    This method creates a complicated and low-level :py:class:`dict` of set up, when creating an MP4_ file from a collection of images. Here are things needed to make this work. :py:meth:`mp4fromimages <iv_tanim.core.convert_image.mp4fromimages>` uses this :py:class:`dict` to create the MP4_ file.
 
     #. The collection of image files exist in a directory named ``dirname``.
 
