@@ -7,7 +7,7 @@ from iv_tanim.core import autocrop_image
 
 def mp4fromimages( images2mp4dict ):
     """
-    Creates an MP4_ file from the low-level input specification :py:class:`dict` that :py:meth:`create_png2mp4dict <iv_tanim.core.convert_image.create_png2mp4dict>` creates. Requires the existence of the ``ffmpeg`` executable, and ``status`` value in the :py:class:`dict` *must* be ``"SUCCESS"``. Otherwise, this method does not create a movie file.
+    Creates an MP4_ file from the low-level input specification :py:class:`dict` that :py:meth:`create_images2mp4dict <iv_tanim.core.convert_image.create_images2mp4dict>` creates. Requires the existence of the ``ffmpeg`` executable, and ``status`` value in the :py:class:`dict` *must* be ``"SUCCESS"``. Otherwise, this method does not create a movie file.
 
     If ``dirname`` is the directory in which the image files live, and ``PREFIX`` is the prefix of all the image files, the MP4_ file is named ``dirname/PREFIX.mp4``.
 
