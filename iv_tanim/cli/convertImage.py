@@ -6,7 +6,7 @@ from argparse import ArgumentParser
     
 def _main( ):
     logger = logging.getLogger( )
-    parser = ArgumentParser( description = 'Now does five different things, where only "image" operates on image files!' )
+    parser = ArgumentParser( description = 'Now does three different things' )
     #
     ## top level arguments
     parser.add_argument('--info', dest='do_info', action = 'store_true',  default = False,
@@ -17,16 +17,6 @@ def _main( ):
     parser_movie  = subparsers.add_parser( 'movie',   help = 'If chosen, convert an MP4 into an animated GIF.' )
     parser_aspected = subparsers.add_parser( 'aspected',  help = 'If chosen, create an aspected MP4 file from an input MP4 file.' )
     parser_fromimages = subparsers.add_parser( 'fromimages', help = 'If chosen, then convert a sequence of PNG/JPEG/TIF images into an MP4 file.' )
-    #
-    ## convert image
-    parser_image.add_argument(
-        '-f', '--filename', dest='parser_image_filename', type=str, action='store', metavar = 'filename',
-        help = 'Name of the input image file.', required = True )
-    parser_image.add_argument('--width', dest='width', type=int, action='store',
-                              help = 'If defined, new width of the file. Optional')
-    parser_image.add_argument(
-        '-F', '--format', dest='input_format', type=str, action='store',
-        choices = ( 'svg', 'pdf', 'png' ), help = 'Format of input file. Must be one of SVG/SVGZ, PDF, or PNG.' )
     #
     ## square video
     parser_aspected.add_argument(
