@@ -8,7 +8,7 @@ This repository, |ivtanim| (pronounced ``ivy``), carves out the image-video low-
 
 * |ivtanim| contains a few, easy-to-meet Python module dependencies.
 
-The comprehensive documentation lives in HTML created with `Sphinx <https://www.sphinx-doc.org/en/master/>`_, and now in the `IV_TANIM Sphinx Page <iv_tanim_doc_>`_ for this project. To generate the documentation, go to the ``docs`` subdirectory. In that directory, run ``make html``. Load ``docs/build/html/index.html`` into a browser to see the documentation.
+The comprehensive documentation lives in HTML created with `Sphinx <https://www.sphinx-doc.org/en/master/>`_, and now in the `IV_TANIM Sphinx Page <iv_tanim_doc_>`_ for this project. To generate the documentation, go to the ``docsrc`` subdirectory. In that directory, run ``make html``. Load ``docsrc/build/html/index.html`` into a browser to see the documentation.
 
 There's also a demonstration presentation! I am/have (depending on whether you're from the past/future) made a presentation to the `Sacramento Python Meetup <sacpy_>`_ on Thursday, ``3 NOVEMBER 2022``.
 
