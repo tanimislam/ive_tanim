@@ -16,6 +16,10 @@ There's also a demonstration presentation! I am/have (depending on whether you'r
 
 * Link to the `keynote presentation <https://tanimislam.gitlab.io/blog/pages/presentation_stuff/IV_TANIM_MULTIMEDIA.key>`_.
 
+* Link to the `YouTube presentation <https://youtu.be/FwbIzATyboE>`_.
+
+* Link to the `full video  <https://drive.google.com/file/d/11g-mWTpWeFvNrb32l-n1oCIlUROr4z8Y/view?usp=sharing>`_.
+
 Installation Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Installing this Python module is easy.
