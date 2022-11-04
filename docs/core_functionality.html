@@ -99,8 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#convertimage-fromimages">1.2.3. convertImage fromimages</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#changedates">1.3. <code class="docutils literal notranslate"><span class="pre">changedates</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#myrst2html">1.4. <code class="docutils literal notranslate"><span class="pre">myrst2html</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#myrst2html">1.3. <code class="docutils literal notranslate"><span class="pre">myrst2html</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="core_api.html">2. Core APIs</a></li>
@@ -340,21 +339,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">&lt;CURRENT_DIRECTORY&gt;</span></code> refers to the current working directory in which <code class="docutils literal notranslate"><span class="pre">convertImage</span> <span class="pre">fromImages</span></code> has been launched.</p>
 </div>
 </div>
-<div class="section" id="changedates">
-<span id="changedates-label"></span><h2><span class="section-number">1.3. </span><code class="docutils literal notranslate"><span class="pre">changedates</span></code><a class="headerlink" href="#changedates" title="Permalink to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">changedates</span></code> changes the creation date of <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/QuickTime_File_Format">MOV</a> files, that my Canon digital camera creates, by up and down one year. I created this tool because my Canon digital camera does not set the right year on the creation date for image files it creates. This caused problems when I uploaded those images to <a class="reference external" href="https://picasaweb.google.com/home">Google Picasa</a> or <a class="reference external" href="https://plus.google.com/">Google+</a>. The help screen for this command line tool is here,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: changedates [-h] --dirname DIRNAME [--movs] [--minus]</span>
-
-<span class="go">optional arguments:</span>
-<span class="go">  -h, --help         show this help message and exit</span>
-<span class="go">  --dirname DIRNAME  Name of the directory to look for jpeg files.</span>
-<span class="go">  --movs             If chosen, process MOV files instead.</span>
-<span class="go">  --minus            If chosen, subtract a year from the files.</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="myrst2html">
-<h2><span class="section-number">1.4. </span><code class="docutils literal notranslate"><span class="pre">myrst2html</span></code><a class="headerlink" href="#myrst2html" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">1.3. </span><code class="docutils literal notranslate"><span class="pre">myrst2html</span></code><a class="headerlink" href="#myrst2html" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">myrst2html</span></code> acts <em>almost</em> like <a class="reference external" href="https://manpages.debian.org/testing/docutils-common/rst2html.1.en.html">rst2html</a> in default mode, except instead of using (for LaTeX math formulae) the <code class="docutils literal notranslate"><span class="pre">math.css</span></code> default it uses <a class="reference external" href="https://www.mathjax.org/">MathJax</a> with the correct <a class="reference external" href="https://en.wikipedia.org/wiki/Content_delivery_network">CDN</a>, which in this case is <a class="reference external" href="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</a>. I borrow shamelessly from <a class="reference external" href="https://gist.github.com/Matherunner/c0397ae11cc72f2f35ae">this GitHub gist</a> with some slight modifications.</p>
 <p>One uses it <em>just</em> like default <a class="reference external" href="https://manpages.debian.org/testing/docutils-common/rst2html.1.en.html">rst2html</a>,</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">myrst2html filename.rst &gt; filename.html</span>

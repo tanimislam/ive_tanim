@@ -224,22 +224,6 @@ Here are the command line arguments.
 * ``--autocrop`` specifies whether you want to automatically crop out white space from the image files.
 
 ``<CURRENT_DIRECTORY>`` refers to the current working directory in which ``convertImage fromImages`` has been launched.
-			   
-.. _changedates_label:
-
-``changedates``
-================
-``changedates`` changes the creation date of JPEG_ and MOV_ files, that my Canon digital camera creates, by up and down one year. I created this tool because my Canon digital camera does not set the right year on the creation date for image files it creates. This caused problems when I uploaded those images to `Google Picasa <https://picasaweb.google.com/home>`__ or `Google+ <https://plus.google.com/>`__. The help screen for this command line tool is here,
-
-.. code-block:: console
-
-   usage: changedates [-h] --dirname DIRNAME [--movs] [--minus]
-
-   optional arguments:
-     -h, --help         show this help message and exit
-     --dirname DIRNAME  Name of the directory to look for jpeg files.
-     --movs             If chosen, process MOV files instead.
-     --minus            If chosen, subtract a year from the files.
 
 ``myrst2html``
 =================
