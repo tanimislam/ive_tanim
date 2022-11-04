@@ -12,9 +12,9 @@ The comprehensive documentation lives in HTML created with `Sphinx <https://www.
 
 There's also a demonstration presentation! I am/have (depending on whether you're from the past/future) made a presentation to the `Sacramento Python Meetup <sacpy_>`_ on Thursday, ``3 NOVEMBER 2022``.
 
-* Link to the `powerpoint presentation <https://tanimislam.sfo3.digitaloceanspaces.com/presentations/sacpy_202211.pptx>`_.
+* Link to the `powerpoint presentation <https://tanimislam.gitlab.io/blog/pages/presentation_stuff/IV_TANIM_MULTIMEDIA.pptx>`_.
 
-* Link to the `keynote presentation <https://tanimislam.sfo3.digitaloceanspaces.com/presentations/sacpy_202211.key>`_.
+* Link to the `keynote presentation <https://tanimislam.gitlab.io/blog/pages/presentation_stuff/IV_TANIM_MULTIMEDIA.key>`_.
 
 Installation Instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
