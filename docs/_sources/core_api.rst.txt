@@ -33,6 +33,13 @@ This module provides the low-level functionality that uses utility functions to 
 .. automodule:: iv_tanim.core.convert_image
    :members:
 
+rst2html module
+----------------------------------
+This module provides low-level functionality that converts reStructuredText_ into HTML, with the option of using MathJax_ to render LaTeX formulae in HTML.
+
+.. automodule:: iv_tanim.core.rst2html
+   :members:
+
 .. _CloudConvert: https://cloudconvert.com
 .. _GIF: https://en.wikipedia.org/wiki/GIF
 .. _PyPI: https://pypi.org
