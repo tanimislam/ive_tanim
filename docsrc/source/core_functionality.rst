@@ -227,18 +227,23 @@ Here are the command line arguments.
 
 ``myrst2html``
 =================
-``myrst2html`` acts *almost* like rst2html_ in default mode, except instead of using (for LaTeX math formulae) the ``math.css`` default it uses MathJax_ with the correct CDN_, which in this case is https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML. I borrow shamelessly from `this GitHub gist`_ with some slight modifications.
+``myrst2html`` acts *almost* like rst2html_. In default mode, it uses ``math.css`` for LaTeX math formulae. However, one can also specify it to use  MathJax_ with the correct CDN_, which in this case is https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML. I borrow shamelessly from `this GitHub gist`_ with some slight modifications.
 
-One uses it *just* like default rst2html_,
+Its help screen, when running ``myrst2html -h``, is,
 
 .. code-block:: console
 
-   myrst2html filename.rst > filename.html
+   usage: myrst2html [-h] -i INPUTFILE [-M]
 
-This generates the HTML file, ``filename.html``, from the RST markup file, ``filename.rst``, but now with MathJax_.
+   options:
+     -h, --help            show this help message and exit
+     -i INPUTFILE, --input INPUTFILE
+			   Name of the input RST file. Required argument.
+     -M, --mathjax         If chosen, then use the MathJAX JS CDN to display LaTeX formulae. Default is turned off.
+
+This generates the HTML file, ``filename.html``, from the RST markup file, ``filename.rst``, but now with MathJax_ if you run with ``-M`` or ``--mathjax``.
    
 .. _rst2html: https://manpages.debian.org/testing/docutils-common/rst2html.1.en.html
-.. _MathJax: https://www.mathjax.org/
 .. _CDN: https://en.wikipedia.org/wiki/Content_delivery_network
 .. _`this GitHub gist`: https://gist.github.com/Matherunner/c0397ae11cc72f2f35ae
 .. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
