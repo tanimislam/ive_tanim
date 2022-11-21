@@ -44,7 +44,7 @@ Tanim
 
 .. note::
 
-   This is based off an older demonstration email I sent out to PyRVA on 2022-03-09 and to SacPy on 2022-04-07.
+   This is based off an older demonstration email I sent out to PyRVA_ on 2022-03-09 and to SacPy_ on 2022-04-07.
 		
 .. |rst| replace:: `RestructuredText`_
 .. _`RestructuredText`: https://en.wikipedia.org/wiki/ReStructuredText
@@ -73,6 +73,10 @@ Tanim
 .. _MP4: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 
 .. _`this blog page`: https://tanimislam.gitlab.io/blog/2020-year-in-review.html
+
+.. _PyRVA: http://www.pyrva.org
+
+.. _SacPy: http://sacpy.org
 
 .. |quaker_mp4| raw:: html
 
