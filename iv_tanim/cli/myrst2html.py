@@ -38,6 +38,7 @@ def _main( ):
     args = parser.parse_args( )
     #
     fname = os.path.abspath( os.path.expanduser( args.inputfile ) )
+    outputfilename = os.path.basename( fname ).replace('.rst', '.html' )
     try:
         status = rst2html.check_valid_RST( str( open( fname, 'r' ).read( ) ), use_mathjax = args.do_mathjax )
         if not status:
@@ -45,7 +46,8 @@ def _main( ):
             return
         print( '%s\n' % rst2html.convert_string_RST(
             str( open( fname, 'r' ).read( ) ),
-            use_mathjax = args.do_mathjax ) )
+            use_mathjax = args.do_mathjax,
+            outputfilename = outputfilename ) )
     except Exception as e:
         print( str( e ) )
         print( "ERROR, %s IS NOT A VALID RST INPUT." % fname )

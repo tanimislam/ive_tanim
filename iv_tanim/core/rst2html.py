@@ -1,7 +1,7 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, logging
+import os, sys, logging, copy
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
@@ -77,12 +77,13 @@ def check_valid_RST( myString, use_mathjax = False ):
     error_messages = html.find_all('p', { 'class' : 'system-message-title' } )
     return len( error_messages) == 0
 
-def convert_string_RST( myString, use_mathjax = False ):
+def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
     """
     Converts a valid reStructuredText_ input string into rich HTML.
 
     :param str myString: the candidate reStructuredText_ input.
     :param bool use_mathjax: if ``True``, then use MathJax_ for math formulae. Default is ``False``.
+    :param str outputfilename: if not ``None``, then sets the HTML document *title* to this value.
     :returns: If the input string is valid reStructuredText_, returns the rich HTML as a :py:class:`string <str>`. Otherwise emits a :py:meth:`logging error message <logging.error>` and returns ``None``.
     :rtype: str
 
@@ -106,4 +107,20 @@ def convert_string_RST( myString, use_mathjax = False ):
         settings_overrides = overrides )
     html_body = parts[ 'whole' ]
     html = BeautifulSoup( html_body, 'lxml' )
+    #
+    def _fix_title_elem( html ):
+        if outputfilename is None: return html
+        #
+        head_elem = html.find_all( 'head' )
+        if len( head_elem ) == 0: return html
+        head_elem = head_elem[ 0 ]
+        #
+        title_elem = head_elem.find_all('title' )
+        if len( title_elem ) == 0: return html
+        #
+        title_elem = title_elem[ 0 ]
+        title_elem.string = outputfilename
+        return html
+    #
+    html = _fix_title_elem( html )
     return html.prettify( )
