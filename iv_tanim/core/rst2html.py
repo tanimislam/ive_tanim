@@ -1,7 +1,7 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, logging, validators, uuid
+import os, sys, logging, validators, uuid, smtplib
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
@@ -302,7 +302,10 @@ def create_collective_email_full(
 
 def send_email_localsmtp( msg, portnumber = 25 ):
     """
-    Sends the email using the :py:class:`SMTP <smtplib.SMTP>` Python functionality to send through a local SMTP_ server. `This blog post`_ describes how I set up a GMail relay using my local SMTP_ server on my Ubuntu_ machine.
+    Sends the email using the :py:class:`SMTP <smtplib.SMTP>` Python functionality to send through a local SMTP_ server.
+
+    `This blog post`_ describes how I set up a GMail relay using my local SMTP_ server on my Ubuntu_ machine.
+    
     :param msg: the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.
     :type msg:  :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     :param int portnumber: the port number to use to send the email to the local SMTP_ server. Default is port 25.
