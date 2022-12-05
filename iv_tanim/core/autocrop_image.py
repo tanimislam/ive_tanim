@@ -2,7 +2,7 @@ import os, sys, json, multiprocessing, numpy
 import logging, subprocess, shlex, uuid
 import matplotlib.image, matplotlib.colors
 from PIL import Image, ImageChops
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfReader, PdfWriter
 from shutil import which
 from iv_tanim import resourceDir
 
@@ -183,7 +183,7 @@ def get_boundingbox(pdfpath, hiresbb = False):
     return list(map(_bbox, filter(lambda line: line.startswith('%%BoundingBox'), err.split('\n'))))
 
 def _make_pdf(i, fname, page):
-    pdf_out = PdfFileWriter()
+    pdf_out = PdfWriter()
     outputfile = '{0}{1}'.format(i, fname)
     with open(outputfile, 'wb') as fout:
         pdf_out.addPage(page)
@@ -191,7 +191,7 @@ def _make_pdf(i, fname, page):
 
 def crop_pdf( inputfile, outputfile = None ):
     """
-    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfFileReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
+    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
 
     The Python functionality is a port of the `pdfcrop.pl`_ Perl script.
     
@@ -206,7 +206,7 @@ def crop_pdf( inputfile, outputfile = None ):
         outputfile = 'cropped.{0}{1}'.format(*os.path.splitext(inputfile))
     logger.info('Writing pdf output to %s', outputfile)
     with open(inputfile, 'rb') as fin:
-        pdf_in = PdfFileReader(fin)
+        pdf_in = PdfReader(fin)
         for i, bbox in enumerate(bboxes):
             left, bottom, right, top = bbox
             page = pdf_in.getPage( i )
@@ -219,7 +219,7 @@ def crop_pdf( inputfile, outputfile = None ):
 
 def crop_pdf_singlepage( inputfile, outputfile = None ):
     """
-    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfFileReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
+    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
     
     The Python functionality is a port of the `pdfcrop.pl`_ PERL script.
     
@@ -235,7 +235,7 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
     if outputfile is None:
         sameFile = True
         outputfile = '%s.pdf' % ''.join(map(lambda idx: str(uuid.uuid4()), range(2)))
-    pdf_in = PdfFileReader( open( inputfile, 'rb' ) )
+    pdf_in = PdfReader( open( inputfile, 'rb' ) )
     left, bottom, right, top = bboxes[0]
     page = pdf_in.getPage( 0 )
     logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
@@ -245,7 +245,7 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
     logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
     #
     ## write out to this new file
-    pdf_out = PdfFileWriter( )
+    pdf_out = PdfWriter( )
     pdf_out.addPage( page )
     pdf_out.write( open(outputfile, 'wb') )
     os.chmod( outputfile, 0o644 )
