@@ -659,10 +659,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <dl class="py function">
 <dt class="sig sig-object py" id="iv_tanim.core.rst2html.send_email_localsmtp">
 <span class="sig-prename descclassname"><span class="pre">iv_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">send_email_localsmtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portnumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iv_tanim.core.rst2html.send_email_localsmtp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sends the email using the <a class="reference external" href="https://docs.python.org/3/library/smtplib.html#smtplib.SMTP" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMTP</span></code></a> Python functionality to send through a local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. <a class="reference external" href="https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html">This blog post</a> describes how I set up a GMail relay using my local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server on my <a class="reference external" href="https://ubuntu.com">Ubuntu</a> machine.
-:param msg: the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.
-:type msg:  <a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>
-:param int portnumber: the port number to use to send the email to the local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is port 25.</p>
+<dd><p>Sends the email using the <a class="reference external" href="https://docs.python.org/3/library/smtplib.html#smtplib.SMTP" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMTP</span></code></a> Python functionality to send through a local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server.</p>
+<p><a class="reference external" href="https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html">This blog post</a> describes how I set up a GMail relay using my local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server on my <a class="reference external" href="https://ubuntu.com">Ubuntu</a> machine.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>) – the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.</p></li>
+<li><p><strong>portnumber</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the port number to use to send the email to the local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is port 25.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
