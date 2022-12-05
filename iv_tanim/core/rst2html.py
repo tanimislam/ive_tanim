@@ -247,7 +247,8 @@ def create_collective_email_full(
     :param set cc_emails: the `RFC 2047`_ :py:class:`set` of ``CC`` recipients.
     :param set bcc_emails: the `RFC 2047`_ :py:class:`set` of ``BCC`` recipients.
     :param list attachments: the collection of attachments to send out.
-    :returns: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` of this message, with soft-conventioned ``cid`` of images included 
+    :returns: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` of this message, with soft-conventioned ``cid`` of images included.
+    :rtype:  :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>`
     """
     #
     ## get the RFC 2047 sender stuff
