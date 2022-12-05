@@ -190,7 +190,8 @@ def cid_out_mimeMultiMessage( msg, mainHTML ):
     """
     Goes through the HTML email message, and creates a CID-enabled email with additional image attachments inside. Follows ideas found on `this useful stackoverflow article <https://stackoverflow.com/a/20485764>`_.
 
-    :param msg: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` message object that we will modify.
+    :param msg: the message object that will be modified.
+    :type msg:  :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     :param str mainHTML: the HTML message that we will parse through for images on disk rather than as external URLs.
     :returns: the :py:class:`dict` of ``cid`` to image file name.
     :rtype: dict
@@ -247,12 +248,12 @@ def create_collective_email_full(
     :param str mainHTML: the email body as an HTML :py:class:`string <str>` document.
     :param str subject: the email subject.
     :param str fromEmail: the :py:class:`dict` of email and optional full name of sender.
-    :param set to_emails: the :py:class:`list` of :py:class`dict` of ``TO`` recipients. Each recipient
-    :param set cc_emails: the `RFC 2047`_ :py:class:`set` of ``CC`` recipients.
-    :param set bcc_emails: the `RFC 2047`_ :py:class:`set` of ``BCC`` recipients.
+    :param list to_emails: the :py:class:`list` of :py:class:`dict` of ``TO`` recipients. Each ``TO`` recipient is a :py:class:`dict` of ``email`` and optionally ``full name``.
+    :param list cc_emails: the :py:class:`list` of :py:class:`dict` of ``CC`` recipients. Each ``CC`` recipient is a :py:class:`dict` of ``email`` and optionally ``full name``.
+    :param list bcc_emails: the :py:class:`list` of :py:class:`dict` of ``BCC`` recipients. Each ``BCC`` recipient is a :py:class:`dict` of ``email`` and optionally ``full name``.
     :param list attachments: the collection of attachments to send out.
-    :returns: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` of this message, with soft-conventioned ``cid`` of images included.
-    :rtype: :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>`
+    :returns: the :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>` of this message, with soft-conventioned ``cid`` of images included.
+    :rtype: :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     """
     #
     ## get the RFC 2047 sender stuff
