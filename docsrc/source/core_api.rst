@@ -35,7 +35,7 @@ This module provides the low-level functionality that uses utility functions to 
 
 rst2html module
 ----------------------------------
-This module provides low-level functionality that converts reStructuredText_ into HTML, with the option of using MathJax_ to render LaTeX formulae in HTML.
+This module provides low-level functionality that converts reStructuredText_ into HTML, with the option of using MathJax_ to render LaTeX formulae in HTML. This also consists of methods to create a properly CID-converted :py:class:`MIMEMultiPart <<email.mime.multipart.MIMEMultiPart>` low-level message object for other, external modules that convert RST documents into HTML emails that most email servers will work on.
 
 .. automodule:: iv_tanim.core.rst2html
    :members:

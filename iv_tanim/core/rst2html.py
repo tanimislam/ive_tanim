@@ -1,7 +1,7 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, logging, magic, validators, uuid
+import os, sys, logging, validators, uuid
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
@@ -146,6 +146,8 @@ def create_rfc2047_email( email_fullname_dict ):
     :returns: an `RFC 2047`_ fully qualified email address under the following conditions: 1) if there is an email address; and 2) if there is an email address *AND* a fully qualified name. Otherwise returns ``None``.
     :rtype: str
 
+    .. seealso:: :py:meth:`parse_rfc2047_email <iv_tanim.core.rst2html.parse_rfc2047_email>`.
+
     .. _`RFC 2047`: https://tools.ietf.org/html/rfc2047.html
     """
     input_tuple = [ '', '' ]
@@ -175,6 +177,8 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
     :param str candidate_rfc2047_email: the input fully qualified email address.
     :returns: a :py:class:`dict` of candidate email dictionary *only* if there is a valid email address. Otherwise returns ``None``.
     :rtype: dict
+    
+    .. seealso:: :py:meth:`create_rfc2047_email <iv_tanim.core.rst2html.create_rfc2047_email>`.
     """
     output_tuple = parseaddr( candidate_rfc2047_email )
     if output_tuple[1].strip( ) == '':
@@ -184,7 +188,7 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
 
 def cid_out_mimeMultiMessage( msg, mainHTML ):
     """
-    Goes through the HTML email message, and creates a CID-enabled email with additional image attachments inside.
+    Goes through the HTML email message, and creates a CID-enabled email with additional image attachments inside. Follows ideas found on `this useful stackoverflow article <https://stackoverflow.com/a/20485764>`_.
 
     :param msg: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` message object that we will modify.
     :param str mainHTML: the HTML message that we will parse through for images on disk rather than as external URLs.
@@ -248,7 +252,7 @@ def create_collective_email_full(
     :param set bcc_emails: the `RFC 2047`_ :py:class:`set` of ``BCC`` recipients.
     :param list attachments: the collection of attachments to send out.
     :returns: the :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` of this message, with soft-conventioned ``cid`` of images included.
-    :rtype:  :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>`
+    :rtype: :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>`
     """
     #
     ## get the RFC 2047 sender stuff
