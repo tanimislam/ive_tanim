@@ -68,7 +68,7 @@ def check_valid_RST( myString, use_mathjax = False ):
     :returns: ``True`` if valid, otherwise ``False``.
     :rtype: bool
 
-    .. seealso:: :py:meth:`convert_string_RST <iv_tanim.core.rst2html.convert_string_RST>`.
+    .. seealso:: :py:meth:`convert_string_RST <iv_tanim.core.rst2html.convert_string_RST>`
 
     .. _MathJax: https://www.mathjax.org
     """
@@ -100,7 +100,7 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
     :returns: If the input string is valid reStructuredText_, returns the rich HTML as a :py:class:`string <str>`. Otherwise emits a :py:meth:`logging error message <logging.error>` and returns ``None``.
     :rtype: str
 
-    .. seealso:: :py:meth:`check_valid_RST <iv_tanim.core.rst2html.check_valid_RST>`.
+    .. seealso:: :py:meth:`check_valid_RST <iv_tanim.core.rst2html.check_valid_RST>`
     """
     if not check_valid_RST( myString ):
         logging.error( "Error, could not convert %s into RST." % myString )
@@ -143,10 +143,16 @@ def create_rfc2047_email( email_fullname_dict ):
     Given a :py:class:`dict` containing email address and (optionally) full name, returns the `RFC 2047`_ fully qualified email address.
     
     :param dict email_fullname_dict: the :py:class:`dict` that *should* contain the email and optionally the fully qualified name. Email address is in the ``email`` key, and optional full name is in the ``full name`` key.
-    :returns: an `RFC 2047`_ fully qualified email address under the following conditions: 1) if there is an email address; and 2) if there is an email address *AND* a fully qualified name. Otherwise returns ``None``.
+    :returns: an `RFC 2047`_ fully qualified email address under the following conditions:
+
+       #. If there is an email address; and
+
+       #. If there is an email address *AND* a fully qualified name.
+
+       Otherwise returns ``None``.
     :rtype: str
 
-    .. seealso:: :py:meth:`parse_rfc2047_email <iv_tanim.core.rst2html.parse_rfc2047_email>`.
+    .. seealso:: :py:meth:`parse_rfc2047_email <iv_tanim.core.rst2html.parse_rfc2047_email>`
 
     .. _`RFC 2047`: https://tools.ietf.org/html/rfc2047.html
     """
@@ -178,7 +184,7 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
     :returns: a :py:class:`dict` of candidate email dictionary *only* if there is a valid email address. Otherwise returns ``None``.
     :rtype: dict
     
-    .. seealso:: :py:meth:`create_rfc2047_email <iv_tanim.core.rst2html.create_rfc2047_email>`.
+    .. seealso:: :py:meth:`create_rfc2047_email <iv_tanim.core.rst2html.create_rfc2047_email>`
     """
     output_tuple = parseaddr( candidate_rfc2047_email )
     if output_tuple[1].strip( ) == '':
@@ -252,7 +258,7 @@ def create_collective_email_full(
     :param list cc_emails: the :py:class:`list` of :py:class:`dict` of ``CC`` recipients. Each ``CC`` recipient is a :py:class:`dict` of ``email`` and optionally ``full name``.
     :param list bcc_emails: the :py:class:`list` of :py:class:`dict` of ``BCC`` recipients. Each ``BCC`` recipient is a :py:class:`dict` of ``email`` and optionally ``full name``.
     :param list attachments: the collection of attachments to send out.
-    :returns: the :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>` of this message, with soft-conventioned ``cid`` of images included.
+    :returns: the message object, with soft-conventioned ``cid`` of images included.
     :rtype: :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     """
     #

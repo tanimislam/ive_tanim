@@ -191,7 +191,7 @@ def _make_pdf(i, fname, page):
 
 def crop_pdf( inputfile, outputfile = None ):
     """
-    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfFileReader <PyPDF2.PdfFileReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfFileWriter>` to write out, PDF_ files.
+    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfFileReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
 
     The Python functionality is a port of the `pdfcrop.pl`_ Perl script.
     
@@ -219,7 +219,7 @@ def crop_pdf( inputfile, outputfile = None ):
 
 def crop_pdf_singlepage( inputfile, outputfile = None ):
     """
-    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfFileReader <PyPDF2.PdfFileReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfFileWriter>` to write out, PDF_ files.
+    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfFileReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfFileWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
     
     The Python functionality is a port of the `pdfcrop.pl`_ PERL script.
     
