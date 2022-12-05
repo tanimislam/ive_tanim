@@ -299,3 +299,17 @@ def create_collective_email_full(
         att.add_header( 'content-disposition', 'attachment', filename = name )
         msg.attach( att )
     return msg
+
+def send_email_localsmtp( msg ):
+    """
+    Sends the email using the :py:class:`SMTP <smtplib.SMTP>` Python functionality to send through a local SMTP_ server. `This blog post`_ describes how I set up a GMail relay using my local SMTP_ server on my Ubuntu_ machine.
+    :param msg: the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.
+    :type msg:  :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
+    
+    .. _SMTP: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
+    .. _`This blog post`: https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html
+    """
+    smtp_conn = smtplib.SMTP('localhost', 25 )
+    smtp_conn.ehlo( 'test' )
+    smtp_conn.sendmail( msg['From'], [ msg["To"], ], msg.as_string( ) )
+    smtp_conn.quit( )
