@@ -180,7 +180,7 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
     """
     Uses :py:meth:`parseaddr <email.utils.parseaddr>` to create a :py:class:`dict` of candidate email dictionary (keys are ``email`` and optionally ``full name``).
 
-    :param str candidate_rfc2047_email: the input fully qualified email address.
+    :param str candidate_rfc2047_email: the input `RFC 2047`_ fully qualified email address.
     :returns: a :py:class:`dict` of candidate email dictionary *only* if there is a valid email address. Otherwise returns ``None``.
     :rtype: dict
     

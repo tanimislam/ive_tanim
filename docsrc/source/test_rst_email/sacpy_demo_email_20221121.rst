@@ -20,6 +20,14 @@ And some other crap, like putting in images inline into here.
    * - Here's the demonstration image of autoCropImage_.
      - Here's my philosophy on driving shown here_.
 
+And here we have an animated GIF_ of the *latest* (as of ``5 DECEMBER 2022``) 7-day rolling average of COVID-19 cases and deaths in the CONUS_.
+
+.. list-table:: table showing an animated GIF
+   :widths: auto
+
+   * - |covid19_7day_conus_LATEST_CLIPPED|
+   * - ``5 DECEMBER 2022`` 7-day rolling average of COVID-19 cases and deaths in the CONUS_. We create this animated GIF_ using `convertImage movie <https://tanimislam.github.io/iv_tanim/core_functionality.html#convertimage-movie>`_. Produces something that is 4.0 MB in size.
+	
 Now here's some stupid code blocks, some Python code in fact that I have here.
 
 .. code-block:: python
@@ -70,6 +78,10 @@ Tanim
    :width: 100%
    :align: middle
 
+.. |covid19_7day_conus_LATEST_CLIPPED| image:: covid19_7day_conus_LATEST_CLIPPED.gif
+   :width: 100%
+   :align: middle
+
 .. _MP4: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 
 .. _`this blog page`: https://tanimislam.gitlab.io/blog/2020-year-in-review.html
@@ -84,3 +96,5 @@ Tanim
    <source src="https://tanimislam.sfo3.digitaloceanspaces.com/blog/2020/12/Quaker_2020_WTF.mp4">
    </video>
 
+.. _CONUS: https://en.wikipedia.org/wiki/Contiguous_United_States
+.. _GIF: https://en.wikipedia.org/wiki/GIF
