@@ -1,7 +1,7 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, logging, validators, uuid, smtplib
+import os, sys, logging, validators, uuid, smtplib, magic
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
@@ -299,6 +299,17 @@ def create_collective_email_full(
         att.add_header( 'content-disposition', 'attachment', filename = name )
         msg.attach( att )
     return msg
+
+def get_attachment_object( full_file_path ):
+    """
+    Create the attachment :py:class:`dict` given the input file.
+    """
+    if not os.path.exists( full_file_path ): return None
+    mime = magic.Magic(mime=True)
+    return {
+        'name' : os.path.basename( full_file_path ),
+        'mimetype' : mime.from_file( full_file_path ),
+        'filepath' : full_file_path }
 
 def send_email_localsmtp( msg, portnumber = 25 ):
     """

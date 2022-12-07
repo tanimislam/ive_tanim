@@ -101,4 +101,4 @@ html_static_path = ['_static']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-html_logo = '_static/twinkles_logo_blue_pretty_transparent.svg'
+html_logo = '_static/twinkles_logo_blue_pretty.svg'

@@ -51,6 +51,7 @@ setup(
             "myrst2html = iv_tanim.cli.myrst2html:_main",
             "imageFromURL = iv_tanim.cli.imageFromURL:_main",
             "inline_images = iv_tanim.cli.inline_images:_main",
+            "simple_email = iv_tanim.cli.simple_email:_main",
         ]
     },
     #
