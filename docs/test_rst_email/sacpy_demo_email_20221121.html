@@ -62,7 +62,7 @@
 
           
             
-            <img src="../_static/twinkles_logo_blue_pretty_transparent.svg" class="logo" alt="Logo"/>
+            <img src="../_static/twinkles_logo_blue_pretty.svg" class="logo" alt="Logo"/>
           
           </a>
 
@@ -168,8 +168,8 @@
 <div class="math notranslate nohighlight">
 \[\frac{\partial^2\phi}{\partial x^2} + \frac{\partial^2\phi}{\partial y^2} + \frac{\partial^2\phi}{\partial z^2} + \frac{\omega^2}{c^2}\phi = 0.\]</div>
 <p>And some other crap, like putting in images inline into here.</p>
-<table class="colwidths-auto docutils align-default" id="id1">
-<caption><span class="caption-text">here’s a table of two images</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-auto docutils align-default" id="id2">
+<caption><span class="caption-text">here’s a table of two images</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../_images/iwanttobelieve_uncropped_cropped1.png"><img alt="iwanttobelieve_uncropped_cropped_local" class="align-middle" src="../_images/iwanttobelieve_uncropped_cropped1.png" style="width: 50%;" /></a></p></td>
 <td><p><a class="reference internal" href="../_images/turn_cartoon.png"><img alt="turn_cartoon_local" class="align-middle" src="../_images/turn_cartoon.png" style="width: 100%;" /></a></p></td>
@@ -180,8 +180,8 @@
 </tbody>
 </table>
 <p>And here we have an animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> of the <em>latest</em> (as of <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">DECEMBER</span> <span class="pre">2022</span></code>) 7-day rolling average of COVID-19 cases and deaths in the <a class="reference external" href="https://en.wikipedia.org/wiki/Contiguous_United_States">CONUS</a>.</p>
-<table class="colwidths-auto docutils align-default" id="id2">
-<caption><span class="caption-text">table showing an animated GIF</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-auto docutils align-default" id="id3">
+<caption><span class="caption-text">table showing an animated GIF</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../_images/covid19_7day_conus_LATEST_CLIPPED.gif"><img alt="covid19_7day_conus_LATEST_CLIPPED" class="align-middle" src="../_images/covid19_7day_conus_LATEST_CLIPPED.gif" style="width: 100%;" /></a></p></td>
 </tr>
@@ -189,6 +189,14 @@
 </tr>
 </tbody>
 </table>
+<p>I generated the above image by following these steps. The final image filename is <code class="docutils literal notranslate"><span class="pre">covid19_7day_conus_LATEST_CLIPPED.gif</span></code>. I needed <a class="reference external" href="https://www.gnu.org/software/wget/">wget</a>, <a class="reference external" href="https://ffmpeg.org/">ffmpeg</a>, and of course <a class="reference external" href="https://tanimislam.github.io/iv_tanim/core_functionality.html#convertimage-movie">convertImage movie</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget -c &quot;https://tanimislam.sfo3.digitaloceanspaces.com/covid19movies/covid19_7day_conus_LATEST.mp4&quot;</span>
+
+<span class="go">ffmpeg -ss 00:03:00 -i covid19_7day_conus_LATEST.mp4 -codec copy covid19_7day_conus_LATEST_CLIPPED.mp4</span>
+
+<span class="go">convertImage movie -f covid19_7day_conus_LATEST_CLIPPED.mp4 -s 0.5</span>
+</pre></div>
+</div>
 <p>Now here’s some stupid code blocks, some Python code in fact that I have here.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_create_image_base64</span><span class="p">(</span> <span class="n">img_path</span> <span class="p">):</span>
     <span class="k">assert</span><span class="p">(</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span> <span class="n">img_path</span> <span class="p">)</span> <span class="p">)</span>
@@ -208,6 +216,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is based off an older demonstration email I sent out to <a class="reference external" href="http://www.pyrva.org">PyRVA</a> on 2022-03-09 and to <a class="reference external" href="http://sacpy.org">SacPy</a> on 2022-04-07.</p>
+<p>I have also attached this <a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">RestructuredText</a> file, <code class="docutils literal notranslate"><span class="pre">sacpy_demo_email_20221121.rst</span></code>, to this email.</p>
 </div>
 
 

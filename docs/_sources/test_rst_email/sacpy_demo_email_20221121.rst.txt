@@ -27,7 +27,17 @@ And here we have an animated GIF_ of the *latest* (as of ``5 DECEMBER 2022``) 7-
 
    * - |covid19_7day_conus_LATEST_CLIPPED|
    * - ``5 DECEMBER 2022`` 7-day rolling average of COVID-19 cases and deaths in the CONUS_. We create this animated GIF_ using `convertImage movie <https://tanimislam.github.io/iv_tanim/core_functionality.html#convertimage-movie>`_. Produces something that is 4.0 MB in size.
-	
+
+I generated the above image by following these steps. The final image filename is ``covid19_7day_conus_LATEST_CLIPPED.gif``. I needed `wget <https://www.gnu.org/software/wget/>`_, `ffmpeg <https://ffmpeg.org/>`_, and of course `convertImage movie <https://tanimislam.github.io/iv_tanim/core_functionality.html#convertimage-movie>`_.
+
+.. code-block:: console
+
+   wget -c "https://tanimislam.sfo3.digitaloceanspaces.com/covid19movies/covid19_7day_conus_LATEST.mp4"
+
+   ffmpeg -ss 00:03:00 -i covid19_7day_conus_LATEST.mp4 -codec copy covid19_7day_conus_LATEST_CLIPPED.mp4
+
+   convertImage movie -f covid19_7day_conus_LATEST_CLIPPED.mp4 -s 0.5
+   
 Now here's some stupid code blocks, some Python code in fact that I have here.
 
 .. code-block:: python
@@ -53,6 +63,8 @@ Tanim
 .. note::
 
    This is based off an older demonstration email I sent out to PyRVA_ on 2022-03-09 and to SacPy_ on 2022-04-07.
+
+   I have also attached this |rst| file, ``sacpy_demo_email_20221121.rst``, to this email.
 		
 .. |rst| replace:: `RestructuredText`_
 .. _`RestructuredText`: https://en.wikipedia.org/wiki/ReStructuredText
