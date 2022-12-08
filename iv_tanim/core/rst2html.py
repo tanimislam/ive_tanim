@@ -247,7 +247,7 @@ def create_collective_email_full(
 
     * explicitly included attachments.
 
-    * soft-conventioned ``cid`` of embedded and inlined images (PNG_, JPEG_, TIFF_).
+    * soft-conventioned ``cid`` of embedded and inlined images (PNG_, JPEG_, TIFF_, GIF_, etc.).
 
     Go easy on me, it's my first day!
 
@@ -303,6 +303,10 @@ def create_collective_email_full(
 def get_attachment_object( full_file_path ):
     """
     Create the attachment :py:class:`dict` given the input file.
+    
+    :param str full_file_path: the location of the file on-disk.
+    :returns: a :py:class:`dict` of ``name`` (which is file base name), ``mimetype``, and ``filepath`` (which is ``full_file_path``). If file does not exist, then function returns ``None``.
+    :rtype: dict
     """
     if not os.path.exists( full_file_path ): return None
     mime = magic.Magic(mime=True)
@@ -311,7 +315,7 @@ def get_attachment_object( full_file_path ):
         'mimetype' : mime.from_file( full_file_path ),
         'filepath' : full_file_path }
 
-def send_email_localsmtp( msg, portnumber = 25 ):
+def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     """
     Sends the email using the :py:class:`SMTP <smtplib.SMTP>` Python functionality to send through a local SMTP_ server.
 
@@ -319,13 +323,15 @@ def send_email_localsmtp( msg, portnumber = 25 ):
     
     :param msg: the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.
     :type msg:  :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
+    :param str server: the SMTP_ server to use. Default is ``localhost``.
     :param int portnumber: the port number to use to send the email to the local SMTP_ server. Default is port 25.
     
     .. _SMTP: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
     .. _`This blog post`: https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html
     """
     assert( portnumber > 0 )
-    smtp_conn = smtplib.SMTP('localhost', portnumber )
+    assert( len( server.strip( ) ) > 0 )
+    smtp_conn = smtplib.SMTP( server.strip( ), portnumber )
     smtp_conn.ehlo( 'test' )
     smtp_conn.sendmail( msg['From'], [ msg["To"], ], msg.as_string( ) )
     smtp_conn.quit( )

@@ -20,6 +20,8 @@ def _main( ):
                         help = 'List of files to attach to this email.' )
     parser.add_argument( '-p', '--smtpport', dest = 'smtpport', type = int, default = 25,
                         help = 'The port number for the SMTP server to send the SMTP email. Default is 25.' )
+    parser.add_argument( '-S', '--smtpserver', dest = 'smtpserver', type = str, default = 'localhost',
+                        help = "The name of the SMTP server to send the SMTP email. Default is 'localhost'." )
     parser.add_argument( '-I', '--info', dest = 'do_info', action = 'store_true', default = False,
                         help = 'If chosen, then do INFO logging.' )
     #
@@ -83,6 +85,11 @@ def _main( ):
     assert( args.smtpport > 0 )
     logging.info( 'SMTP PORT NUMBER = %d.' % args.smtpport )
     #
+    ## SMTP SERVER
+    smtpserver = args.smtpserver.strip( )
+    assert( len( smtpserver ) > 0 )
+    logging.info( 'SMTP SERVER = %s.' % smtpserver )
+    #
     ## FINALLY CREATE THE EMAIL!!!
     msg = rst2html.create_collective_email_full(
         rst2html.convert_string_RST( open( emailfile, 'r' ).read( ) ),
@@ -99,6 +106,6 @@ def _main( ):
             openfile.write( msg.as_bytes( ) )
     #
     ## NOW SEND THE EMAIL!!!
-    rst2html.send_email_localsmtp( msg, portnumber = args.smtpport )
+    rst2html.send_email_localsmtp( msg, portnumber = args.smtpport, server = smtpserver )
                   
         
