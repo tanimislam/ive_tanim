@@ -333,5 +333,6 @@ def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     assert( len( server.strip( ) ) > 0 )
     smtp_conn = smtplib.SMTP( server.strip( ), portnumber )
     smtp_conn.ehlo( 'test' )
-    smtp_conn.sendmail( msg['From'], sorted(set(map(lambda entry: entry.strip(), msg['To'].split(',')))), msg.as_string( ) )
+    #smtp_conn.sendmail( msg['From'], sorted(set(map(lambda entry: entry.strip(), msg['To'].split(',')))), msg.as_string( ) )
+    smtp_conn.send_message( msg )
     smtp_conn.quit( )
