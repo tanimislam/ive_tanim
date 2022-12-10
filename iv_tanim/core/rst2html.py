@@ -233,7 +233,7 @@ def cid_out_mimeMultiMessage( msg, mainHTML ):
 def create_collective_email_full(
     mainHTML, subject, fromEmail, to_emails, cc_emails = [ ], bcc_emails = [ ], attachments = [ ] ):
     """
-    Creates a :py:class:`MIMEMultiPart <email.mime.multipart.MIMEMultiPart>` email that *also* contains the following
+    Creates a :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>` email that *also* contains the following
 
     * the body of the message as an HTML document.
 
