@@ -4,7 +4,7 @@ import matplotlib.image, matplotlib.colors
 from PIL import Image, ImageChops
 from PyPDF2 import PdfReader, PdfWriter
 from shutil import which
-from iv_tanim import resourceDir
+from ive_tanim import resourceDir
 
 # _all_possible_colornames = set(
 #     chain.from_iterable(
@@ -22,7 +22,7 @@ def autocrop_perproc( input_tuple ):
     :param tuple input_tuple: a :py:class:`tuple` of ``inputfilename``, (input file name) ``outputfilename`` (output file name), ``color`` (background color), and ``fixEven`` (if ``True``, then resize the output image to have even-pixeled width and height).
     :returns: a :py:class:`tuple` of ``inputfilename`` and success status (``True`` for success, ``False`` otherwise).
 
-    .. seealso:: :py:meth:`autocrop_image <iv_tanim.core.autocrop_image.autocrop_image>`
+    .. seealso:: :py:meth:`autocrop_image <ive_tanim.core.autocrop_image.autocrop_image>`
     """
     inputfilename, outputfilename, color, fixEven = input_tuple
     val = autocrop_image(inputfilename, outputfilename = outputfilename, color = color, fixEven = fixEven)
@@ -49,7 +49,7 @@ def autocrop_image(inputfilename, outputfilename = None, color = 'white', newWid
     .. _Preview: https://en.wikipedia.org/wiki/Preview_(macOS)
     .. _PDF: https://en.wikipedia.org/wiki/PDF
     
-    .. seealso:: :py:meth:`autocrop_perproc <iv_tanim.core.autocrop_image.autocrop_perproc>`
+    .. seealso:: :py:meth:`autocrop_perproc <ive_tanim.core.autocrop_image.autocrop_perproc>`
     """
     im = Image.open(inputfilename)
 
@@ -198,7 +198,7 @@ def crop_pdf( inputfile, outputfile = None ):
     :param str inputfile: the name of the input PDF_ file.
     :param str outputfile: optional argument, the prefix of the output PDF_ files. If ``None``, then the prefix is the part of ``inputfile`` with the ``.pdf`` suffix removed.
 
-    .. seealso:: :py:meth:`crop_pdf_singlepage <iv_tanim.core.autocrop_image.crop_pdf_singlepage>`.
+    .. seealso:: :py:meth:`crop_pdf_singlepage <ive_tanim.core.autocrop_image.crop_pdf_singlepage>`.
     """
     logger = logging.getLogger(__name__)
     bboxes = get_boundingbox(inputfile)
@@ -226,7 +226,7 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
     :param str inputfile: the name of the input PDF_ file.
     :param str outputfile: optional argument, the name of the output PDF_ file. If ``None``, then the autocropped output PDF_ file replaces the input PDF_ file.
 
-    .. seealso:: :py:meth:`crop_pdf <iv_tanim.core.autocrop_image.crop_pdf>`.
+    .. seealso:: :py:meth:`crop_pdf <ive_tanim.core.autocrop_image.crop_pdf>`.
     """
     logger = _root_logger
     bboxes = get_boundingbox(inputfile)

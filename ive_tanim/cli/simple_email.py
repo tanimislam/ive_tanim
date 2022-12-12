@@ -1,5 +1,5 @@
 import os, sys, logging, re
-from iv_tanim.core import rst2html
+from ive_tanim.core import rst2html
 from argparse import ArgumentParser
 
 def _main( ):
@@ -107,5 +107,3 @@ def _main( ):
     #
     ## NOW SEND THE EMAIL!!!
     rst2html.send_email_localsmtp( msg, portnumber = args.smtpport, server = smtpserver )
-                  
-        

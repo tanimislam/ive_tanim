@@ -37,20 +37,20 @@ setup(
     #
     ## requirements
     install_requires = reqs,
-    python_requires = '>=3.8',
+    python_requires = '>=3.7',
     #
     ## the executables I am creating
     entry_points = {
         'console_scripts' : [
             #
             ## CLI stuff
-            "github_md_2_html = iv_tanim.cli.github_md_2_html:_main",
-            "autoCropImage = iv_tanim.cli.autoCropImage:_main",
-            "convertImage = iv_tanim.cli.convertImage:_main",
-            "myrst2html = iv_tanim.cli.myrst2html:_main",
-            "imageFromURL = iv_tanim.cli.imageFromURL:_main",
-            "inline_images = iv_tanim.cli.inline_images:_main",
-            "simple_email = iv_tanim.cli.simple_email:_main",
+            "github_md_2_html = ive_tanim.cli.github_md_2_html:_main",
+            "autoCropImage = ive_tanim.cli.autoCropImage:_main",
+            "convertImage = ive_tanim.cli.convertImage:_main",
+            "myrst2html = ive_tanim.cli.myrst2html:_main",
+            "imageFromURL = ive_tanim.cli.imageFromURL:_main",
+            "inline_images = ive_tanim.cli.inline_images:_main",
+            "simple_email = ive_tanim.cli.simple_email:_main",
         ]
     },
     #

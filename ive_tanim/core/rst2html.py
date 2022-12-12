@@ -31,7 +31,7 @@ class MyHTMLTranslator( HTMLTranslator ):
        htmlwriter.translator_class = MyHTMLTranslator
        publish_cmdline(writer=htmlwriter)
 
-    I imagine I will have to modify the methods :py:meth:`check_valid_RST <iv_tanim.core.rst2html.check_valid_RST>` and :py:meth:`convert_string_RST <iv_tanim.core.rst2html.convert_string_RST>` to represent more *correct* functionality. There, I am following what I inferred from :py:meth:`publish_parts <docutils.core.publish_parts>` and the included code block in this object's description.
+    I imagine I will have to modify the methods :py:meth:`check_valid_RST <ive_tanim.core.rst2html.check_valid_RST>` and :py:meth:`convert_string_RST <ive_tanim.core.rst2html.convert_string_RST>` to represent more *correct* functionality. There, I am following what I inferred from :py:meth:`publish_parts <docutils.core.publish_parts>` and the included code block in this object's description.
 
     .. _`this GitHub gist`: https://gist.github.com/Matherunner/c0397ae11cc72f2f35ae
     """
@@ -68,7 +68,7 @@ def check_valid_RST( myString, use_mathjax = False ):
     :returns: ``True`` if valid, otherwise ``False``.
     :rtype: bool
 
-    .. seealso:: :py:meth:`convert_string_RST <iv_tanim.core.rst2html.convert_string_RST>`
+    .. seealso:: :py:meth:`convert_string_RST <ive_tanim.core.rst2html.convert_string_RST>`
 
     .. _MathJax: https://www.mathjax.org
     """
@@ -100,7 +100,7 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
     :returns: If the input string is valid reStructuredText_, returns the rich HTML as a :py:class:`string <str>`. Otherwise emits a :py:meth:`logging error message <logging.error>` and returns ``None``.
     :rtype: str
 
-    .. seealso:: :py:meth:`check_valid_RST <iv_tanim.core.rst2html.check_valid_RST>`
+    .. seealso:: :py:meth:`check_valid_RST <ive_tanim.core.rst2html.check_valid_RST>`
     """
     if not check_valid_RST( myString ):
         logging.error( "Error, could not convert %s into RST." % myString )
@@ -152,7 +152,7 @@ def create_rfc2047_email( email_fullname_dict ):
        Otherwise returns ``None``.
     :rtype: str
 
-    .. seealso:: :py:meth:`parse_rfc2047_email <iv_tanim.core.rst2html.parse_rfc2047_email>`
+    .. seealso:: :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>`
 
     .. _`RFC 2047`: https://tools.ietf.org/html/rfc2047.html
     """
@@ -184,7 +184,7 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
     :returns: a :py:class:`dict` of candidate email dictionary *only* if there is a valid email address. Otherwise returns ``None``.
     :rtype: dict
     
-    .. seealso:: :py:meth:`create_rfc2047_email <iv_tanim.core.rst2html.create_rfc2047_email>`
+    .. seealso:: :py:meth:`create_rfc2047_email <ive_tanim.core.rst2html.create_rfc2047_email>`
     """
     output_tuple = parseaddr( candidate_rfc2047_email )
     if output_tuple[1].strip( ) == '':

@@ -1,7 +1,8 @@
-import os, datetime, signal
-from iv_tanim import signal_handler
+import signal
+from ive_tanim import signal_handler
 signal.signal( signal.SIGINT, signal_handler )
-from iv_tanim.core import autocrop_image
+import os, datetime
+from ive_tanim.core import autocrop_image
 from argparse import ArgumentParser
 
 def _main( ):

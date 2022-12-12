@@ -1,7 +1,7 @@
 import os, signal, logging
-from iv_tanim import signal_handler
+from ive_tanim import signal_handler
 signal.signal( signal.SIGINT, signal_handler )
-from iv_tanim.core import convert_image
+from ive_tanim.core import convert_image
 from argparse import ArgumentParser
     
 def _main( ):

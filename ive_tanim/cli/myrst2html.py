@@ -1,5 +1,5 @@
 import os, sys
-from iv_tanim.core import rst2html
+from ive_tanim.core import rst2html
 from argparse import ArgumentParser
 
 def _main( ):

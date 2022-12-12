@@ -3,17 +3,17 @@ import subprocess, json, logging, re, numpy
 from pathos.multiprocessing import Pool, cpu_count
 from PIL import Image
 from PyPDF2 import PdfFileReader
-from iv_tanim.core import autocrop_image
+from ive_tanim.core import autocrop_image
 
 def mp4fromimages( images2mp4dict ):
     """
-    Creates an MP4_ file from the low-level input specification :py:class:`dict` that :py:meth:`create_images2mp4dict <iv_tanim.core.convert_image.create_images2mp4dict>` creates. Requires the existence of the ``ffmpeg`` executable, and ``status`` value in the :py:class:`dict` *must* be ``"SUCCESS"``. Otherwise, this method does not create a movie file.
+    Creates an MP4_ file from the low-level input specification :py:class:`dict` that :py:meth:`create_images2mp4dict <ive_tanim.core.convert_image.create_images2mp4dict>` creates. Requires the existence of the ``ffmpeg`` executable, and ``status`` value in the :py:class:`dict` *must* be ``"SUCCESS"``. Otherwise, this method does not create a movie file.
 
     If ``dirname`` is the directory in which the image files live, and ``PREFIX`` is the prefix of all the image files, the MP4_ file is named ``dirname/PREFIX.mp4``.
 
     :param dict images2mp4dict: the dictionary specification for creating a specific MP4_ file from a collection of image files as frames.
 
-    .. seealso:: :py:meth:`create_images2mp4dict <iv_tanim.core.convert_image.create_images2mp4dict>`.
+    .. seealso:: :py:meth:`create_images2mp4dict <ive_tanim.core.convert_image.create_images2mp4dict>`.
     """
     #
     ## barf out if cannot find ffmpeg
@@ -68,7 +68,7 @@ def mp4fromimages( images2mp4dict ):
     
 def create_images2mp4dict( prefix, image_suffix = 'png', dirname = os.getcwd( ), fps = 5, autocrop = False ):
     """
-    This method creates a complicated and low-level :py:class:`dict` of set up, when creating an MP4_ file from a collection of images. Here are things needed to make this work. :py:meth:`mp4fromimages <iv_tanim.core.convert_image.mp4fromimages>` uses this :py:class:`dict` to create the MP4_ file.
+    This method creates a complicated and low-level :py:class:`dict` of set up, when creating an MP4_ file from a collection of images. Here are things needed to make this work. :py:meth:`mp4fromimages <ive_tanim.core.convert_image.mp4fromimages>` uses this :py:class:`dict` to create the MP4_ file.
 
     #. The collection of image files exist in a directory named ``dirname``.
 
@@ -84,7 +84,7 @@ def create_images2mp4dict( prefix, image_suffix = 'png', dirname = os.getcwd( ),
     * ``fps``: the :py:class:`int` number of frames per second in the MP4_ file.
     * ``actual prefix``: the input (``ffmpeg -i <arg>``) argument that goes into FFmpeg_ when creating the MP4_ from a collection of image files as frames.
 
-    In case of failure, the ``status`` key contains the reason for the failure. :py:meth:`mp4fromimages <iv_tanim.core.convert_image.mp4fromimages>` returns this failure message and does nothing.
+    In case of failure, the ``status`` key contains the reason for the failure. :py:meth:`mp4fromimages <ive_tanim.core.convert_image.mp4fromimages>` returns this failure message and does nothing.
 
     :param str prefix: the base name of each image file as frame, before the integer frame number and ``.<image_suffix>`` suffix.
     :param str image_suffix: the image suffix through which to look. Default is ``png``.
@@ -94,7 +94,7 @@ def create_images2mp4dict( prefix, image_suffix = 'png', dirname = os.getcwd( ),
     :returns: the :py:class:`dict` described above.
     :rtype: dict
 
-    .. seealso:: :py:meth:`mp4fromimages <iv_tanim.core.convert_image.mp4fromimages>`.
+    .. seealso:: :py:meth:`mp4fromimages <ive_tanim.core.convert_image.mp4fromimages>`.
 
     .. FFmpeg_: https://ffmpeg.org
     """
@@ -247,7 +247,7 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
     :param float duration: duration, in seconds, of MP4_ file to use to make the animated GIF_. If ``None`` is provided, use the full movie. If provided, then must be :math:`\ge 1` seconds.
     :param float scale: scaling of input width and height of MP4_ file. Default is 1.0. Must be :math:`\ge 0`.
   
-    .. seealso:: :py:meth:`make_aspected_mp4video <iv_tanim.core.convert_image.make_aspected_mp4video>`.
+    .. seealso:: :py:meth:`make_aspected_mp4video <ive_tanim.core.convert_image.make_aspected_mp4video>`.
     
     .. _GIF: https://en.wikipedia.org/wiki/GIF
     .. _movie_2_gif: http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
@@ -350,7 +350,7 @@ def png2png( input_png_file, newWidth = None, verify = True ):
     
     .. seealso::
 
-        * :py:meth:`pdf2png <iv_tanim.core.convert_image.pdf2png>`.
+        * :py:meth:`pdf2png <ive_tanim.core.convert_image.pdf2png>`.
     """
     assert( os.path.basename( input_png_file ).endswith( '.png' ) )
     assert( os.path.isfile( input_png_file ) )
@@ -374,7 +374,7 @@ def pdf2png( input_pdf_file, newWidth = None, verify = True ):
 
     .. seealso::
 
-        * :py:meth:`png2png <iv_tanim.core.convert_image.png2png>`.
+        * :py:meth:`png2png <ive_tanim.core.convert_image.png2png>`.
     """
     assert( os.path.basename( input_pdf_file ).endswith( '.pdf' ) )
     assert( os.path.isfile( input_pdf_file ) )
