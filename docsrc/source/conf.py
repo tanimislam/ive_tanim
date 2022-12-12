@@ -33,7 +33,7 @@ numfig = True
 
 # -- Project information -----------------------------------------------------
 
-project = 'iv_tanim'
+project = 'ive_tanim'
 copyright = '2022, Tanim Islam'
 author = 'Tanim Islam'
 
