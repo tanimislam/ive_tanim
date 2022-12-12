@@ -1,14 +1,14 @@
 ###################################################################
-IV_TANIM - Image-Video Functionality from Tanim, for Tanim
+IVE_TANIM - Image-Video-Email Functionality from Tanim, for Tanim
 ###################################################################
 NPRSTUFF_ is a repository that started off with tools that downloaded public radio programs like `NPR Fresh Air`_, `Wait Wait...Don't Tell
 Me <waitwait_>`_, and `This American Life`_. I then expanded it to become a grab bag of altogether different types of functionalities. Dependency managament was *stupidly onerous*.
 
-This repository, |ivtanim| (pronounced ``ivy``), carves out the image-video low-level functionality and command line executables into their own repository. This functionality continues and deprecated-land lives for now in NPRSTUFF_, but in the relatively immediate big-rock-candy-mountain future I will move the older "relying on NPRSTUFF_" dependencies into |ivtanim|. Single but obvious big benefit:
+This repository, |ivetanim| (pronounced ``ivy``), carves out the image-video-email low-level functionality and command line executables into their own repository. This functionality continues and deprecated-land lives for now in NPRSTUFF_, but in the relatively immediate big-rock-candy-mountain future I will move the older "relying on NPRSTUFF_" dependencies into |ivetanim|. Single but obvious big benefit:
 
-* |ivtanim| contains a few, easy-to-meet Python module dependencies.
+* |ivetanim| contains a few, easy-to-meet Python module dependencies.
 
-The comprehensive documentation lives in HTML created with `Sphinx <https://www.sphinx-doc.org/en/master/>`_, and now in the `IV_TANIM Sphinx Page <iv_tanim_doc_>`_ for this project. To generate the documentation, go to the ``docsrc`` subdirectory. In that directory, run ``make html``. Load ``docsrc/build/html/index.html`` into a browser to see the documentation.
+The comprehensive documentation lives in HTML created with `Sphinx <https://www.sphinx-doc.org/en/master/>`_, and now in the `IVE_TANIM Sphinx Page <ive_tanim_doc_>`_ for this project. To generate the documentation, go to the ``docsrc`` subdirectory. In that directory, run ``make html``. Load ``docsrc/build/html/index.html`` into a browser to see the documentation.
 
 There's also a demonstration presentation! I am/have (depending on whether you're from the past/future) made a presentation to the `Sacramento Python Meetup <sacpy_>`_ on Thursday, ``3 NOVEMBER 2022``.
 
@@ -28,17 +28,17 @@ Installing this Python module is easy.
 
   .. code-block:: console
 
-     python3 -m pip install --user git+https://github.com/tanimislam/iv_tanim#egginfo=iv_tanim
+     python3 -m pip install --user git+https://github.com/tanimislam/ive_tanim#egginfo=ive_tanim
 
 * If you want to have more control, follow these several steps.
 
   .. code-block:: console
 
-     git clone https://github.com/tanimislam/iv_tanim
-     cd iv_tanim
+     git clone https://github.com/tanimislam/ive_tanim
+     cd ive_tanim
      python3 -m pip install --user -e .
 
-Both installation workflows install |ivtanim| into your user Python folder (``~/.local`` by default on Linux and Mac OS X systems). Its executables are installed into ``~/.local/bin`` by default on Linux or Mac OS X systems.
+Both installation workflows install |ivetanim| into your user Python folder (``~/.local`` by default on Linux and Mac OS X systems). Its executables are installed into ``~/.local/bin`` by default on Linux or Mac OS X systems.
 
 .. _`NPR Fresh Air`: https://freshair.npr.org
 .. _waitwait: https://waitwait.npr.org
@@ -48,7 +48,7 @@ Both installation workflows install |ivtanim| into your user Python folder (``~/
 .. _HandBrakeCLI: https://handbrake.fr
 .. _`older NPR API`: https://www.npr.org/api/index
 .. _`NPR One API`: https://dev.npr.org/api
-.. _iv_tanim_doc: https://tanimislam.github.io/iv_tanim
+.. _ive_tanim_doc: https://tanimislam.github.io/iv_tanim
 .. _M4A: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 .. _MP3: https://en.wikipedia.org/wiki/MP3
 .. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
@@ -64,7 +64,7 @@ Both installation workflows install |ivtanim| into your user Python folder (``~/
 .. _sacpy: http://sacpy.org
 
 
-.. |ivtanim| replace:: ``IV_TANIM``
+.. |ivetanim| replace:: ``IVE_TANIM``
 
 ..
 .. these are magazine URLS
