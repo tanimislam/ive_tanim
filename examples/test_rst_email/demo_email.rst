@@ -83,7 +83,7 @@ Tanim
    :align: middle
 
 .. |iwanttobelieve_uncropped_cropped_local| image:: iwanttobelieve_uncropped_cropped.png
-   :width: 50%
+   :width: 100%
    :align: middle
 
 .. |turn_cartoon_local| image:: turn_cartoon.png

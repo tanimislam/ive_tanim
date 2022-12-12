@@ -1,2 +1,2 @@
-default: sacpy_demo_email_20221121.rst
-	myrst2html -i sacpy_demo_email_20221121.rst > sacpy_demo_email_20221121.html
+default: demo_email.rst
+	myrst2html -i demo_email.rst > demo_email.html

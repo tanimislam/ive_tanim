@@ -8,7 +8,7 @@ This consists of the *main* functionality of |ivtanim|.
 
 .. _autoCropImage_label:
 
-``autoCropImage``
+autoCropImage
 ==================
 ``autoCropImage`` automatically crops image (PNG_, JPEG_, TIFF_, etc.) and PDF_ files to remove whitespace. The default whitespace color is ``white``. The help screen for this command line tool is here,
 
@@ -59,7 +59,7 @@ You can generate :download:`cumulative_plot_emission_cropped.pdf <images/cumulat
 
 .. _convertImage_label:
 
-``convertImage``
+convertImage
 ================
 ``convertImage`` does *three* things, as seen when running ``convertImage -h``.
 
@@ -225,7 +225,9 @@ Here are the command line arguments.
 
 ``<CURRENT_DIRECTORY>`` refers to the current working directory in which ``convertImage fromImages`` has been launched.
 
-``myrst2html``
+.. _myrst2html_desc:
+
+myrst2html
 =================
 ``myrst2html`` acts *almost* like rst2html_. In default mode, it uses ``math.css`` for LaTeX math formulae. However, one can also specify it to use  MathJax_ with the correct CDN_, which in this case is https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML. I borrow shamelessly from `this GitHub gist`_ with some slight modifications.
 
@@ -242,20 +244,105 @@ Its help screen, when running ``myrst2html -h``, is,
      -M, --mathjax         If chosen, then use the MathJAX JS CDN to display LaTeX formulae. Default is turned off.
 
 This generates the HTML file, ``filename.html``, from the RST markup file, ``filename.rst``, but now with MathJax_ if you run with ``-M`` or ``--mathjax``.
-   
+
+simple_email
+===============
+``simple_email`` is the *simplest* SMTP_ based email sender I could make! One specifies the reStructuredText_ file; (optional) attachments; sender; ``TO`` recipients; (optionally) ``CC`` and ``BCC`` recipients; and (optional) details of the SMTP_ server. Its help screen, when running ``simple_email -h``, is,
+
+.. code-block:: console
+
+   usage: simple_email [-h] -f EMAILFILE [-s SUBJECT] -F SENDER -T [TO [TO ...]]
+		       [-C [CC [CC ...]]] [-B [BCC [BCC ...]]]
+		       [-A [ATTACH [ATTACH ...]]] [-p SMTPPORT] [-S SMTPSERVER]
+		       [-I]
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     -f EMAILFILE, --emailfile EMAILFILE
+			   Name of the restructuredtext email file to convert
+			   into HTML, THEN email out.
+     -s SUBJECT, --subject SUBJECT
+			   Email subject. Default is 'test subject'.
+     -F SENDER, --from SENDER
+			   Email and/or name of the sender. Use RFC 5322 email
+			   format.
+     -T [TO [TO ...]], --to [TO [TO ...]]
+			   List of email and/or names of the recipients. Use RFC
+			   5322 email format.
+     -C [CC [CC ...]], --cc [CC [CC ...]]
+			   List of CC email and/or names. Use RFC 5322 email
+			   format.
+     -B [BCC [BCC ...]], --bcc [BCC [BCC ...]]
+			   List of BCC email and/or names. Use RFC 5322 email
+			   format.
+     -A [ATTACH [ATTACH ...]], --attach [ATTACH [ATTACH ...]]
+			   List of files to attach to this email.
+     -p SMTPPORT, --smtpport SMTPPORT
+			   The port number for the SMTP server to send the SMTP
+			   email. Default is 25.
+     -S SMTPSERVER, --smtpserver SMTPSERVER
+			   The name of the SMTP server to send the SMTP email.
+			   Default is 'localhost'.
+     -I, --info            If chosen, then do INFO logging.
+
+I go through each element like so. ``-I`` or ``--info`` turns on ``INFO`` logging, which is right now *extremely useful* to figure out what happened to your email if something went wrong!
+
+#. ``-f`` or ``emailfiles`` specifies the reStructuredText_ file, which has the same structure as I describe in the :ref:`myrst2html description <myrst2html_desc>`.
+
+#. Email stuff consists of the following:
+
+   * ``-s`` or ``--subject`` specifies the non-default email subject. Default is ``test subject``.
+
+   * ``-F`` or ``-from`` specifies the sender. This is in the format of email address only, such as ``tanim.islam@gmail.com``, or in the standard email-with-name format, such as ``Tanim Islam <tanim.islam@gmail.com>``.
+
+   * ``-T`` or ``--to`` specifies the list of recipients (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+
+   * ``-C`` or ``-cc`` *optionally* specifies the list of `CC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+
+   * ``-B`` or ``--bcc`` *optionally* specifies the list of `BCC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+
+   * ``-A`` or ``--attach`` *optionally* specifies the list of files to attach to this email.
+
+#. SMTP_ server stuff consists of the following:
+
+   * ``-p`` or ``--smtpport`` specifies the port to use for SMTP_ email sending. Default is 25.
+
+   * ``-S`` or ``--smtpserver`` specifies the name of the SMTP_ server. Default is ``localhost``.
+
+To help myself and others, I have the following elements needed to send a demonstration email.
+
+* The email file, :download:`demo_email.rst <input/demo_email.rst>`, whose source I have included below,
+
+  .. literalinclude:: input/demo_email.rst
+     :language: rst
+     :linenos:
+
+* The three images files: :download:`covid19_7day_conus_LATEST_CLIPPED.gif <input/covid19_7day_conus_LATEST_CLIPPED.gif>`, :download:`iwanttobelieve_uncropped_cropped.png <input/iwanttobelieve_uncropped_cropped.png>`, and :download:`turn_cartoon.png <input/turn_cartoon.png>`.
+
+* You will also need an SMTP_ server with valid SMTP_ port.
+
+Example of ``simple_email`` functionality is mocked up below. I assume your SMTP_ server is ``localhost`` and it operates off port 25.
+
+.. code-block:: console
+
+   simple_email -f demo_email.rst -F <email_sender> -T <email_recip_1> <email_recip_2> \
+     -C <cc_recip_1> <email_recip_2> -B <bcc_recip_1> <bcc_recip_2> \
+     -A demo_email.rst
+
+If everything email-wise *and* SMTP_ wise goes right, then your ``TO`` and ``CC`` and ``BCC`` recipients should receive the email with attachment.
+     
 .. _rst2html: https://manpages.debian.org/testing/docutils-common/rst2html.1.en.html
 .. _CDN: https://en.wikipedia.org/wiki/Content_delivery_network
 .. _`this GitHub gist`: https://gist.github.com/Matherunner/c0397ae11cc72f2f35ae
-.. _PNG: https://en.wikipedia.org/wiki/Portable_Network_Graphics
-.. _PDF: https://en.wikipedia.org/wiki/PDF
 .. _`git bisect`: https://git-scm.com/docs/git-bisect
 .. _GIF: https://en.wikipedia.org/wiki/GIF
 .. _YouTube: https://www.youtube.com
 .. _FFmpeg: https://ffmpeg.org
 .. _movie_2_gif: http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
-.. _SVG: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
-.. _SVGZ: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics#Compression
 .. _pdftocairo: http://manpages.ubuntu.com/manpages/trusty/man1/pdftocairo.1.html
 .. _cairosvg: http://manpages.ubuntu.com/manpages/focal/en/man1/cairosvg.1.html
 .. _MP4: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 .. _`Medium article`: https://medium.com/@Peter_UXer/small-sized-and-beautiful-gifs-with-ffmpeg-25c5082ed733
+
+.. _`CC recipients`: https://en.wikipedia.org/wiki/Carbon_copy#Email
+.. _`BCC recipients`: https://en.wikipedia.org/wiki/Blind_carbon_copy#cite_note-1

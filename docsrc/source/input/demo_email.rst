@@ -1,0 +1,1 @@
+../../../examples/test_rst_email/demo_email.rst
