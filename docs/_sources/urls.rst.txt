@@ -19,9 +19,8 @@
 .. _OGG: https://en.wikipedia.org/wiki/Vorbis
 .. _FLAC: https://en.wikipedia.org/wiki/FLAC
 .. _SVG: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
-.. _`Abdur-Rashid Sufi`: http://quranicaudio.com/quran/109
+.. _SVGZ: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics#Compression
 .. _Readability: https://www.readability.com
-.. _PyQt4: https://www.riverbankcomputing.com/software/pyqt/download
 .. _EPUB: https://en.wikipedia.org/wiki/EPUB
 .. _Github: https://github.com
 .. _SQLAlchemy: https://www.sqlalchemy.org
@@ -36,6 +35,7 @@
 .. _PyPDF2: https://pypdf2.readthedocs.io/en/latest/
 .. _Instagram: https://instagram.com
 .. _MathJax: https://www.mathjax.org
+.. _SMTP: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 
 ..
 .. these are magazine URLS
