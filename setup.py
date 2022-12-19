@@ -58,7 +58,7 @@ setup(
     ## other resources
     ## here is the link to the terrible undocumented documentation: https://setuptools.readthedocs.io/en/latest/setuptools.html#including-data-files
     package_data = {
-        "iv_tanim" : [
+        "ive_tanim" : [
             "resources/*.json",
             ],
     }
