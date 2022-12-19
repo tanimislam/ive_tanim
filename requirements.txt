@@ -2,7 +2,6 @@ docutils==0.17
 Pillow
 PyPDF2>=2
 requests
-sphinx_rtd_theme
 matplotlib
 beautifulsoup4
 pathos
