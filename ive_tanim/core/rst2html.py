@@ -136,7 +136,7 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
         return html
     #
     html = _fix_title_elem( html )
-    return html.prettify( )
+    return str( html )
 
 def create_rfc2047_email( email_fullname_dict ):
     """
@@ -221,7 +221,7 @@ def cid_out_mimeMultiMessage( msg, mainHTML ):
         img_elem[ 'alt' ] = fname
     #
     ## now attach the *changed* message
-    msg.attach( MIMEText( htmldoc.prettify( ), 'html', 'utf-8' ) )
+    msg.attach( MIMEText( str( htmldoc ), 'html', 'utf-8' ) )
     for cid in cid_replacement:
         msg_image = MIMEImage(
             open( cid_replacement[ cid ], 'rb' ).read( ),
