@@ -1,5 +1,4 @@
 beautifulsoup4
-docutils==0.17
 Pillow
 PyPDF2>=2
 requests
