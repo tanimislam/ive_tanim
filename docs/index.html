@@ -41,7 +41,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="core_functionality.html">1. Core Functionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core_api.html">2. Core APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initialization_api.html">2. Initialization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_api.html">3. Core APIs</a></li>
 </ul>
 
         </div>
@@ -120,8 +121,14 @@ Me</a>, and <a class="reference external" href="https://www.thisamericanlife.org
 <li class="toctree-l2"><a class="reference internal" href="core_functionality.html#simple-email">1.4. simple_email</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="core_api.html">2. Core APIs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="core_api.html#autocrop-image-module">2.1. autocrop_image module</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="initialization_api.html">2. Initialization API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="initialization_api.html#ive_tanim.baseConfDir"><code class="docutils literal notranslate"><span class="pre">baseConfDir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialization_api.html#ive_tanim.configFile"><code class="docutils literal notranslate"><span class="pre">configFile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialization_api.html#ive_tanim.create_config"><code class="docutils literal notranslate"><span class="pre">create_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core_api.html">3. Core APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_api.html#autocrop-image-module">3.1. autocrop_image module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.autocrop_image.autocrop_image"><code class="docutils literal notranslate"><span class="pre">autocrop_image()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.autocrop_image.autocrop_perproc"><code class="docutils literal notranslate"><span class="pre">autocrop_perproc()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.autocrop_image.crop_pdf"><code class="docutils literal notranslate"><span class="pre">crop_pdf()</span></code></a></li>
@@ -129,7 +136,7 @@ Me</a>, and <a class="reference external" href="https://www.thisamericanlife.org
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.autocrop_image.get_boundingbox"><code class="docutils literal notranslate"><span class="pre">get_boundingbox()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="core_api.html#convert-image-module">2.2. convert_image module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_api.html#convert-image-module">3.2. convert_image module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.convert_image.create_images2mp4dict"><code class="docutils literal notranslate"><span class="pre">create_images2mp4dict()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.convert_image.make_aspected_mp4video"><code class="docutils literal notranslate"><span class="pre">make_aspected_mp4video()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.convert_image.mp4fromimages"><code class="docutils literal notranslate"><span class="pre">mp4fromimages()</span></code></a></li>
@@ -138,15 +145,18 @@ Me</a>, and <a class="reference external" href="https://www.thisamericanlife.org
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.convert_image.png2png"><code class="docutils literal notranslate"><span class="pre">png2png()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="core_api.html#rst2html-module">2.3. rst2html module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core_api.html#rst2html-module">3.3. rst2html module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.MyHTMLTranslator"><code class="docutils literal notranslate"><span class="pre">MyHTMLTranslator</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.check_valid_RST"><code class="docutils literal notranslate"><span class="pre">check_valid_RST()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.cid_out_mimeMultiMessage"><code class="docutils literal notranslate"><span class="pre">cid_out_mimeMultiMessage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.config_email_alias"><code class="docutils literal notranslate"><span class="pre">config_email_alias()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.config_email_default_sender"><code class="docutils literal notranslate"><span class="pre">config_email_default_sender()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.config_email_default_smtp"><code class="docutils literal notranslate"><span class="pre">config_email_default_smtp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.convert_string_RST"><code class="docutils literal notranslate"><span class="pre">convert_string_RST()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.create_collective_email_full"><code class="docutils literal notranslate"><span class="pre">create_collective_email_full()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.create_rfc2047_email"><code class="docutils literal notranslate"><span class="pre">create_rfc2047_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.create_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">create_rfc5322_email()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.get_attachment_object"><code class="docutils literal notranslate"><span class="pre">get_attachment_object()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.parse_rfc2047_email"><code class="docutils literal notranslate"><span class="pre">parse_rfc2047_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.parse_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">parse_rfc5322_email()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_api.html#ive_tanim.core.rst2html.send_email_localsmtp"><code class="docutils literal notranslate"><span class="pre">send_email_localsmtp()</span></code></a></li>
 </ul>
 </li>

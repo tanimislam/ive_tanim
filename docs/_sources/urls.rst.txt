@@ -36,6 +36,7 @@
 .. _Instagram: https://instagram.com
 .. _MathJax: https://www.mathjax.org
 .. _SMTP: https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
+.. _JSON: https://en.wikipedia.org/wiki/JSON
 
 ..
 .. these are magazine URLS
@@ -47,4 +48,4 @@
 .. _`The New York Times`: https://www.nytimes.com
 .. _`Virginia Quarterly Review`: https://www.vqronline.org
 
-.. |ivtanim| replace:: ``IV_TANIM``
+.. |ivetanim| replace:: ``IVE_TANIM``

@@ -3,14 +3,7 @@
 ================================================
 Core APIs
 ================================================
-
-This document describes the |ivtanim| core API, which provides the low-level back-end for the CLI front ends described in :ref:`Core Functionality`. These modules live under ``ive_tanim.core``.
-
-I have redesigned the Python logging functionality in the following way,
-
-* custom format of the logging output, formatted as ``'%(levelname)s %(module)s.%(funcName)s (%(lineno)d): %(message)s'``. See the `logging cookbook`_ for more information on what this format means.
-
-* Some of the :ref:`Core Functionality` command line tools have an extra argument flag, ``--level``, that specifies whether to print out logging output and the following debug levels: ``DEBUG``, ``INFO``, or ``ERROR``.
+This document describes the |ivetanim| core API, which provides the low-level back-end for the CLI front ends described in :ref:`Core Functionality`. These modules live under ``ive_tanim.core``.
 		
 autocrop_image module
 ------------------------------------
@@ -46,7 +39,6 @@ This module provides low-level functionality that converts reStructuredText_ int
 .. _Ubuntu: https://ubuntu.com
 .. _MP4: https://en.wikipedia.org/wiki/MPEG-4_Part_14
 .. _RealMedia: https://en.wikipedia.org/wiki/RealMedia
-.. _`logging cookbook`: https://docs.python.org/3/howto/logging-cookbook.html
 .. _QtSVG: https://doc.qt.io/qt-5/qtsvg-index.html
 .. _`this repo`: https://gist.github.com/jpscaletti/7321281
 .. _BoundingBox: https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg
