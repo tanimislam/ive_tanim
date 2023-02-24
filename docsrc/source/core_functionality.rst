@@ -4,7 +4,7 @@
 	     
 Core Functionality
 ^^^^^^^^^^^^^^^^^^^
-This consists of the *main* functionality of |ivtanim|.
+This consists of the *main* functionality of |ivetanim|.
 
 .. _autoCropImage_label:
 

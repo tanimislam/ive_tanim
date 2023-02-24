@@ -1,10 +1,10 @@
 import os, sys, json, multiprocessing, numpy
-import logging, subprocess, shlex, uuid
+import subprocess, shlex, uuid
 import matplotlib.image, matplotlib.colors
 from PIL import Image, ImageChops
 from PyPDF2 import PdfReader, PdfWriter
 from shutil import which
-from ive_tanim import resourceDir
+from ive_tanim import resourceDir, ivetanim_logger
 
 # _all_possible_colornames = set(
 #     chain.from_iterable(
@@ -126,12 +126,11 @@ def autocrop_image(inputfilename, outputfilename = None, color = 'white', newWid
 ## 1) all attributes and methods except for crop_pdf() are underscored
 ## 2) first search for "gs" executable. If there, then functionality can work
 ## 3) made a new method, crop_pdf_singlepage(), only for cropping SINGLE page (image) PDF files
-
-_root_logger = logging.getLogger()
-_handler = logging.StreamHandler()
-_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-_root_logger.addHandler(_handler )
-_devnull = open(os.devnull, 'w')
+#_root_logger = logging.getLogger()
+#_handler = logging.StreamHandler()
+#_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+#_root_logger.addHandler(_handler )
+#_devnull = open(os.devnull, 'w')
 
 def _bbox(value):
     """
@@ -200,21 +199,20 @@ def crop_pdf( inputfile, outputfile = None ):
 
     .. seealso:: :py:meth:`crop_pdf_singlepage <ive_tanim.core.autocrop_image.crop_pdf_singlepage>`.
     """
-    logger = logging.getLogger(__name__)
     bboxes = get_boundingbox(inputfile)
     if outputfile is None:
         outputfile = 'cropped.{0}{1}'.format(*os.path.splitext(inputfile))
-    logger.info('Writing pdf output to %s', outputfile)
+    ivetanim_logger.info('Writing pdf output to %s', outputfile)
     with open(inputfile, 'rb') as fin:
         pdf_in = PdfReader(fin)
         for i, bbox in enumerate(bboxes):
             left, bottom, right, top = bbox
             page = pdf_in.getPage( i )
-            logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
-            logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
+            ivetanim_logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+            ivetanim_logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
             page.mediaBox.lowerLeft = (left, bottom)
             page.mediaBox.upperRight = (right, top)
-            logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+            ivetanim_logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
             _make_pdf(i, outputfile, page)
 
 def crop_pdf_singlepage( inputfile, outputfile = None ):
@@ -228,7 +226,6 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
 
     .. seealso:: :py:meth:`crop_pdf <ive_tanim.core.autocrop_image.crop_pdf>`.
     """
-    logger = _root_logger
     bboxes = get_boundingbox(inputfile)
     assert( len( bboxes ) == 1 ) # single page PDF
     sameFile = False
@@ -238,11 +235,11 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
     pdf_in = PdfReader( open( inputfile, 'rb' ) )
     left, bottom, right, top = bboxes[0]
     page = pdf_in.getPage( 0 )
-    logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
-    logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
+    ivetanim_logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+    ivetanim_logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
     page.mediaBox.lowerLeft = (left, bottom)
     page.mediaBox.upperRight = (right, top)
-    logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+    ivetanim_logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
     #
     ## write out to this new file
     pdf_out = PdfWriter( )

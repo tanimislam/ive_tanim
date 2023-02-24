@@ -1,10 +1,11 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, logging, validators, uuid, smtplib, magic
+import os, sys, validators, uuid, smtplib, magic, json
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
+from ive_tanim import ivetanim_logger, configFile
 #
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -103,7 +104,7 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
     .. seealso:: :py:meth:`check_valid_RST <ive_tanim.core.rst2html.check_valid_RST>`
     """
     if not check_valid_RST( myString ):
-        logging.error( "Error, could not convert %s into RST." % myString )
+        ivetanim_logger.error( "Error, could not convert %s into RST." % myString )
         return None
     overrides = {
         'input_encoding': 'unicode',
@@ -163,16 +164,16 @@ def create_rfc2047_email( email_fullname_dict ):
         input_tuple[0] = email_fullname_dict[ 'full name' ]
     #
     if input_tuple[0] == '' and input_tuple[1] == '':
-        logging.error("ERROR, NO VALID EMAIL AND FULL NAME FORM %s." % email_fullname_dict )
+        ivetanim_logger.error("ERROR, NO VALID EMAIL AND FULL NAME FORM %s." % email_fullname_dict )
         return None
     if input_tuple[1] == '':
-        logging.error("ERROR, NO VALID EMAIL FROM %s" % email_fullname_dict )
+        ivetanim_logger.error("ERROR, NO VALID EMAIL FROM %s" % email_fullname_dict )
         return None
     #
     try:
         return formataddr( tuple( input_tuple ) )
     except Exception as e:
-        logging.error( "Problem with trying to format as email this tuple: %s. Exception = %s." % (
+        ivetanim_logger.error( "Problem with trying to format as email this tuple: %s. Exception = %s." % (
             input_tuple, str( e ) ) )
         return None
 
@@ -188,7 +189,7 @@ def parse_rfc2047_email( candidate_rfc2047_email ):
     """
     output_tuple = parseaddr( candidate_rfc2047_email )
     if output_tuple[1].strip( ) == '':
-        logging.error("Error, candidate input email = %s does NOT have a valid email address." % candidate_rfc2047_email )
+        ivetanim_logger.error("Error, candidate input email = %s does NOT have a valid email address." % candidate_rfc2047_email )
         return None
     return { 'email' : output_tuple[1].strip( ), 'full name' : output_tuple[0].strip( ) }
 
@@ -271,10 +272,10 @@ def create_collective_email_full(
     msg[ 'To' ] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email,  to_emails))))).strip( )
     msg[ 'Cc' ] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email,  cc_emails))))).strip( )
     msg[ 'Bcc'] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email, bcc_emails))))).strip( )
-    logging.info( 'from_email: %s' % msg[ 'From' ] )
-    logging.info( 'to_emails: %s.' % msg['To'] )
-    logging.info( 'cc_emails: %s.' % msg['Cc'] )
-    logging.info('bcc_emails: %s.' % msg['Bcc'])
+    ivetanim_logger.info( 'from_email: %s' % msg[ 'From' ] )
+    ivetanim_logger.info( 'to_emails: %s.' % msg['To'] )
+    ivetanim_logger.info( 'cc_emails: %s.' % msg['Cc'] )
+    ivetanim_logger.info('bcc_emails: %s.' % msg['Bcc'])
     #msg.attach( MIMEText( mainHTML, 'html', 'utf-8' ) )
     cid_out_mimeMultiMessage( msg, mainHTML )
     #
@@ -322,7 +323,7 @@ def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     `This blog post`_ describes how I set up a GMail relay using my local SMTP_ server on my Ubuntu_ machine.
     
     :param msg: the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.
-    :type msg:  :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
+    :type msg: :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     :param str server: the SMTP_ server to use. Default is ``localhost``.
     :param int portnumber: the port number to use to send the email to the local SMTP_ server. Default is port 25.
     
@@ -336,3 +337,63 @@ def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     #smtp_conn.sendmail( msg['From'], sorted(set(map(lambda entry: entry.strip(), msg['To'].split(',')))), msg.as_string( ) )
     smtp_conn.send_message( msg )
     smtp_conn.quit( )
+
+def config_email_default_sender( sender_rfc2047_email ):
+    """
+    Uses :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>` to validate, then configurationally store the current default settings of the SENDER into the configuration JSON file, ``~/.config/ive_tanim/config.json``.
+
+    THIS IS NOT THREAD-SAFE!
+
+    :param str sender_rfc2047_email: the input `RFC 2047`_ fully qualified email address of the *default* sender.
+    :returns: ``False`` if the candidate sender email address is not valid according to `RFC 2047`_. Otherwise returns ``True`` and sets the default sender to this value.
+    :rtype: bool
+    """
+    val = parse_rfc2047_email( sender_rfc2047_email )
+    if val is None: return False
+    #
+    ## now set the ME information here
+    configData = json.load( open( configFile, 'r' ) )
+    configData[ 'me' ] = sender_rfc2047_email
+    json.dump( configData, open( configFile, 'w' ), indent = 1 )
+    return True
+
+def config_email_alias( alias, candidate_rfc2047_email ):
+    """
+    Uses :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>` to validate, then configurationally store an alias into the configuration JSON file, ``~/.config/ive_tanim/config.json``. To make things simpler, this uses a *lower case* transform of the ``alias`` into the configuration file.
+    
+    THIS IS NOT THREAD-SAFE!
+    
+    :param str alias: an useful key that identifies the email alias so you don't have to write out a full `RFC 2047`_ qualified email address.
+    :param str candidate_rfc2047_email: the input `RFC 2047`_ fully qualified email address.
+    :returns: ``False``  if the candidate email address is not valid according to `RFC 2047`_. Otherwise returns ``True``.
+    :rtype: bool
+
+    .. note::
+
+       The ``alias`` is stored in lower case, and references in other methods and CLI's perform an implicit to-lower-case conversion if you want to specify a sender, recipient, ``CC`` recipient, or ``BCC`` recipient.
+    """
+    val = parse_rfc2047_email( candidate_rfc2047_email )
+    if val is None: return False
+    #
+    ## now add the alias information here
+    alias_lc = alias.lower( )
+    configData = json.load( open( configFile, 'r' ) )
+    configData[ 'aliases' ][ alias ] = candidate_rfc2047_email
+    json.dump( configData, open( configFile, 'w' ), indent = 1 )
+
+def config_email_default_smtp( server = 'localhost', port = 25 ):
+    """
+    Sets the default SMTP_ server sending settings, and stores the default SMTP_ server settings into the configuration JSON file, ``~/.config/ive_tanim/config.json``.
+
+    THIS IS NOT THREAD SAFE!
+    
+    :param str server: the SMTP_ server to use. Default is ``localhost``.
+    :param int portnumber: the port number to use to send the email to the local SMTP_ server. Default is port 25.
+    """
+    configData = json.load( open( configFile, 'r' ) )
+    configData.setdefault( 'smtp', dict() )
+    configData[ 'smtp' ][ 'server' ] = server
+    configData[ 'smtp' ][ 'port'   ] = port
+    json.dump( configData, open( configFile, 'w' ), indent = 1 )
+    
+

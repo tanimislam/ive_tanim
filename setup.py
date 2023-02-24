@@ -51,6 +51,7 @@ setup(
             "imageFromURL = ive_tanim.cli.imageFromURL:_main",
             "inline_images = ive_tanim.cli.inline_images:_main",
             "simple_email = ive_tanim.cli.simple_email:_main",
+            "simple_email_config = ive_tanim.cli.simple_email_config:main",
         ]
     },
     #

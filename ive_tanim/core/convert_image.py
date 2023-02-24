@@ -1,8 +1,9 @@
 import requests, os, gzip, magic, uuid, pathlib, glob, time
-import subprocess, json, logging, re, numpy
+import subprocess, json, re, numpy
 from pathos.multiprocessing import Pool, cpu_count
 from PIL import Image
 from PyPDF2 import PdfFileReader
+from ive_tanim import ivetanim_logger
 from ive_tanim.core import autocrop_image
 
 def mp4fromimages( images2mp4dict ):
@@ -45,7 +46,7 @@ def mp4fromimages( images2mp4dict ):
         else:
             _ = list(pool.map(lambda fname: autocrop_image.autocrop_image( fname, fixEven = True ),
                               images2mp4dict['files']))
-        logging.info('fixed widths and heights of %d images in %0.3f seconds.' % (
+        ivetanim_logger.info('fixed widths and heights of %d images in %0.3f seconds.' % (
             len( images2mp4dict['files'] ), time.perf_counter( ) - time0 ) )
     #
     ## now create the FFMPEG movie file
@@ -53,7 +54,7 @@ def mp4fromimages( images2mp4dict ):
     ## make MP4 movie, 5 fps, quality = 25
     time0 = time.perf_counter( )
     num_dots = len( images2mp4dict['prefix'].split('.')[:-1] )
-    logging.info('NUM DOTS mp4fromimages: %d.' % num_dots )
+    ivetanim_logger.info('NUM DOTS mp4fromimages: %d.' % num_dots )
     if num_dots == 0:
         movie_name = '%s.mp4' % images2mp4dict['prefix']
     else:
@@ -63,7 +64,7 @@ def mp4fromimages( images2mp4dict ):
          '-i', images2mp4dict['actual prefix'],
          '-vcodec', 'libx264', '-crf', '25', '-pix_fmt', 'yuv420p', movie_name ],
         stderr = subprocess.STDOUT )        
-    logging.info('created movie = %s from %d image frame images in %0.3f seconds.' % (
+    ivetanim_logger.info('created movie = %s from %d image frame images in %0.3f seconds.' % (
         movie_name, len( images2mp4dict['files'] ), time.perf_counter( ) - time0 ) )
     
 def create_images2mp4dict( prefix, image_suffix = 'png', dirname = os.getcwd( ), fps = 5, autocrop = False ):
@@ -226,7 +227,7 @@ def make_aspected_mp4video( input_mp4_file, output_mp4_file, aspect = 'square', 
     exec_cmd = [
         ffmpeg_exec, '-y', '-v', 'warning', '-i', input_mp4_file,
         '-vf', filter_string, output_mp4_file ]
-    logging.info( 'CMD: %s' % ' '.join( exec_cmd ) )
+    ivetanim_logger.info( 'CMD: %s' % ' '.join( exec_cmd ) )
     stdout_val = subprocess.check_output(
         exec_cmd, stderr = subprocess.STDOUT )
     
@@ -286,10 +287,10 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
             ffmpeg_exec, '-y', '-v', 'warning', '-i', input_mp4_file,
             '-vf', 'scale=ceil(iw*%0.2f)*2:ceil(ih*%0.2f)*2' % ( scale * 0.5, scale * 0.5 ),
             newmp4file ]
-        logging.debug('COMMAND TO SCALE = %s.' % ' '.join( cmd ) )
+        ivetanim_logger.debug('COMMAND TO SCALE = %s.' % ' '.join( cmd ) )
         stdout_val = subprocess.check_output(
             cmd, stderr = subprocess.STDOUT )
-        logging.debug( 'OUTPUT FFMPEG SCALE = %s.' % stdout_val )
+        ivetanim_logger.debug( 'OUTPUT FFMPEG SCALE = %s.' % stdout_val )
     
     #
     ## get info JSON to get width, fps
@@ -298,7 +299,7 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
          '-show_format', '-print_format', 'json', newmp4file ],
         stderr = subprocess.STDOUT )
     mp4file_info = json.loads( stdout_val )
-    logging.debug( 'mp4file_info = %s.' % mp4file_info )
+    ivetanim_logger.debug( 'mp4file_info = %s.' % mp4file_info )
     # from dictionary, get width
     width_of_mp4 = int( mp4file_info[ 'streams' ][ 0 ][ 'width' ] )
     fps_string = mp4file_info[ 'streams' ][ 0 ][ 'avg_frame_rate' ]
@@ -315,8 +316,7 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
             '-i', newmp4file,
             '-vf', 'fps=%d,scale=%d:-1:flags=lanczos,palettegen' % ( fps, width_of_mp4 ),
             palettefile ]
-    proc = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
-    stdout_val, stderr_val = proc.communicate( )
+    stdout_val = subprocess.check_output(cmd, stderr = subprocess.STDOUT )
     assert( os.path.isfile( palettefile ) )
     #
     ## step #2: take palette file, MP4 file, create animated GIF
@@ -325,8 +325,7 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
             '-i', newmp4file,
             '-i', palettefile, '-lavfi', 'fps=%d,scale=%d:-1:flags=lanczos[x];[x][1:v]paletteuse' % (
             fps, width_of_mp4 ), gif_file ]
-    proc = subprocess.Popen(cmd, stdout = subprocess.PIPE, stderr = subprocess.STDOUT )
-    stdout_val, stderr_val = proc.communicate( )
+    stdout_val = subprocess.check_output(cmd, stderr = subprocess.STDOUT )
     #
     ## now batting cleanup
     try:
@@ -347,7 +346,6 @@ def png2png( input_png_file, newWidth = None, verify = True ):
     
     :returns: the :py:class:`Image <PIL.Image.Image>` object of the PNG_ file from the input PNG_ file.
 
-    
     .. seealso::
 
         * :py:meth:`pdf2png <ive_tanim.core.convert_image.pdf2png>`.

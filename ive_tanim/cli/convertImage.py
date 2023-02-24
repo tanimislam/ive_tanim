@@ -1,11 +1,11 @@
 import os, signal, logging
 from ive_tanim import signal_handler
 signal.signal( signal.SIGINT, signal_handler )
+from ive_tanim import ivetanim_logger
 from ive_tanim.core import convert_image
 from argparse import ArgumentParser
     
 def _main( ):
-    logger = logging.getLogger( )
     parser = ArgumentParser( description = 'Now does three different things' )
     #
     ## top level arguments
@@ -55,7 +55,7 @@ def _main( ):
     #
     ## parsing arguments
     args = parser.parse_args( )
-    if args.do_info: logger.setLevel( logging.INFO )
+    if args.do_info: ivetanim_logger.setLevel( logging.INFO )
     #
     ## movie
     if args.choose_option == 'movie':
