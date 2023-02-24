@@ -15,12 +15,12 @@ def _get_valid_email_recipients_with_aliases( email_addresses ):
     aliases = set(map(lambda tok: tok.lower( ), set_of_emails ) ) & set( _configData[ 'aliases' ] )
     try_act_emails = set_of_emails - set( _configData[ 'aliases' ] )
     final_emails = list(filter(None, map(
-        rst2html.parse_rfc2047_email,
+        rst2html.parse_rfc5322_email,
         sorted( set(chain.from_iterable([
             map(lambda alias: _configData[ 'aliases' ][ alias ], aliases ),
             try_act_emails ]) ) ) ) ) )
     ivetanim_logger.info( 'FOUND THESE %d ACTUAL EMAIL ADDRESSES: %s.' % (
-        len( final_emails ), ', '.join(map(rst2html.create_rfc2047_email, final_emails ) ) ) )
+        len( final_emails ), ', '.join(map(rst2html.create_rfc5322_email, final_emails ) ) ) )
     return final_emails
 
 def _main( ):
@@ -98,7 +98,7 @@ def _main( ):
     ## BCC
     bcc_addresses = _get_valid_email_recipients_with_aliases( args.bcc )
     if _configData[ 'me' ].strip( ) != '':
-        bcc_addresses += [ rst2html.parse_rfc2047_email( _configData[ 'me' ] ), ]
+        bcc_addresses += [ rst2html.parse_rfc5322_email( _configData[ 'me' ] ), ]
     ivetanim_logger.info( '%d BCC ADDRESSES = %s.' % (
         len( bcc_addresses ),
         '\n'.join(map(lambda entry: '%s' % entry, bcc_addresses ) ) ) )

@@ -62,7 +62,7 @@ def main( ):
     parser_addalias.add_argument( '-a', '--alias', dest = 'parser_addalias_alias', type = str, required = True,
                                  help = 'Name of the alias to use for an emailer.' )
     parser_addalias.add_argument( '-e', '--email', dest = 'parser_addalias_email', type = str, required = True,
-                                 help = 'The RFC 5322 email format of the emailert.' )
+                                 help = 'The RFC 5322 email format of the emailer.' )
     #
     ## set_me
     parser_setme = subparsers.add_parser( 'set_me', help = "set up the default sender's identity." )

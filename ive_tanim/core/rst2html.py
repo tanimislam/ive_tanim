@@ -139,12 +139,12 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
     html = _fix_title_elem( html )
     return str( html )
 
-def create_rfc2047_email( email_fullname_dict ):
+def create_rfc5322_email( email_fullname_dict ):
     """
-    Given a :py:class:`dict` containing email address and (optionally) full name, returns the `RFC 2047`_ fully qualified email address.
+    Given a :py:class:`dict` containing email address and (optionally) full name, returns the `RFC 5322`_ fully qualified email address.
     
     :param dict email_fullname_dict: the :py:class:`dict` that *should* contain the email and optionally the fully qualified name. Email address is in the ``email`` key, and optional full name is in the ``full name`` key.
-    :returns: an `RFC 2047`_ fully qualified email address under the following conditions:
+    :returns: an `RFC 5322`_ fully qualified email address under the following conditions:
 
        #. If there is an email address; and
 
@@ -153,9 +153,9 @@ def create_rfc2047_email( email_fullname_dict ):
        Otherwise returns ``None``.
     :rtype: str
 
-    .. seealso:: :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>`
+    .. seealso:: :py:meth:`parse_rfc5322_email <ive_tanim.core.rst2html.parse_rfc5322_email>`
 
-    .. _`RFC 2047`: https://tools.ietf.org/html/rfc2047.html
+    .. _`RFC 5322`: https://www.rfc-editor.org/rfc/rfc5322
     """
     input_tuple = [ '', '' ]
     if 'email' in email_fullname_dict and len( email_fullname_dict[ 'email' ].strip( ) ) > 0:
@@ -177,19 +177,19 @@ def create_rfc2047_email( email_fullname_dict ):
             input_tuple, str( e ) ) )
         return None
 
-def parse_rfc2047_email( candidate_rfc2047_email ):
+def parse_rfc5322_email( candidate_rfc5322_email ):
     """
     Uses :py:meth:`parseaddr <email.utils.parseaddr>` to create a :py:class:`dict` of candidate email dictionary (keys are ``email`` and optionally ``full name``).
 
-    :param str candidate_rfc2047_email: the input `RFC 2047`_ fully qualified email address.
+    :param str candidate_rfc5322_email: the input `RFC 5322`_ fully qualified email address.
     :returns: a :py:class:`dict` of candidate email dictionary *only* if there is a valid email address. Otherwise returns ``None``.
     :rtype: dict
     
-    .. seealso:: :py:meth:`create_rfc2047_email <ive_tanim.core.rst2html.create_rfc2047_email>`
+    .. seealso:: :py:meth:`create_rfc5322_email <ive_tanim.core.rst2html.create_rfc5322_email>`
     """
-    output_tuple = parseaddr( candidate_rfc2047_email )
+    output_tuple = parseaddr( candidate_rfc5322_email )
     if output_tuple[1].strip( ) == '':
-        ivetanim_logger.error("Error, candidate input email = %s does NOT have a valid email address." % candidate_rfc2047_email )
+        ivetanim_logger.error("Error, candidate input email = %s does NOT have a valid email address." % candidate_rfc5322_email )
         return None
     return { 'email' : output_tuple[1].strip( ), 'full name' : output_tuple[0].strip( ) }
 
@@ -263,15 +263,15 @@ def create_collective_email_full(
     :rtype: :py:class:`MIMEMultipart <email.mime.multipart.MIMEMultipart>`
     """
     #
-    ## get the RFC 2047 sender stuff
+    ## get the RFC 5322 sender stuff
     msg = MIMEMultipart( )
-    fq_fromEmail = create_rfc2047_email( fromEmail )
+    fq_fromEmail = create_rfc5322_email( fromEmail )
     assert( fq_fromEmail is not None )        
     msg[ 'From' ] = fq_fromEmail
     msg[ 'Subject' ] = subject
-    msg[ 'To' ] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email,  to_emails))))).strip( )
-    msg[ 'Cc' ] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email,  cc_emails))))).strip( )
-    msg[ 'Bcc'] = ', '.join( sorted(set(filter(None, map(create_rfc2047_email, bcc_emails))))).strip( )
+    msg[ 'To' ] = ', '.join( sorted(set(filter(None, map(create_rfc5322_email,  to_emails))))).strip( )
+    msg[ 'Cc' ] = ', '.join( sorted(set(filter(None, map(create_rfc5322_email,  cc_emails))))).strip( )
+    msg[ 'Bcc'] = ', '.join( sorted(set(filter(None, map(create_rfc5322_email, bcc_emails))))).strip( )
     ivetanim_logger.info( 'from_email: %s' % msg[ 'From' ] )
     ivetanim_logger.info( 'to_emails: %s.' % msg['To'] )
     ivetanim_logger.info( 'cc_emails: %s.' % msg['Cc'] )
@@ -338,47 +338,47 @@ def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     smtp_conn.send_message( msg )
     smtp_conn.quit( )
 
-def config_email_default_sender( sender_rfc2047_email ):
+def config_email_default_sender( sender_rfc5322_email ):
     """
-    Uses :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>` to validate, then configurationally store the current default settings of the SENDER into the configuration JSON file, ``~/.config/ive_tanim/config.json``.
+    Uses :py:meth:`parse_rfc5322_email <ive_tanim.core.rst2html.parse_rfc5322_email>` to validate, then configurationally store the current default settings of the SENDER into the configuration JSON file, ``~/.config/ive_tanim/config.json``.
 
     THIS IS NOT THREAD-SAFE!
 
-    :param str sender_rfc2047_email: the input `RFC 2047`_ fully qualified email address of the *default* sender.
-    :returns: ``False`` if the candidate sender email address is not valid according to `RFC 2047`_. Otherwise returns ``True`` and sets the default sender to this value.
+    :param str sender_rfc5322_email: the input `RFC 5322`_ fully qualified email address of the *default* sender.
+    :returns: ``False`` if the candidate sender email address is not valid according to `RFC 5322`_. Otherwise returns ``True`` and sets the default sender to this value.
     :rtype: bool
     """
-    val = parse_rfc2047_email( sender_rfc2047_email )
+    val = parse_rfc5322_email( sender_rfc5322_email )
     if val is None: return False
     #
     ## now set the ME information here
     configData = json.load( open( configFile, 'r' ) )
-    configData[ 'me' ] = sender_rfc2047_email
+    configData[ 'me' ] = sender_rfc5322_email
     json.dump( configData, open( configFile, 'w' ), indent = 1 )
     return True
 
-def config_email_alias( alias, candidate_rfc2047_email ):
+def config_email_alias( alias, candidate_rfc5322_email ):
     """
-    Uses :py:meth:`parse_rfc2047_email <ive_tanim.core.rst2html.parse_rfc2047_email>` to validate, then configurationally store an alias into the configuration JSON file, ``~/.config/ive_tanim/config.json``. To make things simpler, this uses a *lower case* transform of the ``alias`` into the configuration file.
+    Uses :py:meth:`parse_rfc5322_email <ive_tanim.core.rst2html.parse_rfc5322_email>` to validate, then configurationally store an alias into the configuration JSON file, ``~/.config/ive_tanim/config.json``. To make things simpler, this uses a *lower case* transform of the ``alias`` into the configuration file.
     
     THIS IS NOT THREAD-SAFE!
     
-    :param str alias: an useful key that identifies the email alias so you don't have to write out a full `RFC 2047`_ qualified email address.
-    :param str candidate_rfc2047_email: the input `RFC 2047`_ fully qualified email address.
-    :returns: ``False``  if the candidate email address is not valid according to `RFC 2047`_. Otherwise returns ``True``.
+    :param str alias: an useful key that identifies the email alias so you don't have to write out a full `RFC 5322`_ qualified email address.
+    :param str candidate_rfc5322_email: the input `RFC 5322`_ fully qualified email address.
+    :returns: ``False``  if the candidate email address is not valid according to `RFC 5322`_. Otherwise returns ``True``.
     :rtype: bool
 
     .. note::
 
        The ``alias`` is stored in lower case, and references in other methods and CLI's perform an implicit to-lower-case conversion if you want to specify a sender, recipient, ``CC`` recipient, or ``BCC`` recipient.
     """
-    val = parse_rfc2047_email( candidate_rfc2047_email )
+    val = parse_rfc5322_email( candidate_rfc5322_email )
     if val is None: return False
     #
     ## now add the alias information here
     alias_lc = alias.lower( )
     configData = json.load( open( configFile, 'r' ) )
-    configData[ 'aliases' ][ alias ] = candidate_rfc2047_email
+    configData[ 'aliases' ][ alias ] = candidate_rfc5322_email
     json.dump( configData, open( configFile, 'w' ), indent = 1 )
 
 def config_email_default_smtp( server = 'localhost', port = 25 ):
