@@ -1,127 +1,171 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3. Core APIs &mdash; ive_tanim 1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>3. Core APIs &#8212; ive_tanim 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=0.7.0-1" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="2. Initialization API" href="initialization_api.html" /> 
-</head>
+  </head><body data-dark_mode_code_blocks="true">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> ive_tanim
-            <img src="_static/twinkles_logo_blue_pretty.png" class="logo" alt="Logo"/>
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage"><img src="_static/twinkles_logo_blue_pretty.png"/></a></h1>
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="core_functionality.html">1. Core Functionality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="initialization_api.html">2. Initialization API</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Core APIs</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#autocrop-image-module">3.1. autocrop_image module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.autocrop_image.autocrop_image"><code class="docutils literal notranslate"><span class="pre">autocrop_image()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.autocrop_image.autocrop_perproc"><code class="docutils literal notranslate"><span class="pre">autocrop_perproc()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf"><code class="docutils literal notranslate"><span class="pre">crop_pdf()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="docutils literal notranslate"><span class="pre">crop_pdf_singlepage()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.autocrop_image.get_boundingbox"><code class="docutils literal notranslate"><span class="pre">get_boundingbox()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#convert-image-module">3.2. convert_image module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.create_images2mp4dict"><code class="docutils literal notranslate"><span class="pre">create_images2mp4dict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.make_aspected_mp4video"><code class="docutils literal notranslate"><span class="pre">make_aspected_mp4video()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.mp4fromimages"><code class="docutils literal notranslate"><span class="pre">mp4fromimages()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.mp4togif"><code class="docutils literal notranslate"><span class="pre">mp4togif()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.pdf2png"><code class="docutils literal notranslate"><span class="pre">pdf2png()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.convert_image.png2png"><code class="docutils literal notranslate"><span class="pre">png2png()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#rst2html-module">3.3. rst2html module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.MyHTMLTranslator"><code class="docutils literal notranslate"><span class="pre">MyHTMLTranslator</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ive_tanim.core.rst2html.MyHTMLTranslator.mathjax_url"><code class="docutils literal notranslate"><span class="pre">MyHTMLTranslator.mathjax_url</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.check_valid_RST"><code class="docutils literal notranslate"><span class="pre">check_valid_RST()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.cid_out_mimeMultiMessage"><code class="docutils literal notranslate"><span class="pre">cid_out_mimeMultiMessage()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_alias"><code class="docutils literal notranslate"><span class="pre">config_email_alias()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_default_sender"><code class="docutils literal notranslate"><span class="pre">config_email_default_sender()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_default_smtp"><code class="docutils literal notranslate"><span class="pre">config_email_default_smtp()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.convert_string_RST"><code class="docutils literal notranslate"><span class="pre">convert_string_RST()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.create_collective_email_full"><code class="docutils literal notranslate"><span class="pre">create_collective_email_full()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.create_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">create_rfc5322_email()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.get_attachment_object"><code class="docutils literal notranslate"><span class="pre">get_attachment_object()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">parse_rfc5322_email()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ive_tanim.core.rst2html.send_email_localsmtp"><code class="docutils literal notranslate"><span class="pre">send_email_localsmtp()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Core APIs</a></li>
 </ul>
 
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/core_api.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
-    </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">ive_tanim</a>
-      </nav>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">3. </span>Core APIs</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/core_api.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <section id="core-apis">
-<h1><span class="section-number">3. </span>Core APIs<a class="headerlink" href="#core-apis" title="Permalink to this heading"></a></h1>
+<h1><span class="section-number">3. </span>Core APIs<a class="headerlink" href="#core-apis" title="Permalink to this heading">¶</a></h1>
 <p>This document describes the <code class="docutils literal notranslate"><span class="pre">IVE_TANIM</span></code> core API, which provides the low-level back-end for the CLI front ends described in <a class="reference internal" href="core_functionality.html#core-functionality"><span class="std std-ref">Core Functionality</span></a>. These modules live under <code class="docutils literal notranslate"><span class="pre">ive_tanim.core</span></code>.</p>
 <section id="autocrop-image-module">
-<h2><span class="section-number">3.1. </span>autocrop_image module<a class="headerlink" href="#autocrop-image-module" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.1. </span>autocrop_image module<a class="headerlink" href="#autocrop-image-module" title="Permalink to this heading">¶</a></h2>
 <p>This module provides low-level functionality that implements automatic cropping of lossy (<a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>) and <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> images.</p>
 <p>This <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> autocropping functionality is copied over from <a class="reference external" href="https://gist.github.com/jpscaletti/7321281">this repo</a>. That repository is based off <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> to calculate the <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>. This functionality requires a working <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> (using the <code class="docutils literal notranslate"><span class="pre">gs</span></code> executable) to calculate the bounding box, and the <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/">PyPDF2</a> module to read and manipulate <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg"><img alt="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg" width="100%" /></a>
 <p>Three methods – <a class="reference internal" href="#ive_tanim.core.autocrop_image.get_boundingbox" title="ive_tanim.core.autocrop_image.get_boundingbox"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_boundingbox</span></code></a>, <a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf" title="ive_tanim.core.autocrop_image.crop_pdf"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf</span></code></a>, and  <a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf_singlepage" title="ive_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crop_pdf_singlepage</span></code></a> – are the higher level hooks to the <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> autocropping functionality.</p>
 <span class="target" id="module-ive_tanim.core.autocrop_image"></span><dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.autocrop_image.autocrop_image">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfilename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doShow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixEven</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_image" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfilename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doShow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixEven</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>performs an autocropping of lossy images, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, or <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>,  with a defined background. The default background color is white. This then creates an automatically cropped image and stores into a new or the same file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input image file’s name.</p></li>
 <li><p><strong>outputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the output image file’s name. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then stores image into <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>.</p></li>
@@ -132,10 +176,10 @@
 <li><p><strong>fixEven</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then changes the width and height of the autocropped image so that both are divisible by 2. This functionality exists in order to create a movie (using <a class="reference external" href="https://ffmpeg.org">FFMPEG</a>) from a sequence of image files; each image’s width and height should all be the same, and <em>both divisible by 2</em>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> of image processing status. <code class="docutils literal notranslate"><span class="pre">True</span></code> if able to perform the autocropping operation, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -147,13 +191,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.autocrop_image.autocrop_perproc">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_perproc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_perproc" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_perproc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_perproc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Designed to use Python’s multiprocessing design to autocrop lossy images per processor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>input_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>, (input file name) <code class="docutils literal notranslate"><span class="pre">outputfilename</span></code> (output file name), <code class="docutils literal notranslate"><span class="pre">color</span></code> (background color), and <code class="docutils literal notranslate"><span class="pre">fixEven</span></code> (if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then resize the output image to have even-pixeled width and height).</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code> and success status (<code class="docutils literal notranslate"><span class="pre">True</span></code> for success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise).</p>
 </dd>
 </dl>
@@ -165,11 +209,11 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.autocrop_image.crop_pdf">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.crop_pdf" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.crop_pdf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a possible multi-page <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file that consists of <span class="math notranslate nohighlight">\(N \ge 1\)</span> pages, creates <span class="math notranslate nohighlight">\(N\)</span> separate single-page autocropped <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files for each page in the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. Given a file with name <code class="docutils literal notranslate"><span class="pre">inputfile</span></code>, the collection of output files are named <code class="docutils literal notranslate"><span class="pre">outputfile&lt;idx&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;idx&gt;</span></code> is the page number. This uses <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfReader.html#PyPDF2.PdfReader" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfReader</span></code></a> to read in, and <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfWriter.html#PyPDF2.PdfWriter" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfWriter</span></code></a> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
 <p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> Perl script.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the prefix of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the prefix is the part of <code class="docutils literal notranslate"><span class="pre">inputfile</span></code> with the <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> suffix removed.</p></li>
@@ -184,11 +228,11 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.autocrop_image.crop_pdf_singlepage">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf_singlepage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.crop_pdf_singlepage" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">crop_pdf_singlepage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.crop_pdf_singlepage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a <em>single-paged</em> <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file, creates an autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. This uses <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfReader.html#PyPDF2.PdfReader" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfReader</span></code></a> to read in, and <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfWriter.html#PyPDF2.PdfWriter" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfWriter</span></code></a> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
 <p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> PERL script.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the name of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file replaces the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
@@ -203,26 +247,26 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.autocrop_image.get_boundingbox">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">get_boundingbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdfpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hiresbb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.get_boundingbox" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">get_boundingbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdfpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hiresbb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.get_boundingbox" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file, returns its <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>. Requires working <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> (<code class="docutils literal notranslate"><span class="pre">gs</span></code> executable) to calculate it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_boundingbox</span><span class="p">(</span><span class="s1">&#39;/path/to/mypdf.pdf&#39;</span><span class="p">)</span>   <span class="c1"># doctest: +SKIP</span>
 <span class="p">[[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">555</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">555</span><span class="p">]]</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pdfpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>hiresbb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns the <code class="docutils literal notranslate"><span class="pre">hiresBoundingbox</span></code>; otherwise returns <code class="docutils literal notranslate"><span class="pre">Boundingbox</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>, one per <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> page.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.11)"><strong>IOError</strong></a> – if the <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> executable could noty be found.</p>
 </dd>
 </dl>
@@ -230,11 +274,11 @@
 
 </section>
 <section id="convert-image-module">
-<h2><span class="section-number">3.2. </span>convert_image module<a class="headerlink" href="#convert-image-module" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.2. </span>convert_image module<a class="headerlink" href="#convert-image-module" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the low-level functionality that uses utility functions to create <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> movies from a sequence of images, creates animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> files, and creates square movies (useful for upload to <a class="reference external" href="https://instagram.com">Instagram</a>).</p>
 <span class="target" id="module-ive_tanim.core.convert_image"></span><dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.create_images2mp4dict">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">create_images2mp4dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/mnt/software/sources/pythonics/ive_tanim/docsrc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocrop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.create_images2mp4dict" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">create_images2mp4dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/mnt/software/sources/pythonics/ive_tanim/docsrc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autocrop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.create_images2mp4dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method creates a complicated and low-level <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of set up, when creating an <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from a collection of images. Here are things needed to make this work. <a class="reference internal" href="#ive_tanim.core.convert_image.mp4fromimages" title="ive_tanim.core.convert_image.mp4fromimages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4fromimages</span></code></a> uses this <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> to create the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p>
 <ol class="arabic simple">
 <li><p>The collection of image files exist in a directory named <code class="docutils literal notranslate"><span class="pre">dirname</span></code>.</p></li>
@@ -251,7 +295,7 @@
 </ul>
 <p>In case of failure, the <code class="docutils literal notranslate"><span class="pre">status</span></code> key contains the reason for the failure. <a class="reference internal" href="#ive_tanim.core.convert_image.mp4fromimages" title="ive_tanim.core.convert_image.mp4fromimages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4fromimages</span></code></a> returns this failure message and does nothing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the base name of each image file as frame, before the integer frame number and <code class="docutils literal notranslate"><span class="pre">.&lt;image_suffix&gt;</span></code> suffix.</p></li>
 <li><p><strong>image_suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the image suffix through which to look. Default is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</p></li>
@@ -260,10 +304,10 @@
 <li><p><strong>autocrop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – whether to automatically crop out white space in the image files as frames. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> described above.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -275,7 +319,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.make_aspected_mp4video">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">make_aspected_mp4video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'square'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.make_aspected_mp4video" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">make_aspected_mp4video</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'square'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.make_aspected_mp4video" title="Permalink to this definition">¶</a></dt>
 <dd><p>More <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> voodoo, this time to create a square (or 9/16 aspect or 16/9 aspect) <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file for upload into <a class="reference external" href="https://instagram.com">Instagram</a>.</p>
 <p>This requires a working <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> and <code class="docutils literal notranslate"><span class="pre">ffprobe</span></code> executable to work. The input file must be <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a>.</p>
 <p>Here are resources that I used to get this working.</p>
@@ -284,7 +328,7 @@
 <li><p><a class="reference external" href="https://tanimislam.gitlab.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid input <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
 <li><p><strong>output_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid output <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
@@ -297,11 +341,11 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.mp4fromimages">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4fromimages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images2mp4dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.mp4fromimages" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4fromimages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images2mp4dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.mp4fromimages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from the low-level input specification <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that <a class="reference internal" href="#ive_tanim.core.convert_image.create_images2mp4dict" title="ive_tanim.core.convert_image.create_images2mp4dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_images2mp4dict</span></code></a> creates. Requires the existence of the <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> executable, and <code class="docutils literal notranslate"><span class="pre">status</span></code> value in the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> <em>must</em> be <code class="docutils literal notranslate"><span class="pre">&quot;SUCCESS&quot;</span></code>. Otherwise, this method does not create a movie file.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">dirname</span></code> is the directory in which the image files live, and <code class="docutils literal notranslate"><span class="pre">PREFIX</span></code> is the prefix of all the image files, the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file is named <code class="docutils literal notranslate"><span class="pre">dirname/PREFIX.mp4</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>images2mp4dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary specification for creating a specific <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from a collection of image files as frames.</p>
 </dd>
 </dl>
@@ -313,7 +357,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.mp4togif">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4togif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gif_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.mp4togif" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">mp4togif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_mp4_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gif_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.mp4togif" title="Permalink to this definition">¶</a></dt>
 <dd><p>This consists of voodoo <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> magic that converts <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> to animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> reasonably well. Don’t ask me how most of it works, just be on-your-knees-kissing-the-dirt grateful that MILLIONS of people hack onto and into <a class="reference external" href="https://ffmpeg.org">FFmpeg</a> so that this information is available, and the workflow works.</p>
 <p>This requires a working <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> and <code class="docutils literal notranslate"><span class="pre">ffprobe</span></code> executable to work. If the input file is named <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;.mp4</span></code>, the output animated GIF file is named <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;.gif</span></code>.</p>
 <p>Here are resources that I used to get this working.</p>
@@ -322,7 +366,7 @@
 <li><p><a class="reference external" href="https://tanimislam.gitlab.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
 <li><p><strong>gif_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the (optional) name of the animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> file. If not provided, then creates a GIF file of some default name.</p></li>
@@ -339,17 +383,17 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.pdf2png">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">pdf2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_pdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.pdf2png" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">pdf2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_pdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.pdf2png" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> image file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
 <li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
 <li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
 </dd>
 </dl>
@@ -363,17 +407,17 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.convert_image.png2png">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">png2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_png_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.png2png" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">png2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_png_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.png2png" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
 <li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
 <li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
 </dd>
 </dl>
@@ -387,11 +431,11 @@
 
 </section>
 <section id="rst2html-module">
-<h2><span class="section-number">3.3. </span>rst2html module<a class="headerlink" href="#rst2html-module" title="Permalink to this heading"></a></h2>
+<h2><span class="section-number">3.3. </span>rst2html module<a class="headerlink" href="#rst2html-module" title="Permalink to this heading">¶</a></h2>
 <p>This module provides low-level functionality that converts <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> into HTML, with the option of using <a class="reference external" href="https://www.mathjax.org">MathJax</a> to render LaTeX formulae in HTML. This also consists of methods to create a properly CID-converted <a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a> low-level message object for other, external modules that convert RST documents into HTML emails that most email servers will work on.</p>
 <span class="target" id="module-ive_tanim.core.rst2html"></span><dl class="py class">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.MyHTMLTranslator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">MyHTMLTranslator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.MyHTMLTranslator" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">MyHTMLTranslator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.MyHTMLTranslator" title="Permalink to this definition">¶</a></dt>
 <dd><p>I am copying this code <em>without</em> any real understanding from <a class="reference external" href="https://gist.github.com/Matherunner/c0397ae11cc72f2f35ae">this GitHub gist</a>. This class seems to extend <code class="xref py py-class docutils literal notranslate"><span class="pre">HTMLTranslator</span></code>, but I don’t know what that means.</p>
 <p>The usage in that gist is as follows, because the gist is an enhancement of <code class="docutils literal notranslate"><span class="pre">rst2html.py</span></code> called <code class="docutils literal notranslate"><span class="pre">myrst2html.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">htmlwriter</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span> <span class="p">)</span>
@@ -402,12 +446,12 @@
 <p>I imagine I will have to modify the methods <a class="reference internal" href="#ive_tanim.core.rst2html.check_valid_RST" title="ive_tanim.core.rst2html.check_valid_RST"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_valid_RST</span></code></a> and <a class="reference internal" href="#ive_tanim.core.rst2html.convert_string_RST" title="ive_tanim.core.rst2html.convert_string_RST"><code class="xref py py-meth docutils literal notranslate"><span class="pre">convert_string_RST</span></code></a> to represent more <em>correct</em> functionality. There, I am following what I inferred from <code class="xref py py-meth docutils literal notranslate"><span class="pre">publish_parts</span></code> and the included code block in this object’s description.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.MyHTMLTranslator.mathjax_url">
-<span class="sig-name descname"><span class="pre">mathjax_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</span></em><a class="headerlink" href="#ive_tanim.core.rst2html.MyHTMLTranslator.mathjax_url" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">mathjax_url</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</span></em><a class="headerlink" href="#ive_tanim.core.rst2html.MyHTMLTranslator.mathjax_url" title="Permalink to this definition">¶</a></dt>
 <dd><p>URL of the MathJax javascript library.</p>
 <p>The MathJax library ought to be installed on the same
 server as the rest of the deployed site files and specified
 in the <cite>math-output</cite> setting appended to “mathjax”.
-See <a class="reference external" href="http://docutils.sourceforge.net/docs/user/config.html#math-output">Docutils Configuration</a>.</p>
+See <a class="reference external" href="https://docutils.sourceforge.io/docs/user/config.html#math-output">Docutils Configuration</a>.</p>
 <p>The fallback tries a local MathJax installation at
 <code class="docutils literal notranslate"><span class="pre">/usr/share/javascript/mathjax/MathJax.js</span></code>.</p>
 </dd></dl>
@@ -416,19 +460,19 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.check_valid_RST">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">check_valid_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.check_valid_RST" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">check_valid_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.check_valid_RST" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks to see whether the input string is valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>myString</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the candidate <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input.</p></li>
 <li><p><strong>use_mathjax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then use <a class="reference external" href="https://www.mathjax.org">MathJax</a> for math formulae. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if valid, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -440,19 +484,19 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.cid_out_mimeMultiMessage">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">cid_out_mimeMultiMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mainHTML</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.cid_out_mimeMultiMessage" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">cid_out_mimeMultiMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mainHTML</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.cid_out_mimeMultiMessage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Goes through the HTML email message, and creates a CID-enabled email with additional image attachments inside. Follows ideas found on <a class="reference external" href="https://stackoverflow.com/a/20485764">this useful stackoverflow article</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>) – the message object that will be modified.</p></li>
 <li><p><strong>mainHTML</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the HTML message that we will parse through for images on disk rather than as external URLs.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <code class="docutils literal notranslate"><span class="pre">cid</span></code> to image file name.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -460,20 +504,20 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.config_email_alias">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_alias" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_alias" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses <a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="ive_tanim.core.rst2html.parse_rfc5322_email"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_rfc5322_email</span></code></a> to validate, then configurationally store an alias into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>. To make things simpler, this uses a <em>lower case</em> transform of the <code class="docutils literal notranslate"><span class="pre">alias</span></code> into the configuration file.</p>
 <p>THIS IS NOT THREAD-SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>alias</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – an useful key that identifies the email alias so you don’t have to write out a full <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> qualified email address.</p></li>
 <li><p><strong>candidate_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code>  if the candidate email address is not valid according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -485,17 +529,17 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.config_email_default_sender">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_default_sender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_default_sender" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_default_sender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_default_sender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses <a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="ive_tanim.core.rst2html.parse_rfc5322_email"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_rfc5322_email</span></code></a> to validate, then configurationally store the current default settings of the SENDER into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>.</p>
 <p>THIS IS NOT THREAD-SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>sender_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address of the <em>default</em> sender.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the candidate sender email address is not valid according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and sets the default sender to this value.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -503,11 +547,11 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.config_email_default_smtp">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_default_smtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_default_smtp" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">config_email_default_smtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.config_email_default_smtp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server sending settings, and stores the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server settings into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>.</p>
 <p>THIS IS NOT THREAD SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>server</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server to use. Default is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
 <li><p><strong>portnumber</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the port number to use to send the email to the local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is port 25.</p></li>
@@ -518,20 +562,20 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.convert_string_RST">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">convert_string_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.convert_string_RST" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">convert_string_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.convert_string_RST" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input string into rich HTML.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>myString</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the candidate <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input.</p></li>
 <li><p><strong>use_mathjax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then use <a class="reference external" href="https://www.mathjax.org">MathJax</a> for math formulae. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>outputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then sets the HTML document <em>title</em> to this value.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the input string is valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>, returns the rich HTML as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a>. Otherwise emits a <code class="xref py py-meth docutils literal notranslate"><span class="pre">logging</span> <span class="pre">error</span> <span class="pre">message</span></code> and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
 </dd>
 </dl>
@@ -543,7 +587,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.create_collective_email_full">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">create_collective_email_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mainHTML</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromEmail</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_emails</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_emails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcc_emails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attachments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.create_collective_email_full" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">create_collective_email_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mainHTML</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromEmail</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_emails</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cc_emails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcc_emails</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attachments</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.create_collective_email_full" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a <a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a> email that <em>also</em> contains the following</p>
 <ul class="simple">
 <li><p>the body of the message as an HTML document.</p></li>
@@ -556,7 +600,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 </ul>
 <p>Go easy on me, it’s my first day!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mainHTML</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the email body as an HTML <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a> document.</p></li>
 <li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the email subject.</p></li>
@@ -567,10 +611,10 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <li><p><strong>attachments</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – the collection of attachments to send out.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the message object, with soft-conventioned <code class="docutils literal notranslate"><span class="pre">cid</span></code> of images included.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a></p>
 </dd>
 </dl>
@@ -578,13 +622,13 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.create_rfc5322_email">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">create_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_fullname_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.create_rfc5322_email" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">create_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_fullname_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.create_rfc5322_email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> containing email address and (optionally) full name, returns the <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>email_fullname_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that <em>should</em> contain the email and optionally the fully qualified name. Email address is in the <code class="docutils literal notranslate"><span class="pre">email</span></code> key, and optional full name is in the <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">name</span></code> key.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>an <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address under the following conditions:</p>
 <ol class="arabic simple">
 <li><p>If there is an email address; and</p></li>
@@ -593,7 +637,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <p>Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
 </dd>
 </dl>
@@ -605,16 +649,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.get_attachment_object">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">get_attachment_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.get_attachment_object" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">get_attachment_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.get_attachment_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create the attachment <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> given the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>full_file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the location of the file on-disk.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <code class="docutils literal notranslate"><span class="pre">name</span></code> (which is file base name), <code class="docutils literal notranslate"><span class="pre">mimetype</span></code>, and <code class="docutils literal notranslate"><span class="pre">filepath</span></code> (which is <code class="docutils literal notranslate"><span class="pre">full_file_path</span></code>). If file does not exist, then function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -622,16 +666,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.parse_rfc5322_email">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">parse_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidate_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">parse_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidate_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="Permalink to this definition">¶</a></dt>
 <dd><p>Uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">parseaddr</span></code> to create a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of candidate email dictionary (keys are <code class="docutils literal notranslate"><span class="pre">email</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">name</span></code>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>candidate_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of candidate email dictionary <em>only</em> if there is a valid email address. Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -643,11 +687,11 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ive_tanim.core.rst2html.send_email_localsmtp">
-<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">send_email_localsmtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portnumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.send_email_localsmtp" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">send_email_localsmtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portnumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.send_email_localsmtp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends the email using the <a class="reference external" href="https://docs.python.org/3/library/smtplib.html#smtplib.SMTP" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMTP</span></code></a> Python functionality to send through a local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server.</p>
 <p><a class="reference external" href="https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html">This blog post</a> describes how I set up a GMail relay using my local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server on my <a class="reference external" href="https://ubuntu.com">Ubuntu</a> machine.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>) – the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.</p></li>
 <li><p><strong>server</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server to use. Default is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
@@ -661,33 +705,86 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 </section>
 
 
-           </div>
+            <div class="clearer"></div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="initialization_api.html" class="btn btn-neutral float-left" title="2. Initialization API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2022, Tanim Islam.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
         </div>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
 
-</body>
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">3. Core APIs</a><ul>
+<li><a class="reference internal" href="#autocrop-image-module">3.1. autocrop_image module</a><ul>
+<li><a class="reference internal" href="#ive_tanim.core.autocrop_image.autocrop_image"><code class="docutils literal notranslate"><span class="pre">autocrop_image()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.autocrop_image.autocrop_perproc"><code class="docutils literal notranslate"><span class="pre">autocrop_perproc()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf"><code class="docutils literal notranslate"><span class="pre">crop_pdf()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.autocrop_image.crop_pdf_singlepage"><code class="docutils literal notranslate"><span class="pre">crop_pdf_singlepage()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.autocrop_image.get_boundingbox"><code class="docutils literal notranslate"><span class="pre">get_boundingbox()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#convert-image-module">3.2. convert_image module</a><ul>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.create_images2mp4dict"><code class="docutils literal notranslate"><span class="pre">create_images2mp4dict()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.make_aspected_mp4video"><code class="docutils literal notranslate"><span class="pre">make_aspected_mp4video()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.mp4fromimages"><code class="docutils literal notranslate"><span class="pre">mp4fromimages()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.mp4togif"><code class="docutils literal notranslate"><span class="pre">mp4togif()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.pdf2png"><code class="docutils literal notranslate"><span class="pre">pdf2png()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.convert_image.png2png"><code class="docutils literal notranslate"><span class="pre">png2png()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rst2html-module">3.3. rst2html module</a><ul>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.MyHTMLTranslator"><code class="docutils literal notranslate"><span class="pre">MyHTMLTranslator</span></code></a><ul>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.MyHTMLTranslator.mathjax_url"><code class="docutils literal notranslate"><span class="pre">MyHTMLTranslator.mathjax_url</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.check_valid_RST"><code class="docutils literal notranslate"><span class="pre">check_valid_RST()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.cid_out_mimeMultiMessage"><code class="docutils literal notranslate"><span class="pre">cid_out_mimeMultiMessage()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_alias"><code class="docutils literal notranslate"><span class="pre">config_email_alias()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_default_sender"><code class="docutils literal notranslate"><span class="pre">config_email_default_sender()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.config_email_default_smtp"><code class="docutils literal notranslate"><span class="pre">config_email_default_smtp()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.convert_string_RST"><code class="docutils literal notranslate"><span class="pre">convert_string_RST()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.create_collective_email_full"><code class="docutils literal notranslate"><span class="pre">create_collective_email_full()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.create_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">create_rfc5322_email()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.get_attachment_object"><code class="docutils literal notranslate"><span class="pre">get_attachment_object()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email"><code class="docutils literal notranslate"><span class="pre">parse_rfc5322_email()</span></code></a></li>
+<li><a class="reference internal" href="#ive_tanim.core.rst2html.send_email_localsmtp"><code class="docutils literal notranslate"><span class="pre">send_email_localsmtp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="initialization_api.html">
+                    <span class="icon"><</span><span><span class="section-number">2. </span>Initialization API</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Tanim Islam.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    </div>
+
+<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+  </body>
 </html>
