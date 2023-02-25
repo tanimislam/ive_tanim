@@ -12,13 +12,13 @@ setup(
     #
     ## following advice on find_packages excluding tests from https://setuptools.readthedocs.io/en/latest/setuptools.html#using-find-packages
     packages = find_packages( exclude = ["*.tests", "*.tests.*", "tests" ] ),
-    url = 'https://github.com/tanimislam/iv_tanim',
+    url = 'https://github.com/tanimislam/ive_tanim',
     license = 'BSD-2-Clause',
     author = 'Tanim Islam',
     author_email = 'tanim.islam@gmail.com',
     description = 'Image-video-email low level functionality from Tanim, initially for Tanim.',
     #
-    ## classification: where in package space does "iv_tanim live"?
+    ## classification: where in package space does "ive_tanim live"?
     ## follow (poorly) advice I infer from https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-setup-script
     classifiers=[
     # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers

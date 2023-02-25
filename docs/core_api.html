@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3. Core APIs &mdash; ive_tanim 1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -29,12 +30,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> ive_tanim
-            <img src="_static/twinkles_logo_blue_pretty.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ive_tanim
+              <img src="_static/twinkles_logo_blue_pretty.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -96,7 +101,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active"><span class="section-number">3. </span>Core APIs</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/core_api.rst.txt" rel="nofollow"> View page source</a>
@@ -121,7 +126,7 @@
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputfilename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doShow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trans</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixEven</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_image" title="Permalink to this definition"></a></dt>
 <dd><p>performs an autocropping of lossy images, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/JPEG">JPEG</a>, or <a class="reference external" href="https://en.wikipedia.org/wiki/TIFF">TIFF</a>,  with a defined background. The default background color is white. This then creates an automatically cropped image and stores into a new or the same file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input image file’s name.</p></li>
 <li><p><strong>outputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the output image file’s name. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then stores image into <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>.</p></li>
@@ -132,10 +137,10 @@
 <li><p><strong>fixEven</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then changes the width and height of the autocropped image so that both are divisible by 2. This functionality exists in order to create a movie (using <a class="reference external" href="https://ffmpeg.org">FFMPEG</a>) from a sequence of image files; each image’s width and height should all be the same, and <em>both divisible by 2</em>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> of image processing status. <code class="docutils literal notranslate"><span class="pre">True</span></code> if able to perform the autocropping operation, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -150,10 +155,10 @@
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.autocrop_image.</span></span><span class="sig-name descname"><span class="pre">autocrop_perproc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.autocrop_image.autocrop_perproc" title="Permalink to this definition"></a></dt>
 <dd><p>Designed to use Python’s multiprocessing design to autocrop lossy images per processor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>input_tuple</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code>, (input file name) <code class="docutils literal notranslate"><span class="pre">outputfilename</span></code> (output file name), <code class="docutils literal notranslate"><span class="pre">color</span></code> (background color), and <code class="docutils literal notranslate"><span class="pre">fixEven</span></code> (if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then resize the output image to have even-pixeled width and height).</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of <code class="docutils literal notranslate"><span class="pre">inputfilename</span></code> and success status (<code class="docutils literal notranslate"><span class="pre">True</span></code> for success, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise).</p>
 </dd>
 </dl>
@@ -169,7 +174,7 @@
 <dd><p>Given a possible multi-page <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file that consists of <span class="math notranslate nohighlight">\(N \ge 1\)</span> pages, creates <span class="math notranslate nohighlight">\(N\)</span> separate single-page autocropped <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files for each page in the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. Given a file with name <code class="docutils literal notranslate"><span class="pre">inputfile</span></code>, the collection of output files are named <code class="docutils literal notranslate"><span class="pre">outputfile&lt;idx&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;idx&gt;</span></code> is the page number. This uses <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfReader.html#PyPDF2.PdfReader" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfReader</span></code></a> to read in, and <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfWriter.html#PyPDF2.PdfWriter" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfWriter</span></code></a> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
 <p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> Perl script.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the prefix of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the prefix is the part of <code class="docutils literal notranslate"><span class="pre">inputfile</span></code> with the <code class="docutils literal notranslate"><span class="pre">.pdf</span></code> suffix removed.</p></li>
@@ -188,7 +193,7 @@
 <dd><p>Given a <em>single-paged</em> <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file, creates an autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. This uses <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfReader.html#PyPDF2.PdfReader" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfReader</span></code></a> to read in, and <a class="reference external" href="https://pypdf2.readthedocs.io/en/latest/modules/PdfWriter.html#PyPDF2.PdfWriter" title="(in PyPDF2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdfWriter</span></code></a> to write out, <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> files.</p>
 <p>The Python functionality is a port of the <a class="reference external" href="https://github.com/ho-tex/pdfcrop">pdfcrop.pl</a> PERL script.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>inputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>outputfile</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – optional argument, the name of the output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the autocropped output <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file replaces the input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
@@ -210,19 +215,19 @@
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pdfpath</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> file.</p></li>
 <li><p><strong>hiresbb</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, returns the <code class="docutils literal notranslate"><span class="pre">hiresBoundingbox</span></code>; otherwise returns <code class="docutils literal notranslate"><span class="pre">Boundingbox</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg">BoundingBox</a>, one per <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> page.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)">list</a></p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.11)"><strong>IOError</strong></a> – if the <a class="reference external" href="https://www.ghostscript.com">ghostscript</a> executable could noty be found.</p>
 </dd>
 </dl>
@@ -251,7 +256,7 @@
 </ul>
 <p>In case of failure, the <code class="docutils literal notranslate"><span class="pre">status</span></code> key contains the reason for the failure. <a class="reference internal" href="#ive_tanim.core.convert_image.mp4fromimages" title="ive_tanim.core.convert_image.mp4fromimages"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mp4fromimages</span></code></a> returns this failure message and does nothing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the base name of each image file as frame, before the integer frame number and <code class="docutils literal notranslate"><span class="pre">.&lt;image_suffix&gt;</span></code> suffix.</p></li>
 <li><p><strong>image_suffix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the image suffix through which to look. Default is <code class="docutils literal notranslate"><span class="pre">png</span></code>.</p></li>
@@ -260,10 +265,10 @@
 <li><p><strong>autocrop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – whether to automatically crop out white space in the image files as frames. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> described above.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -284,7 +289,7 @@
 <li><p><a class="reference external" href="https://tanimislam.gitlab.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid input <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
 <li><p><strong>output_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid output <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
@@ -301,7 +306,7 @@
 <dd><p>Creates an <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from the low-level input specification <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that <a class="reference internal" href="#ive_tanim.core.convert_image.create_images2mp4dict" title="ive_tanim.core.convert_image.create_images2mp4dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_images2mp4dict</span></code></a> creates. Requires the existence of the <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> executable, and <code class="docutils literal notranslate"><span class="pre">status</span></code> value in the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> <em>must</em> be <code class="docutils literal notranslate"><span class="pre">&quot;SUCCESS&quot;</span></code>. Otherwise, this method does not create a movie file.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">dirname</span></code> is the directory in which the image files live, and <code class="docutils literal notranslate"><span class="pre">PREFIX</span></code> is the prefix of all the image files, the <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file is named <code class="docutils literal notranslate"><span class="pre">dirname/PREFIX.mp4</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>images2mp4dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the dictionary specification for creating a specific <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file from a collection of image files as frames.</p>
 </dd>
 </dl>
@@ -322,7 +327,7 @@
 <li><p><a class="reference external" href="https://tanimislam.gitlab.io/blog/ffprobe-to-get-output-in-json-format.html">Using FFPROBE to output JSON format</a>.</p></li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_mp4_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the name of the valid <a class="reference external" href="https://en.wikipedia.org/wiki/MPEG-4_Part_14">MP4</a> file.</p></li>
 <li><p><strong>gif_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the (optional) name of the animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> file. If not provided, then creates a GIF file of some default name.</p></li>
@@ -342,14 +347,14 @@
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">pdf2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_pdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.pdf2png" title="Permalink to this definition"></a></dt>
 <dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> image file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
 <li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
 <li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
 </dd>
 </dl>
@@ -366,14 +371,14 @@
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.convert_image.</span></span><span class="sig-name descname"><span class="pre">png2png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_png_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newWidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.convert_image.png2png" title="Permalink to this definition"></a></dt>
 <dd><p>Returns an <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file produced when the <a class="reference external" href="https://cloudconvert.com">CloudConvert</a> server uploaded an input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. The output <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file has the same aspect ratio as the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_png_file</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file. Filename must end in <code class="docutils literal notranslate"><span class="pre">.png</span></code>.</p></li>
 <li><p><strong>newWidth</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – optional argument. If specified, the pixel width of the output image.</p></li>
 <li><p><strong>verify</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – optional argument, whether to verify SSL connections. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image" title="(in Pillow (PIL Fork) v9.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a> object of the <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file from the input <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> file.</p>
 </dd>
 </dl>
@@ -419,16 +424,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">check_valid_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.check_valid_RST" title="Permalink to this definition"></a></dt>
 <dd><p>Checks to see whether the input string is valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>myString</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the candidate <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input.</p></li>
 <li><p><strong>use_mathjax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then use <a class="reference external" href="https://www.mathjax.org">MathJax</a> for math formulae. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if valid, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -443,16 +448,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">cid_out_mimeMultiMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mainHTML</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.cid_out_mimeMultiMessage" title="Permalink to this definition"></a></dt>
 <dd><p>Goes through the HTML email message, and creates a CID-enabled email with additional image attachments inside. Follows ideas found on <a class="reference external" href="https://stackoverflow.com/a/20485764">this useful stackoverflow article</a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>) – the message object that will be modified.</p></li>
 <li><p><strong>mainHTML</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the HTML message that we will parse through for images on disk rather than as external URLs.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <code class="docutils literal notranslate"><span class="pre">cid</span></code> to image file name.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -464,16 +469,16 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <dd><p>Uses <a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="ive_tanim.core.rst2html.parse_rfc5322_email"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_rfc5322_email</span></code></a> to validate, then configurationally store an alias into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>. To make things simpler, this uses a <em>lower case</em> transform of the <code class="docutils literal notranslate"><span class="pre">alias</span></code> into the configuration file.</p>
 <p>THIS IS NOT THREAD-SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>alias</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – an useful key that identifies the email alias so you don’t have to write out a full <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> qualified email address.</p></li>
 <li><p><strong>candidate_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code>  if the candidate email address is not valid according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -489,13 +494,13 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <dd><p>Uses <a class="reference internal" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="ive_tanim.core.rst2html.parse_rfc5322_email"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_rfc5322_email</span></code></a> to validate, then configurationally store the current default settings of the SENDER into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>.</p>
 <p>THIS IS NOT THREAD-SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>sender_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address of the <em>default</em> sender.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">False</span></code> if the candidate sender email address is not valid according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a>. Otherwise returns <code class="docutils literal notranslate"><span class="pre">True</span></code> and sets the default sender to this value.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a></p>
 </dd>
 </dl>
@@ -507,7 +512,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <dd><p>Sets the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server sending settings, and stores the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server settings into the configuration JSON file, <code class="docutils literal notranslate"><span class="pre">~/.config/ive_tanim/config.json</span></code>.</p>
 <p>THIS IS NOT THREAD SAFE!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>server</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server to use. Default is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
 <li><p><strong>portnumber</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – the port number to use to send the email to the local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is port 25.</p></li>
@@ -521,17 +526,17 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">convert_string_RST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mathjax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputfilename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.convert_string_RST" title="Permalink to this definition"></a></dt>
 <dd><p>Converts a valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input string into rich HTML.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>myString</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the candidate <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> input.</p></li>
 <li><p><strong>use_mathjax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, then use <a class="reference external" href="https://www.mathjax.org">MathJax</a> for math formulae. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>outputfilename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then sets the HTML document <em>title</em> to this value.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If the input string is valid <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>, returns the rich HTML as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a>. Otherwise emits a <code class="xref py py-meth docutils literal notranslate"><span class="pre">logging</span> <span class="pre">error</span> <span class="pre">message</span></code> and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
 </dd>
 </dl>
@@ -556,7 +561,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 </ul>
 <p>Go easy on me, it’s my first day!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mainHTML</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the email body as an HTML <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a> document.</p></li>
 <li><p><strong>subject</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the email subject.</p></li>
@@ -567,10 +572,10 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <li><p><strong>attachments</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.11)"><em>list</em></a>) – the collection of attachments to send out.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the message object, with soft-conventioned <code class="docutils literal notranslate"><span class="pre">cid</span></code> of images included.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a></p>
 </dd>
 </dl>
@@ -581,10 +586,10 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">create_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email_fullname_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.create_rfc5322_email" title="Permalink to this definition"></a></dt>
 <dd><p>Given a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> containing email address and (optionally) full name, returns the <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>email_fullname_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> that <em>should</em> contain the email and optionally the fully qualified name. Email address is in the <code class="docutils literal notranslate"><span class="pre">email</span></code> key, and optional full name is in the <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">name</span></code> key.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>an <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address under the following conditions:</p>
 <ol class="arabic simple">
 <li><p>If there is an email address; and</p></li>
@@ -593,7 +598,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <p>Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a></p>
 </dd>
 </dl>
@@ -608,13 +613,13 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">get_attachment_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.get_attachment_object" title="Permalink to this definition"></a></dt>
 <dd><p>Create the attachment <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> given the input file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>full_file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the location of the file on-disk.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of <code class="docutils literal notranslate"><span class="pre">name</span></code> (which is file base name), <code class="docutils literal notranslate"><span class="pre">mimetype</span></code>, and <code class="docutils literal notranslate"><span class="pre">filepath</span></code> (which is <code class="docutils literal notranslate"><span class="pre">full_file_path</span></code>). If file does not exist, then function returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -625,13 +630,13 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <span class="sig-prename descclassname"><span class="pre">ive_tanim.core.rst2html.</span></span><span class="sig-name descname"><span class="pre">parse_rfc5322_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">candidate_rfc5322_email</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ive_tanim.core.rst2html.parse_rfc5322_email" title="Permalink to this definition"></a></dt>
 <dd><p>Uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">parseaddr</span></code> to create a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of candidate email dictionary (keys are <code class="docutils literal notranslate"><span class="pre">email</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">name</span></code>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>candidate_rfc5322_email</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the input <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc5322">RFC 5322</a> fully qualified email address.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> of candidate email dictionary <em>only</em> if there is a valid email address. Otherwise returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)">dict</a></p>
 </dd>
 </dl>
@@ -647,7 +652,7 @@ See <a class="reference external" href="http://docutils.sourceforge.net/docs/use
 <dd><p>Sends the email using the <a class="reference external" href="https://docs.python.org/3/library/smtplib.html#smtplib.SMTP" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMTP</span></code></a> Python functionality to send through a local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server.</p>
 <p><a class="reference external" href="https://tanimislam.gitlab.io/blog/sendmail-relay-setup-and-implementation.html">This blog post</a> describes how I set up a GMail relay using my local <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server on my <a class="reference external" href="https://ubuntu.com">Ubuntu</a> machine.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/email.mime.html#email.mime.multipart.MIMEMultipart" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIMEMultipart</span></code></a>) – the email message object to send. At a high level, this is an email with body, sender, recipients, and optional attachments.</p></li>
 <li><p><strong>server</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server to use. Default is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
