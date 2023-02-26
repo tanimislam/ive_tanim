@@ -130,7 +130,6 @@ def autocrop_image(inputfilename, outputfilename = None, color = 'white', newWid
 #_handler = logging.StreamHandler()
 #_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 #_root_logger.addHandler(_handler )
-#_devnull = open(os.devnull, 'w')
 
 def _bbox(value):
     """
@@ -169,17 +168,18 @@ def get_boundingbox(pdfpath, hiresbb = False):
     .. _BoundingBox: https://upload.wikimedia.org/wikipedia/commons/2/2a/PDF_BOX_01.svg
     .. _pdfcrop.pl: https://github.com/ho-tex/pdfcrop
     """
+    _devnull = open(os.devnull, 'w')
     gs_exec = which( 'gs' )
     if gs_exec is None:
         raise IOError("Error, cannot find ghostscript executable")
     command = [ gs_exec, ] + shlex.split('-dSAFER -sDEVICE=bbox -dNOPAUSE -dBATCH' )
     command.append( pdfpath )
-    process = subprocess.Popen(command, stdout=_devnull, stderr=subprocess.PIPE)
+    process = subprocess.Popen(command, stdout = subprocess.PIPE, stderr=subprocess.STDOUT)
     out, err = process.communicate( )  # gs sends output to stderr
-    err = err.decode('utf-8')
+    out = out.decode('utf-8')
     if hiresbb:
-        return list(map(_hiresbb, filter(lambda line: line.startswith('%%HiResBoundingBox'), err.split('\n'))))
-    return list(map(_bbox, filter(lambda line: line.startswith('%%BoundingBox'), err.split('\n'))))
+        return list(map(_hiresbb, filter(lambda line: line.startswith('%%HiResBoundingBox'), out.split('\n'))))
+    return list(map(_bbox, filter(lambda line: line.startswith('%%BoundingBox'), out.split('\n'))))
 
 def _make_pdf(i, fname, page):
     pdf_out = PdfWriter()
