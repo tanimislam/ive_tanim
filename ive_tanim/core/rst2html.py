@@ -87,7 +87,7 @@ def check_valid_RST( myString, use_mathjax = False ):
         writer_name = 'html', writer = htmlwriter,
         settings_overrides = overrides )
     body = parts[ 'body' ]
-    html = BeautifulSoup( body, 'lxml' )
+    html = BeautifulSoup( body, 'html.parser' )
     error_messages = html.find_all('p', { 'class' : 'system-message-title' } )
     return len( error_messages) == 0
 
@@ -120,7 +120,7 @@ def convert_string_RST( myString, use_mathjax = False, outputfilename = None ):
         writer_name = 'html', writer = htmlwriter,
         settings_overrides = overrides )
     html_body = parts[ 'whole' ]
-    html = BeautifulSoup( html_body, 'lxml' )
+    html = BeautifulSoup( html_body, 'html.parser' )
     #
     def _fix_title_elem( html ):
         if outputfilename is None: return html
@@ -203,7 +203,7 @@ def cid_out_mimeMultiMessage( msg, mainHTML ):
     :returns: the :py:class:`dict` of ``cid`` to image file name.
     :rtype: dict
     """
-    htmldoc = BeautifulSoup( mainHTML, 'lxml' )
+    htmldoc = BeautifulSoup( mainHTML, 'html.parser' )
     #
     ## find all img elems that have a "src" in them and that ARE NOT an URL
     valid_imgs = list(filter(lambda elem: 'src' in elem.attrs and not validators.url( elem['src'] ), htmldoc.find_all('img')))
