@@ -97,8 +97,7 @@ def _main( ):
     #
     ## BCC
     bcc_addresses = _get_valid_email_recipients_with_aliases( args.bcc )
-    if _configData[ 'me' ].strip( ) != '':
-        bcc_addresses += [ rst2html.parse_rfc5322_email( _configData[ 'me' ] ), ]
+    bcc_addresses += [ from_addres, ]
     ivetanim_logger.info( '%d BCC ADDRESSES = %s.' % (
         len( bcc_addresses ),
         '\n'.join(map(lambda entry: '%s' % entry, bcc_addresses ) ) ) )
