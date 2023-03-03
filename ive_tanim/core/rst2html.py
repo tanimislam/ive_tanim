@@ -395,5 +395,3 @@ def config_email_default_smtp( server = 'localhost', port = 25 ):
     configData[ 'smtp' ][ 'server' ] = server
     configData[ 'smtp' ][ 'port'   ] = port
     json.dump( configData, open( configFile, 'w' ), indent = 1 )
-    
-
