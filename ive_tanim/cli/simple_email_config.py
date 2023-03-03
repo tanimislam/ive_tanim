@@ -48,6 +48,7 @@ def main( ):
             "show_me: show whether I have a default sender (me). If so, then show sender's default email identity.",
             "show_smtp: show the settings for the SMTP server I have identified.",
             "add_alias: add an email alias.",
+            "remove_aliases: remove email aliases.",
             "set_me: set up the default sender's identity.",
             "set_smtp: set up the default SMTP server." ]),
         dest = 'choose_option' )
@@ -69,6 +70,11 @@ def main( ):
                                  help = 'Name of the alias to use for an emailer.' )
     parser_addalias.add_argument( '-e', '--email', dest = 'parser_addalias_email', type = str, required = True,
                                  help = 'The RFC 5322 email format of the emailer.' )
+    #
+    ## remove_alias
+    parser_removealias = subparsers.add_parser( 'remove_aliases', help = 'remove email aliases.' )
+    parser_removealias.add_argument( '-r', '--removealias', dest = 'parser_removealiases_removealias', type = str, nargs = '*',
+                                     help = 'The set of aliases to REMOVE.' )
     #
     ## set_me
     parser_setme = subparsers.add_parser( 'set_me', help = "set up the default sender's identity." )
@@ -110,6 +116,18 @@ def main( ):
             print('ERROR, COULD NOT ADD ALIAS = %s, EMAIL = %s.' % ( alias, email ) )
         else:
             print('SUCCESSFULLY ADDED ALIAS = %s, EMAIL = %s.' % ( alias, email ) )
+        return
+    #
+    ## if remove_alias
+    if args.choose_option == 'remove_aliases':
+        configData = json.load( open( configFile, 'r' ) )
+        aliases = set(map(lambda tok: tok.strip().lower(), args.parser_removealiases_removealias ) ) & set(
+            configData[ 'aliases' ] )
+        print( 'set of aliases to remove: %s.' % sorted( aliases ) )
+        #
+        ## remove these aliases
+        for alias in aliases: configData[ 'aliases' ].pop( alias )
+        json.dump( configData, open( configFile, 'w' ), indent = 1 )
         return
     #
     ## if set_me
