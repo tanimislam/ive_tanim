@@ -8,7 +8,7 @@ from ive_tanim import configFile, ivetanim_logger
 from ive_tanim.core import rst2html
 from argparse import ArgumentParser
 
-def display_aliases( ):
+def display_aliases( show_emails = True ):
     configData = json.load( open( configFile, 'r' ) )
     data_to_show = list(map(lambda alias: ( alias, configData[ 'aliases' ][ alias ] ), sorted( configData[ 'aliases' ] ) ) )
     if len( data_to_show ) == 0:
@@ -16,7 +16,11 @@ def display_aliases( ):
         return
     print( 'FOUND %02d EMAIL ALIASES' % len( configData[ 'aliases' ] ) )
     print( '' )
-    print( '%s\n' % tabulate( data_to_show, headers = [ 'ALIAS', 'FULL EMAIL ADDRESS' ] ) )
+    if show_emails:
+        print( '%s\n' % tabulate( data_to_show, headers = [ 'ALIAS', 'FULL EMAIL ADDRESS' ] ) )
+        return
+    print( '%s\n' % tabulate( list(map(lambda alias: ( alias, ), sorted( configData[ 'aliases' ] ) ) ),
+                              headers = [ 'ALIAS', ] ) )
 
 def display_me( ):
     configData = json.load( open( configFile, 'r' ) )
@@ -50,6 +54,8 @@ def main( ):
     #
     ## show_aliases
     parser_showaliases = subparsers.add_parser( 'show_aliases', help = 'If chosen, show the list of email aliases I have.' )
+    parser_showaliases.add_argument( '-H', '--hidealiases', dest = 'parser_showaliases_showemails', action = 'store_false', default = True,
+                                     help = 'If chosen, then HIDE the email addresses when showing the list of aliases. Default is to SHOW.' )
     #
     ## show_me
     parser_showme = subparsers.add_parser( 'show_me', help = "show whether I have a default sender (me). If so, then show sender's default email identity." )
@@ -82,7 +88,7 @@ def main( ):
     #
     ## if show_aliases
     if args.choose_option == 'show_aliases':
-        display_aliases( )
+        display_aliases( args.parser_showaliases_showemails )
         return
     #
     ## if show_me
