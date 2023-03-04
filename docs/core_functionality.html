@@ -56,7 +56,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#myrst2html">1.3. myrst2html</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#simple-email">1.4. simple_email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-email-config">1.4. simple_email_config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-email-config-show-me-and-set-me">1.4.1. simple_email_config show_me and set_me</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-email-config-set-smtp-and-show-smtp">1.4.2. simple_email_config set_smtp and show_smtp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-email-config-show-aliases-add-alias-remove-aliases">1.4.3. simple_email_config show_aliases, add_alias, remove_aliases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simple-email">1.5. simple_email</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="initialization_api.html">2. Initialization API</a></li>
@@ -106,10 +112,10 @@
 </pre></div>
 </div>
 <p>In the two examples shown here, I use only <em>white</em> (default) background. The first example, <a class="reference internal" href="#fig-autocrop-png"><span class="std std-numref">Fig. 1.1</span></a> demonstrates how this tool autocrops a <a class="reference external" href="https://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a> image file.</p>
-<figure class="align-left" id="id5">
+<figure class="align-left" id="id7">
 <span id="fig-autocrop-png"></span><a class="reference internal image-reference" href="_images/iwanttobelieve_uncropped_cropped.png"><img alt="_images/iwanttobelieve_uncropped_cropped.png" src="_images/iwanttobelieve_uncropped_cropped.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">On the left (with dark black borders) is the uncropped file, <a class="reference download internal" download="" href="_downloads/7ddf745e99ada28663a8280f32fcb8f2/iwanttobelieve_uncropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_uncropped.png</span></code></a>, and on the right is the cropped-without-any-whitespace (with dark black borders) file, <a class="reference download internal" download="" href="_downloads/f6ee3a48fe423aa3aef25e96794f3e35/iwanttobelieve_cropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_cropped.png</span></code></a>.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">On the left (with dark black borders) is the uncropped file, <a class="reference download internal" download="" href="_downloads/7ddf745e99ada28663a8280f32fcb8f2/iwanttobelieve_uncropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_uncropped.png</span></code></a>, and on the right is the cropped-without-any-whitespace (with dark black borders) file, <a class="reference download internal" download="" href="_downloads/f6ee3a48fe423aa3aef25e96794f3e35/iwanttobelieve_cropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_cropped.png</span></code></a>.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>You can generate <a class="reference download internal" download="" href="_downloads/f6ee3a48fe423aa3aef25e96794f3e35/iwanttobelieve_cropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_cropped.png</span></code></a> from <a class="reference download internal" download="" href="_downloads/7ddf745e99ada28663a8280f32fcb8f2/iwanttobelieve_uncropped.png"><code class="xref download docutils literal notranslate"><span class="pre">iwanttobelieve_uncropped.png</span></code></a> by running,</p>
@@ -117,10 +123,10 @@
 </pre></div>
 </div>
 <p>The second example, <a class="reference internal" href="#fig-autocrop-pdf"><span class="std std-numref">Fig. 1.2</span></a> demonstrates how this tool autocrops a <a class="reference external" href="https://en.wikipedia.org/wiki/PDF">PDF</a> image file.</p>
-<figure class="align-left" id="id6">
+<figure class="align-left" id="id8">
 <span id="fig-autocrop-pdf"></span><a class="reference internal image-reference" href="_images/cumulative_plot_emission_uncropped_cropped.png"><img alt="_images/cumulative_plot_emission_uncropped_cropped.png" src="_images/cumulative_plot_emission_uncropped_cropped.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">On the left (with dark black borders) is the uncropped file, <a class="reference download internal" download="" href="_downloads/3647f15c28f5b339c14c66e8b62a41bd/cumulative_plot_emission_uncropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_uncropped.pdf</span></code></a>, and on the right is the cropped-without-any-whitespace (with dark black borders) file, <a class="reference download internal" download="" href="_downloads/7b917c539232813b9fc5a433167402e8/cumulative_plot_emission_cropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_cropped.pdf</span></code></a>.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">On the left (with dark black borders) is the uncropped file, <a class="reference download internal" download="" href="_downloads/3647f15c28f5b339c14c66e8b62a41bd/cumulative_plot_emission_uncropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_uncropped.pdf</span></code></a>, and on the right is the cropped-without-any-whitespace (with dark black borders) file, <a class="reference download internal" download="" href="_downloads/7b917c539232813b9fc5a433167402e8/cumulative_plot_emission_cropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_cropped.pdf</span></code></a>.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>You can generate <a class="reference download internal" download="" href="_downloads/7b917c539232813b9fc5a433167402e8/cumulative_plot_emission_cropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_cropped.pdf</span></code></a> from <a class="reference download internal" download="" href="_downloads/3647f15c28f5b339c14c66e8b62a41bd/cumulative_plot_emission_uncropped.pdf"><code class="xref download docutils literal notranslate"><span class="pre">cumulative_plot_emission_uncropped.pdf</span></code></a> by running,</p>
@@ -189,10 +195,10 @@
 </pre></div>
 </div>
 <p>Then we get this animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> in <a class="reference internal" href="#covid19-conus-latest-gif"><span class="std std-numref">Fig. 1.3</span></a> (13M in size).</p>
-<figure class="align-left" id="id7">
+<figure class="align-left" id="id9">
 <span id="covid19-conus-latest-gif"></span><a class="reference internal image-reference" href="_images/covid19_conus_LATEST.gif"><img alt="_images/covid19_conus_LATEST.gif" src="_images/covid19_conus_LATEST.gif" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">The animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> of COVID-19 cumulative cases and deaths in the <a class="reference external" href="https://en.wikipedia.org/wiki/Contiguous_United_States">CONUS</a>, as of 11 February 2021: nearly 27.1 million cases, and over 470k deaths.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">The animated <a class="reference external" href="https://en.wikipedia.org/wiki/GIF">GIF</a> of COVID-19 cumulative cases and deaths in the <a class="reference external" href="https://en.wikipedia.org/wiki/Contiguous_United_States">CONUS</a>, as of 11 February 2021: nearly 27.1 million cases, and over 470k deaths.</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -277,61 +283,285 @@
 </div>
 <p>This generates the HTML file, <code class="docutils literal notranslate"><span class="pre">filename.html</span></code>, from the RST markup file, <code class="docutils literal notranslate"><span class="pre">filename.rst</span></code>, but now with <a class="reference external" href="https://www.mathjax.org">MathJax</a> if you run with <code class="docutils literal notranslate"><span class="pre">-M</span></code> or <code class="docutils literal notranslate"><span class="pre">--mathjax</span></code>.</p>
 </section>
+<section id="simple-email-config">
+<h2><span class="section-number">1.4. </span>simple_email_config<a class="headerlink" href="#simple-email-config" title="Permalink to this heading"></a></h2>
+<p>I gave birth to a new CLI, <code class="docutils literal notranslate"><span class="pre">simple_email_config</span></code>, to <em>simplify</em> sending (use much-much-much-fewer typing characters and smaller chances of fat-fingeritis) technical emails with <a class="reference internal" href="#simple-email"><span class="std std-ref">simple_email</span></a>. Here one can set default identity for sending email; set the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server; and add or remove email <strong>aliases</strong>. Likewise, one can do the following: show the default identity for sending email; show the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server and port; and show the list of email <strong>aliases</strong> with and without the full email address (showing just the list of ordered email <strong>aliases</strong>).</p>
+<p>An email alias is a lower-case non-spaced string that identifies an email address or an RFC 5322 full email address. For example, I have identified the <strong>alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> with the full email address, <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>.</p>
+<p>The full help command demonstrating all the commands by running, <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">-h</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">positional arguments:</span>
+<span class="go">  {show_aliases,show_me,show_smtp,add_alias,remove_aliases,set_me,set_smtp}</span>
+<span class="go">                        Choose one of these six options (stuff before the first colon): show_aliases: show the list of email aliases I have. show_me: show whether I have a default sender (me). If so, then show sender&#39;s default email identity.</span>
+<span class="go">                        show_smtp: show the settings for the SMTP server I have identified. add_alias: add an email alias. remove_aliases: remove email aliases. set_me: set up the default sender&#39;s identity. set_smtp: set up the default SMTP server.</span>
+<span class="go">    show_aliases        If chosen, show the list of email aliases I have.</span>
+<span class="go">    show_me             show whether I have a default sender (me). If so, then show sender&#39;s default email identity.</span>
+<span class="go">    show_smtp           show the settings for the SMTP server I have identified.</span>
+<span class="go">    add_alias           add an email alias.</span>
+<span class="go">    remove_aliases      remove email aliases.</span>
+<span class="go">    set_me              set up the default sender&#39;s identity.</span>
+<span class="go">    set_smtp            set up the default SMTP server.</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  --info                If chosen, then print out INFO level logging statements.</span>
+</pre></div>
+</div>
+<p>As of <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">MARCH</span> <span class="pre">2023</span></code>, <strong>7 choices</strong>. Subsequent functionalities are in separate subsections under <a class="reference internal" href="#simple-email-config"><span class="std std-ref">simple_email_config</span></a>.</p>
+<section id="simple-email-config-show-me-and-set-me">
+<span id="simple-email-config-set-show-me"></span><h3><span class="section-number">1.4.1. </span>simple_email_config show_me and set_me<a class="headerlink" href="#simple-email-config-show-me-and-set-me" title="Permalink to this heading"></a></h3>
+<p>You <em>set</em> the <strong>default</strong> sender information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_me</span></code>. Its help screen is <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_me</span> <span class="pre">-h</span></code>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email_config set_me [-h] -e PARSER_SETME_EMAIL</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -e PARSER_SETME_EMAIL, --email PARSER_SETME_EMAIL</span>
+<span class="go">                        The RFC 5322 email format of the sender.</span>
+</pre></div>
+</div>
+<p>So for example, running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_me</span> <span class="pre">-e</span> <span class="pre">&quot;Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;&quot;</span></code> sets the default RFC 5322 email to <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>.</p>
+<p>You <em>show</em> the <strong>default</strong> sender information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">show_me</span></code>. In the example below,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_me
+<span class="go">DEFAULT EMAIL ADDRESS: Tanim Islam &lt;tanim.islam@gmail.com&gt;.</span>
+</pre></div>
+</div>
+<p>And that’s it!</p>
+</section>
+<section id="simple-email-config-set-smtp-and-show-smtp">
+<span id="simple-email-config-set-show-smtp"></span><h3><span class="section-number">1.4.2. </span>simple_email_config set_smtp and show_smtp<a class="headerlink" href="#simple-email-config-set-smtp-and-show-smtp" title="Permalink to this heading"></a></h3>
+<p>You <em>set</em> the <strong>default</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_smtp</span></code>. Its help screen, <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_smtp</span> <span class="pre">-h</span></code> is,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email_config set_smtp [-h] -S SMTP_SERVER -p SMTP_PORT</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -S SMTP_SERVER, --server SMTP_SERVER</span>
+<span class="go">                        The name of the default SMTP server.</span>
+<span class="go">  -p SMTP_PORT, --port SMTP_PORT</span>
+<span class="go">                        The port number of the default SMTP server.</span>
+</pre></div>
+</div>
+<p>I go through each command line argument like so.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code> or <code class="docutils literal notranslate"><span class="pre">--server</span></code> specifies the <em>required</em> address or name of the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. A common default choice is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">-port</span></code> specifies the <em>required</em> port number of the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. A common default choice is 25.</p></li>
+</ol>
+<p>You can then <em>show</em> the <strong>default</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">show_smtp</span></code>. In the example below,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_smtp
+<span class="go">DEFAULT SMTP SERVER: localhost.</span>
+<span class="go">DEFAULT SMTP PORT: 25.</span>
+</pre></div>
+</div>
+<p>And that’s it!</p>
+</section>
+<section id="simple-email-config-show-aliases-add-alias-remove-aliases">
+<span id="simple-email-config-add-show-remove-alias"></span><h3><span class="section-number">1.4.3. </span>simple_email_config show_aliases, add_alias, remove_aliases<a class="headerlink" href="#simple-email-config-show-aliases-add-alias-remove-aliases" title="Permalink to this heading"></a></h3>
+<p>An enhancement to <a class="reference internal" href="#simple-email"><span class="std std-ref">simple_email</span></a> is that one can <em>also</em> specify <code class="docutils literal notranslate"><span class="pre">TO/CC/BCC</span></code> recipients with <em>aliases</em> in addition to their email addresses or full RFC 5322 email addresses. I use <em>anonymized</em> examples from aliases that I (<a class="reference external" href="https://tanimislam.gitlab.io/blog/i-exist.html#biography-section">Tanim Islam</a>) have set up as of <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">MARCH</span> <span class="pre">2023</span></code>.</p>
+<ol class="arabic">
+<li><p>You can <strong>show email aliases</strong> by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">show_aliases</span></code>. Its help screen is <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">add_aliases</span> <span class="pre">-h</span></code>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email_config show_aliases [-h] [-H]</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help         show this help message and exit</span>
+<span class="go">  -H, --hidealiases  If chosen, then HIDE the email addresses when showing the list of aliases. Default is to SHOW.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-H</span></code> or <code class="docutils literal notranslate"><span class="pre">--hidealiases</span></code> flag is useful to demonstrate the list of <strong>email aaliases</strong> that you have, because it <em>hides</em> the email or RFC 5322 email address for each <strong>alias</strong>. For example, for me (<a class="reference external" href="https://tanimislam.gitlab.io/blog/i-exist.html#biography-section">Tanim Islam</a></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_aliases<span class="w"> </span>-H
+<span class="go">FOUND 14 EMAIL ALIASES</span>
+
+<span class="go">ALIAS</span>
+<span class="go">------------</span>
+<span class="go">bcohan</span>
+<span class="go">chrismay</span>
+<span class="go">cschroder</span>
+<span class="go">drflask</span>
+<span class="go">dstrozzi</span>
+<span class="go">dstrozzig</span>
+<span class="go">marinak</span>
+<span class="go">mehulp</span>
+<span class="go">tanimg</span>
+<span class="go">tanimv</span>
+<span class="go">tanimw</span>
+<span class="go">tbailey</span>
+<span class="go">tipton</span>
+<span class="go">woodyh_sacpy</span>
+</pre></div>
+</div>
+<p>This displays the <strong>email aliases</strong> in alphabetical order.</p>
+</li>
+<li><p>You can <strong>add an email alias</strong> by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">add_alias</span></code>. Its help screen is <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">add_alias</span> <span class="pre">-h</span></code>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email_config add_alias [-h] -a ALIAS -e EMAIL</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -a ALIAS, --alias ALIAS</span>
+<span class="go">                        Name of the alias to use for an emailer.</span>
+<span class="go">  -e EMAIL, --email EMAIL</span>
+<span class="go">                        The RFC 5322 email format of the emailer.</span>
+</pre></div>
+</div>
+<p>I go through each command line argument like so.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--alias</span></code> specifies the <em>required</em> <strong>email alias</strong>, which is a no-spaces string. <strong>Any string that has uppercase characters will be lowercased</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span></code> or <code class="docutils literal notranslate"><span class="pre">--email</span></code> specifies the <em>required</em> email address or RFC 5322 email address for that <strong>email alias</strong>.</p></li>
+</ol>
+<p>For example, let’s look at the anonymized <strong>email aliases</strong> <em>before</em> adding the <strong>alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">FOUND 13 EMAIL ALIASES</span>
+
+<span class="go">ALIAS</span>
+<span class="go">------------</span>
+<span class="go">bcohan</span>
+<span class="go">chrismay</span>
+<span class="go">cschroder</span>
+<span class="go">drflask</span>
+<span class="go">dstrozzi</span>
+<span class="go">dstrozzig</span>
+<span class="go">marinak</span>
+<span class="go">mehulp</span>
+<span class="go">tanimv</span>
+<span class="go">tanimw</span>
+<span class="go">tbailey</span>
+<span class="go">tipton</span>
+<span class="go">woodyh_sacpy</span>
+</pre></div>
+</div>
+<p>Next, let us add an <strong>email alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> for <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code> with this command,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>add_alias<span class="w"> </span>-a<span class="w"> </span>tanimg<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;Tanim Islam &lt;tanim.islam@gmail.com&gt;&quot;</span>
+<span class="go">SUCCESSFULLY ADDED ALIAS = tanimg, EMAIL = Tanim Islam &lt;tanim.islam@gmail.com&gt;.</span>
+</pre></div>
+</div>
+<p>Finally, look at the anonymized <strong>email aliases</strong> <em>after</em> adding this <strong>alias</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go">FOUND 14 EMAIL ALIASES</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="go">ALIAS</span>
+<span class="linenos"> 4</span><span class="go">------------</span>
+<span class="linenos"> 5</span><span class="go">bcohan</span>
+<span class="linenos"> 6</span><span class="go">chrismay</span>
+<span class="linenos"> 7</span><span class="go">cschroder</span>
+<span class="linenos"> 8</span><span class="go">drflask</span>
+<span class="linenos"> 9</span><span class="go">dstrozzi</span>
+<span class="linenos">10</span><span class="go">dstrozzig</span>
+<span class="linenos">11</span><span class="go">marinak</span>
+<span class="linenos">12</span><span class="go">mehulp</span>
+<span class="hll"><span class="linenos">13</span><span class="go">tanimg</span>
+</span><span class="linenos">14</span><span class="go">tanimv</span>
+<span class="linenos">15</span><span class="go">tanimw</span>
+<span class="linenos">16</span><span class="go">tbailey</span>
+<span class="linenos">17</span><span class="go">tipton</span>
+<span class="linenos">18</span><span class="go">woodyh_sacpy</span>
+</pre></div>
+</div>
+<p>Notice <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> in line 13.</p>
+</li>
+<li><p>You can <strong>remove email aliases</strong> by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">remove_aliases</span></code>. Its help screen is <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">remove_aliases</span> <span class="pre">-h</span></code>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email_config remove_aliases [-h] [-r [ALIAS ...]]</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  -r [ALIAS ...], --removealias [ALIAS ...]</span>
+<span class="go">                        The set of aliases to REMOVE.</span>
+</pre></div>
+</div>
+<p>You can specify <em>multiple</em> <strong>email aliases</strong> to remove. Example with removing <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> follows.</p>
+<p>First, look at the set of anonymized <strong>email aliases</strong> that <em>also</em> contain and emphasize <code class="docutils literal notranslate"><span class="pre">tanimg</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go">FOUND 14 EMAIL ALIASES</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="go">ALIAS</span>
+<span class="linenos"> 4</span><span class="go">------------</span>
+<span class="linenos"> 5</span><span class="go">bcohan</span>
+<span class="linenos"> 6</span><span class="go">chrismay</span>
+<span class="linenos"> 7</span><span class="go">cschroder</span>
+<span class="linenos"> 8</span><span class="go">drflask</span>
+<span class="linenos"> 9</span><span class="go">dstrozzi</span>
+<span class="linenos">10</span><span class="go">dstrozzig</span>
+<span class="linenos">11</span><span class="go">marinak</span>
+<span class="linenos">12</span><span class="go">mehulp</span>
+<span class="hll"><span class="linenos">13</span><span class="go">tanimg</span>
+</span><span class="linenos">14</span><span class="go">tanimv</span>
+<span class="linenos">15</span><span class="go">tanimw</span>
+<span class="linenos">16</span><span class="go">tbailey</span>
+<span class="linenos">17</span><span class="go">tipton</span>
+<span class="linenos">18</span><span class="go">woodyh_sacpy</span>
+</pre></div>
+</div>
+<p>Run this command to remove the <strong>email alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>remove_aliases<span class="w"> </span>-r<span class="w"> </span>tanimg
+<span class="go">set of aliases to remove: [&#39;tanimg&#39;].</span>
+</pre></div>
+</div>
+<p>Finally, check that <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> is no longer of the <strong>email aliases</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go">FOUND 13 EMAIL ALIASES</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="go">ALIAS</span>
+<span class="linenos"> 4</span><span class="go">------------</span>
+<span class="linenos"> 5</span><span class="go">bcohan</span>
+<span class="linenos"> 6</span><span class="go">chrismay</span>
+<span class="linenos"> 7</span><span class="go">cschroder</span>
+<span class="linenos"> 8</span><span class="go">drflask</span>
+<span class="linenos"> 9</span><span class="go">dstrozzi</span>
+<span class="linenos">10</span><span class="go">dstrozzig</span>
+<span class="linenos">11</span><span class="go">marinak</span>
+<span class="linenos">12</span><span class="go">mehulp</span>
+<span class="linenos">13</span><span class="go">tanimv</span>
+<span class="linenos">14</span><span class="go">tanimw</span>
+<span class="linenos">15</span><span class="go">tbailey</span>
+<span class="linenos">16</span><span class="go">tipton</span>
+<span class="linenos">17</span><span class="go">woodyh_sacpy</span>
+</pre></div>
+</div>
+<p>And that’s it.</p>
+</li>
+</ol>
+</section>
+</section>
 <section id="simple-email">
-<h2><span class="section-number">1.4. </span>simple_email<a class="headerlink" href="#simple-email" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">simple_email</span></code> is the <em>simplest</em> <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> based email sender I could make! One specifies the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> file; (optional) attachments; sender; <code class="docutils literal notranslate"><span class="pre">TO</span></code> recipients; (optionally) <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">BCC</span></code> recipients; and (optional) details of the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Its help screen, when running <code class="docutils literal notranslate"><span class="pre">simple_email</span> <span class="pre">-h</span></code>, is,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email [-h] -f EMAILFILE [-s SUBJECT] -F SENDER -T [TO [TO ...]]</span>
-<span class="go">                    [-C [CC [CC ...]]] [-B [BCC [BCC ...]]]</span>
-<span class="go">                    [-A [ATTACH [ATTACH ...]]] [-p SMTPPORT] [-S SMTPSERVER]</span>
-<span class="go">                    [-I]</span>
+<h2><span class="section-number">1.5. </span>simple_email<a class="headerlink" href="#simple-email" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">simple_email</span></code> is the <em>simplest</em> <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> based email sender I could make! One specifies the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> file; (optional) attachments; sender; <code class="docutils literal notranslate"><span class="pre">TO</span></code> recipients; (optionally) <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">BCC</span></code> recipients; and (optional) details of the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Its help screen is <code class="docutils literal notranslate"><span class="pre">simple_email</span> <span class="pre">-h</span></code>,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">usage: simple_email [-h] -f EMAILFILE [-s SUBJECT] [-F SENDER] -T [TO ...] [-C [CC ...]] [-B [BCC ...]] [-A [ATTACH ...]] [-p SMTPPORT] [-S SMTPSERVER] [-I]</span>
 
 <span class="go">optional arguments:</span>
 <span class="go">  -h, --help            show this help message and exit</span>
 <span class="go">  -f EMAILFILE, --emailfile EMAILFILE</span>
-<span class="go">                        Name of the restructuredtext email file to convert</span>
-<span class="go">                        into HTML, THEN email out.</span>
+<span class="go">                        Name of the restructuredtext email file to convert into HTML, THEN email out.</span>
 <span class="go">  -s SUBJECT, --subject SUBJECT</span>
-<span class="go">                        Email subject. Default is &#39;test subject&#39;.</span>
+<span class="go">                        Email subject. Default is &quot;test subject&quot;.</span>
 <span class="go">  -F SENDER, --from SENDER</span>
-<span class="go">                        Email and/or name of the sender. Use RFC 5322 email</span>
-<span class="go">                        format.</span>
-<span class="go">  -T [TO [TO ...]], --to [TO [TO ...]]</span>
-<span class="go">                        List of email and/or names of the recipients. Use RFC</span>
-<span class="go">                        5322 email format.</span>
-<span class="go">  -C [CC [CC ...]], --cc [CC [CC ...]]</span>
-<span class="go">                        List of CC email and/or names. Use RFC 5322 email</span>
-<span class="go">                        format.</span>
-<span class="go">  -B [BCC [BCC ...]], --bcc [BCC [BCC ...]]</span>
-<span class="go">                        List of BCC email and/or names. Use RFC 5322 email</span>
-<span class="go">                        format.</span>
-<span class="go">  -A [ATTACH [ATTACH ...]], --attach [ATTACH [ATTACH ...]]</span>
+<span class="go">                        Email and/or name of the sender. Use RFC 5322 email format. Default is &quot;Tanim Islam &lt;tanim.islam@gmail.com&gt;&quot;.</span>
+<span class="go">  -T [TO ...], --to [TO ...]</span>
+<span class="go">                        List of email and/or names of the recipients. Use RFC 5322 email format OR email alias.</span>
+<span class="go">  -C [CC ...], --cc [CC ...]</span>
+<span class="go">                        List of CC email and/or names. Use RFC 5322 email format OR email alias.</span>
+<span class="go">  -B [BCC ...], --bcc [BCC ...]</span>
+<span class="go">                        List of BCC email and/or names. Use RFC 5322 email format OR email alias.</span>
+<span class="go">  -A [ATTACH ...], --attach [ATTACH ...]</span>
 <span class="go">                        List of files to attach to this email.</span>
 <span class="go">  -p SMTPPORT, --smtpport SMTPPORT</span>
-<span class="go">                        The port number for the SMTP server to send the SMTP</span>
-<span class="go">                        email. Default is 25.</span>
+<span class="go">                        The port number for the SMTP server to send the SMTP email. Default is 25.</span>
 <span class="go">  -S SMTPSERVER, --smtpserver SMTPSERVER</span>
-<span class="go">                        The name of the SMTP server to send the SMTP email.</span>
-<span class="go">                        Default is &#39;localhost&#39;.</span>
+<span class="go">                        The name of the SMTP server to send the SMTP email. Default is &#39;localhost&#39;.</span>
 <span class="go">  -I, --info            If chosen, then do INFO logging.</span>
 </pre></div>
 </div>
-<p>I go through each element like so. <code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--info</span></code> turns on <code class="docutils literal notranslate"><span class="pre">INFO</span></code> logging, which is right now <em>extremely useful</em> to figure out what happened to your email if something went wrong!</p>
-<ol class="arabic simple">
+<p>I go through each command line argument like so. <code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--info</span></code> turns on <code class="docutils literal notranslate"><span class="pre">INFO</span></code> logging, which is right now <em>extremely useful</em> to figure out what happened to your email if something went wrong!</p>
+<ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">emailfiles</span></code> specifies the <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> file, which has the same structure as I describe in the <a class="reference internal" href="#myrst2html-desc"><span class="std std-ref">myrst2html description</span></a>.</p></li>
 <li><p>Email stuff consists of the following:</p>
-<ul class="simple">
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code> or <code class="docutils literal notranslate"><span class="pre">--subject</span></code> specifies the non-default email subject. Default is <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">subject</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-F</span></code> or <code class="docutils literal notranslate"><span class="pre">-from</span></code> specifies the sender. This is in the format of email address only, such as <code class="docutils literal notranslate"><span class="pre">tanim.islam&#64;gmail.com</span></code>, or in the standard email-with-name format, such as <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-T</span></code> or <code class="docutils literal notranslate"><span class="pre">--to</span></code> specifies the list of recipients (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-C</span></code> or <code class="docutils literal notranslate"><span class="pre">-cc</span></code> <em>optionally</em> specifies the list of <a class="reference external" href="https://en.wikipedia.org/wiki/Carbon_copy#Email">CC recipients</a> (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-B</span></code> or <code class="docutils literal notranslate"><span class="pre">--bcc</span></code> <em>optionally</em> specifies the list of <a class="reference external" href="https://en.wikipedia.org/wiki/Blind_carbon_copy#cite_note-1">BCC recipients</a> (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-F</span></code> or <code class="docutils literal notranslate"><span class="pre">-from</span></code> specifies the sender. This is in the format of email address only, such as <code class="docutils literal notranslate"><span class="pre">tanim.islam&#64;gmail.com</span></code>, or in the standard email-with-name format, such as <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>. If not specified, this uses the <em>default</em> sender address defined or shown in <a class="reference internal" href="#simple-email-config-set-show-me"><span class="std std-numref">Section 1.4.1</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-T</span></code> or <code class="docutils literal notranslate"><span class="pre">--to</span></code> specifies the list of recipients (can be multiple ones). This is in the format of email address only, in the standard email-with-name format (RFC 5322), or as an email alias.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-C</span></code> or <code class="docutils literal notranslate"><span class="pre">-cc</span></code> <em>optionally</em> specifies the list of <a class="reference external" href="https://en.wikipedia.org/wiki/Carbon_copy#Email">CC recipients</a> (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format (RFC 5322), or as an email alias.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-B</span></code> or <code class="docutils literal notranslate"><span class="pre">--bcc</span></code> <em>optionally</em> specifies the list of <a class="reference external" href="https://en.wikipedia.org/wiki/Blind_carbon_copy#cite_note-1">BCC recipients</a> (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format (RFC 5322), or as an email alias.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">simple_email</span></code> implements an <em>implicit</em> BCC add of the sender email address, so that the sender (like  <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>) also receives an email showing that they have sent this email to the TO/CC/BCC recipients.</p>
+</div>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-A</span></code> or <code class="docutils literal notranslate"><span class="pre">--attach</span></code> <em>optionally</em> specifies the list of files to attach to this email.</p></li>
 </ul>
 </li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server stuff consists of the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">--smtpport</span></code> specifies the port to use for <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> email sending. Default is 25.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code> or <code class="docutils literal notranslate"><span class="pre">--smtpserver</span></code> specifies the name of the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is <code class="docutils literal notranslate"><span class="pre">localhost</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">--smtpport</span></code> specifies the port to use for <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> email sending. Default is whatever is the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> port set or shown in <a class="reference internal" href="#simple-email-config-set-show-smtp"><span class="std std-numref">Section 1.4.2</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-S</span></code> or <code class="docutils literal notranslate"><span class="pre">--smtpserver</span></code> specifies the name of the <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. Default is Default is whatever is the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server set or shown in <a class="reference internal" href="#simple-email-config-set-show-smtp"><span class="std std-numref">Section 1.4.2</span></a>.</p></li>
 </ul>
 </li>
 </ol>
@@ -377,7 +607,7 @@
 <span class="linenos"> 37</span>   <span class="go">ffmpeg -ss 00:03:00 -i covid19_7day_conus_LATEST.mp4 -codec copy covid19_7day_conus_LATEST_CLIPPED.mp4</span>
 <span class="linenos"> 38</span>
 <span class="linenos"> 39</span>   <span class="go">convertImage movie -f covid19_7day_conus_LATEST_CLIPPED.mp4 -s 0.5</span>
-<span class="linenos"> 40</span>   <span class="go"></span>
+<span class="linenos"> 40</span>   
 <span class="linenos"> 41</span>Now here&#39;s some stupid code blocks, some Python code in fact that I have here.
 <span class="linenos"> 42</span>
 <span class="linenos"> 43</span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
