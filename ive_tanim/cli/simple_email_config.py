@@ -66,15 +66,15 @@ def main( ):
     #
     ## add_alias
     parser_addalias = subparsers.add_parser( 'add_alias', help = 'add an email alias.' )
-    parser_addalias.add_argument( '-a', '--alias', dest = 'parser_addalias_alias', type = str, required = True,
+    parser_addalias.add_argument( '-a', '--alias', dest = 'parser_addalias_alias', metavar = 'ALIAS', type = str, required = True,
                                  help = 'Name of the alias to use for an emailer.' )
-    parser_addalias.add_argument( '-e', '--email', dest = 'parser_addalias_email', type = str, required = True,
+    parser_addalias.add_argument( '-e', '--email', dest = 'parser_addalias_email', metavar = 'EMAIL', type = str, required = True,
                                  help = 'The RFC 5322 email format of the emailer.' )
     #
     ## remove_alias
     parser_removealias = subparsers.add_parser( 'remove_aliases', help = 'remove email aliases.' )
-    parser_removealias.add_argument( '-r', '--removealias', dest = 'parser_removealiases_removealias', type = str, nargs = '*',
-                                     help = 'The set of aliases to REMOVE.' )
+    parser_removealias.add_argument( '-r', '--removealias', dest = 'parser_removealiases_removealias', metavar = 'ALIAS',
+                                    type = str, nargs = '*', help = 'The set of aliases to REMOVE.' )                                    
     #
     ## set_me
     parser_setme = subparsers.add_parser( 'set_me', help = "set up the default sender's identity." )
@@ -83,10 +83,10 @@ def main( ):
     #
     ## set_smtp
     parser_smtp = subparsers.add_parser( 'set_smtp', help = "set up the default SMTP server." )
-    parser_smtp.add_argument( '-S', '--server', dest = 'parser_smtp_server', type = str, default = 'localhost',
-                             help = "The name of the default SMTP server. Default is 'localhost'." )
-    parser_smtp.add_argument( '-p', '--port', dest = 'parser_smtp_port', type = int, default = 25,
-                             help = "The port number of the default SMTP server. Default is 25." )
+    parser_smtp.add_argument( '-S', '--server', dest = 'parser_smtp_server', metavar = 'SMTP_SERVER', type = str, required = True,
+                             help = "The name of the default SMTP server." )
+    parser_smtp.add_argument( '-p', '--port', dest = 'parser_smtp_port', metavar = 'SMTP_PORT', type = int, required = True,
+                             help = "The port number of the default SMTP server." )
     #
     ##
     args = parser.parse_args( )

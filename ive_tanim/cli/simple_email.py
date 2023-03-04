@@ -38,11 +38,11 @@ def _main( ):
         parser.add_argument( '-F', '--from', dest = 'sender', type = str, action = 'store', default = _configData[ 'me' ].strip( ),
                             help = 'Email and/or name of the sender. Use RFC 5322 email format. Default is "%s".' % _configData[ 'me' ].strip( ) )
     parser.add_argument( '-T', '--to', dest = 'to', type = str, nargs = '*', required = True,
-                        help = 'List of email and/or names of the recipients.  Use RFC 5322 email format.' )
+                        help = 'List of email and/or names of the recipients.  Use RFC 5322 email format OR email alias.' )
     parser.add_argument( '-C', '--cc', dest = 'cc', type = str, nargs = '*', default = [ ],
-                        help = 'List of CC email and/or names. Use RFC 5322 email format.' )
+                        help = 'List of CC email and/or names. Use RFC 5322 email format OR email alias.' )
     parser.add_argument( '-B', '--bcc', dest = 'bcc', type = str, nargs = '*', default = [ ],
-                        help = 'List of BCC email and/or names. Use RFC 5322 email format.' )
+                        help = 'List of BCC email and/or names. Use RFC 5322 email format OR email alias.' )
     parser.add_argument( '-A', '--attach', dest = 'attach', type = str, nargs = '*', default = [ ],
                         help = 'List of files to attach to this email.' )
     parser.add_argument( '-p', '--smtpport', dest = 'smtpport', type = int, default = _configData[ 'smtp' ][ 'port' ],

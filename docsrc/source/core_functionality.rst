@@ -245,47 +245,312 @@ Its help screen, when running ``myrst2html -h``, is,
 
 This generates the HTML file, ``filename.html``, from the RST markup file, ``filename.rst``, but now with MathJax_ if you run with ``-M`` or ``--mathjax``.
 
-simple_email
-===============
-``simple_email`` is the *simplest* SMTP_ based email sender I could make! One specifies the reStructuredText_ file; (optional) attachments; sender; ``TO`` recipients; (optionally) ``CC`` and ``BCC`` recipients; and (optional) details of the SMTP_ server. Its help screen, when running ``simple_email -h``, is,
+simple_email_config
+=====================
+I gave birth to a new CLI, ``simple_email_config``, to *simplify* sending (use much-much-much-fewer typing characters and smaller chances of fat-fingeritis) technical emails with :ref:`simple_email`. Here one can set default identity for sending email; set the default SMTP_ server; and add or remove email **aliases**. Likewise, one can do the following: show the default identity for sending email; show the default SMTP_ server and port; and show the list of email **aliases** with and without the full email address (showing just the list of ordered email **aliases**).
+
+An email alias is a lower-case non-spaced string that identifies an email address or an RFC 5322 full email address. For example, I have identified the **alias** ``tanimg`` with the full email address, ``Tanim Islam <tanim.islam@gmail.com>``.
+
+The full help command demonstrating all the commands by running, ``simple_email_config -h``.
 
 .. code-block:: console
 
-   usage: simple_email [-h] -f EMAILFILE [-s SUBJECT] -F SENDER -T [TO [TO ...]]
-		       [-C [CC [CC ...]]] [-B [BCC [BCC ...]]]
-		       [-A [ATTACH [ATTACH ...]]] [-p SMTPPORT] [-S SMTPSERVER]
-		       [-I]
+   positional arguments:
+     {show_aliases,show_me,show_smtp,add_alias,remove_aliases,set_me,set_smtp}
+			   Choose one of these six options (stuff before the first colon): show_aliases: show the list of email aliases I have. show_me: show whether I have a default sender (me). If so, then show sender's default email identity.
+			   show_smtp: show the settings for the SMTP server I have identified. add_alias: add an email alias. remove_aliases: remove email aliases. set_me: set up the default sender's identity. set_smtp: set up the default SMTP server.
+       show_aliases        If chosen, show the list of email aliases I have.
+       show_me             show whether I have a default sender (me). If so, then show sender's default email identity.
+       show_smtp           show the settings for the SMTP server I have identified.
+       add_alias           add an email alias.
+       remove_aliases      remove email aliases.
+       set_me              set up the default sender's identity.
+       set_smtp            set up the default SMTP server.
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     --info                If chosen, then print out INFO level logging statements.
+
+As of ``4 MARCH 2023``, **7 choices**. Subsequent functionalities are in separate subsections under :ref:`simple_email_config`.
+
+.. _simple_email_config_set_show_me:
+
+simple_email_config show_me and set_me
+------------------------------------------
+You *set* the **default** sender information by running ``simple_email_config set_me``. Its help screen is ``simple_email_config set_me -h``,
+
+.. code-block:: console
+
+   usage: simple_email_config set_me [-h] -e PARSER_SETME_EMAIL
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     -e PARSER_SETME_EMAIL, --email PARSER_SETME_EMAIL
+			   The RFC 5322 email format of the sender.
+
+So for example, running ``simple_email_config set_me -e "Tanim Islam <tanim.islam@gmail.com>"`` sets the default RFC 5322 email to ``Tanim Islam <tanim.islam@gmail.com>``.
+
+You *show* the **default** sender information by running ``simple_email_config show_me``. In the example below,
+
+.. code-block:: console
+
+   $ simple_email_config show_me
+   DEFAULT EMAIL ADDRESS: Tanim Islam <tanim.islam@gmail.com>.
+
+And that's it!
+
+.. _simple_email_config_set_show_smtp:
+
+simple_email_config set_smtp and show_smtp
+--------------------------------------------------
+You *set* the **default** SMTP_ server information by running ``simple_email_config set_smtp``. Its help screen, ``simple_email_config set_smtp -h`` is,
+
+.. code-block:: console
+
+   usage: simple_email_config set_smtp [-h] -S SMTP_SERVER -p SMTP_PORT
+
+   optional arguments:
+     -h, --help            show this help message and exit
+     -S SMTP_SERVER, --server SMTP_SERVER
+			   The name of the default SMTP server.
+     -p SMTP_PORT, --port SMTP_PORT
+			   The port number of the default SMTP server.
+
+I go through each command line argument like so.
+
+#. ``-S`` or ``--server`` specifies the *required* address or name of the default SMTP_ server. A common default choice is ``localhost``.
+
+#. ``-p`` or ``-port`` specifies the *required* port number of the default SMTP_ server. A common default choice is 25.
+
+You can then *show* the **default** SMTP_ server information by running ``simple_email_config show_smtp``. In the example below,
+
+.. code-block:: console
+
+   $ simple_email_config show_smtp
+   DEFAULT SMTP SERVER: localhost.
+   DEFAULT SMTP PORT: 25.
+
+And that's it!
+
+.. _simple_email_config_add_show_remove_alias:
+
+simple_email_config show_aliases, add_alias, remove_aliases
+--------------------------------------------------------------------
+An enhancement to :ref:`simple_email` is that one can *also* specify ``TO/CC/BCC`` recipients with *aliases* in addition to their email addresses or full RFC 5322 email addresses. I use *anonymized* examples from aliases that I (`Tanim Islam <https://tanimislam.gitlab.io/blog/i-exist.html#biography-section>`_) have set up as of ``5 MARCH 2023``.
+
+#. You can **show email aliases** by running ``simple_email_config show_aliases``. Its help screen is ``simple_email_config add_aliases -h``,
+
+   .. code-block:: console
+
+      usage: simple_email_config show_aliases [-h] [-H]
+
+      optional arguments:
+	-h, --help         show this help message and exit
+	-H, --hidealiases  If chosen, then HIDE the email addresses when showing the list of aliases. Default is to SHOW.
+
+   The ``-H`` or ``--hidealiases`` flag is useful to demonstrate the list of **email aaliases** that you have, because it *hides* the email or RFC 5322 email address for each **alias**. For example, for me (`Tanim Islam <https://tanimislam.gitlab.io/blog/i-exist.html#biography-section>`_
+
+   .. code-block:: console
+
+      $ simple_email_config show_aliases -H
+      FOUND 14 EMAIL ALIASES
+
+      ALIAS
+      ------------
+      bcohan
+      chrismay
+      cschroder
+      drflask
+      dstrozzi
+      dstrozzig
+      marinak
+      mehulp
+      tanimg
+      tanimv
+      tanimw
+      tbailey
+      tipton
+      woodyh_sacpy
+      
+   This displays the **email aliases** in alphabetical order.
+
+#. You can **add an email alias** by running ``simple_email_config add_alias``. Its help screen is ``simple_email_config add_alias -h``,
+
+   .. code-block:: console
+
+      usage: simple_email_config add_alias [-h] -a ALIAS -e EMAIL
+
+      optional arguments:
+	-h, --help            show this help message and exit
+	-a ALIAS, --alias ALIAS
+			      Name of the alias to use for an emailer.
+	-e EMAIL, --email EMAIL
+			      The RFC 5322 email format of the emailer.
+
+   I go through each command line argument like so.
+
+   #. ``-a`` or ``--alias`` specifies the *required* **email alias**, which is a no-spaces string. **Any string that has uppercase characters will be lowercased**.
+
+   #. ``-e`` or ``--email`` specifies the *required* email address or RFC 5322 email address for that **email alias**.
+
+   For example, let's look at the anonymized **email aliases** *before* adding the **alias** ``tanimg``.
+
+   .. code-block:: console
+
+      FOUND 13 EMAIL ALIASES
+
+      ALIAS
+      ------------
+      bcohan
+      chrismay
+      cschroder
+      drflask
+      dstrozzi
+      dstrozzig
+      marinak
+      mehulp
+      tanimv
+      tanimw
+      tbailey
+      tipton
+      woodyh_sacpy
+   
+   Next, let us add an **email alias** ``tanimg`` for ``Tanim Islam <tanim.islam@gmail.com>`` with this command,
+
+   .. code-block:: console
+
+      $ simple_email_config add_alias -a tanimg -e "Tanim Islam <tanim.islam@gmail.com>"
+      SUCCESSFULLY ADDED ALIAS = tanimg, EMAIL = Tanim Islam <tanim.islam@gmail.com>.
+
+   Finally, look at the anonymized **email aliases** *after* adding this **alias**.
+
+   .. code-block:: console
+      :linenos:
+      :emphasize-lines: 13
+   
+      FOUND 14 EMAIL ALIASES
+
+      ALIAS
+      ------------
+      bcohan
+      chrismay
+      cschroder
+      drflask
+      dstrozzi
+      dstrozzig
+      marinak
+      mehulp
+      tanimg
+      tanimv
+      tanimw
+      tbailey
+      tipton
+      woodyh_sacpy
+
+   Notice ``tanimg`` in line 13.
+
+#. You can **remove email aliases** by running ``simple_email_config remove_aliases``. Its help screen is ``simple_email_config remove_aliases -h``,
+
+   .. code-block:: console
+
+      usage: simple_email_config remove_aliases [-h] [-r [ALIAS ...]]
+
+      optional arguments:
+	-h, --help            show this help message and exit
+	-r [ALIAS ...], --removealias [ALIAS ...]
+			      The set of aliases to REMOVE.
+
+   You can specify *multiple* **email aliases** to remove. Example with removing ``tanimg`` follows.
+
+   First, look at the set of anonymized **email aliases** that *also* contain and emphasize ``tanimg``.
+   
+   .. code-block:: console
+      :linenos:
+      :emphasize-lines: 13
+   
+      FOUND 14 EMAIL ALIASES
+
+      ALIAS
+      ------------
+      bcohan
+      chrismay
+      cschroder
+      drflask
+      dstrozzi
+      dstrozzig
+      marinak
+      mehulp
+      tanimg
+      tanimv
+      tanimw
+      tbailey
+      tipton
+      woodyh_sacpy
+
+   Run this command to remove the **email alias** ``tanimg``.
+
+   .. code-block:: console
+
+      $ simple_email_config remove_aliases -r tanimg
+      set of aliases to remove: ['tanimg'].
+
+   Finally, check that ``tanimg`` is no longer of the **email aliases**.
+
+   
+   .. code-block:: console
+      :linenos:
+   
+      FOUND 13 EMAIL ALIASES
+
+      ALIAS
+      ------------
+      bcohan
+      chrismay
+      cschroder
+      drflask
+      dstrozzi
+      dstrozzig
+      marinak
+      mehulp
+      tanimv
+      tanimw
+      tbailey
+      tipton
+      woodyh_sacpy
+
+   And that's it.
+
+simple_email
+===============
+``simple_email`` is the *simplest* SMTP_ based email sender I could make! One specifies the reStructuredText_ file; (optional) attachments; sender; ``TO`` recipients; (optionally) ``CC`` and ``BCC`` recipients; and (optional) details of the SMTP_ server. Its help screen is ``simple_email -h``,
+
+.. code-block:: console
+
+   usage: simple_email [-h] -f EMAILFILE [-s SUBJECT] [-F SENDER] -T [TO ...] [-C [CC ...]] [-B [BCC ...]] [-A [ATTACH ...]] [-p SMTPPORT] [-S SMTPSERVER] [-I]
 
    optional arguments:
      -h, --help            show this help message and exit
      -f EMAILFILE, --emailfile EMAILFILE
-			   Name of the restructuredtext email file to convert
-			   into HTML, THEN email out.
+			   Name of the restructuredtext email file to convert into HTML, THEN email out.
      -s SUBJECT, --subject SUBJECT
-			   Email subject. Default is 'test subject'.
+			   Email subject. Default is "test subject".
      -F SENDER, --from SENDER
-			   Email and/or name of the sender. Use RFC 5322 email
-			   format.
-     -T [TO [TO ...]], --to [TO [TO ...]]
-			   List of email and/or names of the recipients. Use RFC
-			   5322 email format.
-     -C [CC [CC ...]], --cc [CC [CC ...]]
-			   List of CC email and/or names. Use RFC 5322 email
-			   format.
-     -B [BCC [BCC ...]], --bcc [BCC [BCC ...]]
-			   List of BCC email and/or names. Use RFC 5322 email
-			   format.
-     -A [ATTACH [ATTACH ...]], --attach [ATTACH [ATTACH ...]]
+			   Email and/or name of the sender. Use RFC 5322 email format. Default is "Tanim Islam <tanim.islam@gmail.com>".
+     -T [TO ...], --to [TO ...]
+			   List of email and/or names of the recipients. Use RFC 5322 email format OR email alias.
+     -C [CC ...], --cc [CC ...]
+			   List of CC email and/or names. Use RFC 5322 email format OR email alias.
+     -B [BCC ...], --bcc [BCC ...]
+			   List of BCC email and/or names. Use RFC 5322 email format OR email alias.
+     -A [ATTACH ...], --attach [ATTACH ...]
 			   List of files to attach to this email.
      -p SMTPPORT, --smtpport SMTPPORT
-			   The port number for the SMTP server to send the SMTP
-			   email. Default is 25.
+			   The port number for the SMTP server to send the SMTP email. Default is 25.
      -S SMTPSERVER, --smtpserver SMTPSERVER
-			   The name of the SMTP server to send the SMTP email.
-			   Default is 'localhost'.
+			   The name of the SMTP server to send the SMTP email. Default is 'localhost'.
      -I, --info            If chosen, then do INFO logging.
 
-I go through each element like so. ``-I`` or ``--info`` turns on ``INFO`` logging, which is right now *extremely useful* to figure out what happened to your email if something went wrong!
+I go through each command line argument like so. ``-I`` or ``--info`` turns on ``INFO`` logging, which is right now *extremely useful* to figure out what happened to your email if something went wrong!
 
 #. ``-f`` or ``emailfiles`` specifies the reStructuredText_ file, which has the same structure as I describe in the :ref:`myrst2html description <myrst2html_desc>`.
 
@@ -293,21 +558,25 @@ I go through each element like so. ``-I`` or ``--info`` turns on ``INFO`` loggin
 
    * ``-s`` or ``--subject`` specifies the non-default email subject. Default is ``test subject``.
 
-   * ``-F`` or ``-from`` specifies the sender. This is in the format of email address only, such as ``tanim.islam@gmail.com``, or in the standard email-with-name format, such as ``Tanim Islam <tanim.islam@gmail.com>``.
+   * ``-F`` or ``-from`` specifies the sender. This is in the format of email address only, such as ``tanim.islam@gmail.com``, or in the standard email-with-name format, such as ``Tanim Islam <tanim.islam@gmail.com>``. If not specified, this uses the *default* sender address defined or shown in :numref:`simple_email_config_set_show_me`.
 
-   * ``-T`` or ``--to`` specifies the list of recipients (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+   * ``-T`` or ``--to`` specifies the list of recipients (can be multiple ones). This is in the format of email address only, in the standard email-with-name format (RFC 5322), or as an email alias.
+     
+   * ``-C`` or ``-cc`` *optionally* specifies the list of `CC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format (RFC 5322), or as an email alias.
 
-   * ``-C`` or ``-cc`` *optionally* specifies the list of `CC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+   * ``-B`` or ``--bcc`` *optionally* specifies the list of `BCC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format (RFC 5322), or as an email alias.
 
-   * ``-B`` or ``--bcc`` *optionally* specifies the list of `BCC recipients`_ (can be multiple ones). This is in the format of email address only, or in the standard email-with-name format.
+     .. note::
+
+	``simple_email`` implements an *implicit* BCC add of the sender email address, so that the sender (like  ``Tanim Islam <tanim.islam@gmail.com>``) also receives an email showing that they have sent this email to the TO/CC/BCC recipients.
 
    * ``-A`` or ``--attach`` *optionally* specifies the list of files to attach to this email.
 
 #. SMTP_ server stuff consists of the following:
 
-   * ``-p`` or ``--smtpport`` specifies the port to use for SMTP_ email sending. Default is 25.
+   * ``-p`` or ``--smtpport`` specifies the port to use for SMTP_ email sending. Default is whatever is the default SMTP_ port set or shown in :numref:`simple_email_config_set_show_smtp`.
 
-   * ``-S`` or ``--smtpserver`` specifies the name of the SMTP_ server. Default is ``localhost``.
+   * ``-S`` or ``--smtpserver`` specifies the name of the SMTP_ server. Default is Default is whatever is the default SMTP_ server set or shown in :numref:`simple_email_config_set_show_smtp`.
 
 To help myself and others, I have the following elements needed to send a demonstration email.
 
@@ -346,3 +615,5 @@ If everything email-wise *and* SMTP_ wise goes right, then your ``TO`` and ``CC`
 
 .. _`CC recipients`: https://en.wikipedia.org/wiki/Carbon_copy#Email
 .. _`BCC recipients`: https://en.wikipedia.org/wiki/Blind_carbon_copy#cite_note-1
+
+.. _`Tanim Islam`: https://tanimislam.gitlab.io/blog/i-exist.html#biography-section
