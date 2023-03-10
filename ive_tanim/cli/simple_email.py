@@ -97,7 +97,7 @@ def _main( ):
     #
     ## BCC
     bcc_addresses = _get_valid_email_recipients_with_aliases( args.bcc )
-    bcc_addresses += [ from_addres, ]
+    bcc_addresses += [ from_address, ]
     ivetanim_logger.info( '%d BCC ADDRESSES = %s.' % (
         len( bcc_addresses ),
         '\n'.join(map(lambda entry: '%s' % entry, bcc_addresses ) ) ) )
