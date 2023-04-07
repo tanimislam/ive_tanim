@@ -2,7 +2,7 @@ import requests, os, gzip, magic, uuid, pathlib, glob, time
 import subprocess, json, re, numpy
 from pathos.multiprocessing import Pool, cpu_count
 from PIL import Image
-from PyPDF2 import PdfFileReader
+from pypdf import PdfReader
 from ive_tanim import ivetanim_logger
 from ive_tanim.core import autocrop_image
 
@@ -376,12 +376,12 @@ def pdf2png( input_pdf_file, newWidth = None, verify = True ):
     """
     assert( os.path.basename( input_pdf_file ).endswith( '.pdf' ) )
     assert( os.path.isfile( input_pdf_file ) )
-    ipdf = PdfFileReader( open( input_pdf_file, 'rb' ) )
-    assert( ipdf.getNumPages() == 1 )
-    mbox = ipdf.getPage( 0 ).mediaBox
+    ipdf = PdfReader( open( input_pdf_file, 'rb' ) )
+    assert( len( ipdf.pages ) == 1 )
+    mbox = ipdf.getPage( 0 ).mediabox
     files = { 'file' : open( input_pdf_file, 'rb' ).read( ) }
-    width = int( mbox.getWidth( ) )
-    height = int( mbox.getHeight( ) )
+    width = int( mbox.width )
+    height = int( mbox.height )
     return _return_image_cc(
         width, height, input_pdf_file, 'pdf', files,
         newWidth = newWidth, verify = verify )
