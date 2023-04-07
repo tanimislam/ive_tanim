@@ -2,7 +2,7 @@ import os, sys, json, multiprocessing, numpy
 import subprocess, shlex, uuid
 import matplotlib.image, matplotlib.colors
 from PIL import Image, ImageChops
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 from shutil import which
 from ive_tanim import resourceDir, ivetanim_logger
 
@@ -185,12 +185,12 @@ def _make_pdf(i, fname, page):
     pdf_out = PdfWriter()
     outputfile = '{0}{1}'.format(i, fname)
     with open(outputfile, 'wb') as fout:
-        pdf_out.addPage(page)
+        pdf_out.add_page(page)
         pdf_out.write(fout)
 
 def crop_pdf( inputfile, outputfile = None ):
     """
-    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
+    Given a possible multi-page PDF_ file that consists of :math:`N \ge 1` pages, creates :math:`N` separate single-page autocropped PDF_ files for each page in the input PDF_ file. Given a file with name ``inputfile``, the collection of output files are named ``outputfile<idx>``, where ``<idx>`` is the page number. This uses :py:class:`PdfReader <pypdf.PdfReader>` to read in, and :py:class:`PdfWriter <pypdf.PdfWriter>` to write out, PDF_ files.
 
     The Python functionality is a port of the `pdfcrop.pl`_ Perl script.
     
@@ -207,17 +207,17 @@ def crop_pdf( inputfile, outputfile = None ):
         pdf_in = PdfReader(fin)
         for i, bbox in enumerate(bboxes):
             left, bottom, right, top = bbox
-            page = pdf_in.getPage( i )
-            ivetanim_logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+            page = pdf_in.pages[ i ]
+            ivetanim_logger.debug('Original mediabox: %s, %s', page.mediabox.lower_left, page.mediabox.upper_right)
             ivetanim_logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
-            page.mediaBox.lowerLeft = (left, bottom)
-            page.mediaBox.upperRight = (right, top)
-            ivetanim_logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+            page.mediabox.lower_left = (left, bottom)
+            page.mediabox.upper_right = (right, top)
+            ivetanim_logger.debug('modified mediabox: %s, %s', page.mediabox.lower_left, page.mediabox.upper_right)
             _make_pdf(i, outputfile, page)
 
 def crop_pdf_singlepage( inputfile, outputfile = None ):
     """
-    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfReader <PyPDF2.PdfReader>` to read in, and :py:class:`PdfWriter <PyPDF2.PdfWriter>` to write out, PDF_ files.
+    Given a *single-paged* PDF_ file, creates an autocropped output PDF_ file. This uses :py:class:`PdfReader <pypdf.PdfReader>` to read in, and :py:class:`PdfWriter <pypdf.PdfWriter>` to write out, PDF_ files.
     
     The Python functionality is a port of the `pdfcrop.pl`_ PERL script.
     
@@ -234,16 +234,16 @@ def crop_pdf_singlepage( inputfile, outputfile = None ):
         outputfile = '%s.pdf' % ''.join(map(lambda idx: str(uuid.uuid4()), range(2)))
     pdf_in = PdfReader( open( inputfile, 'rb' ) )
     left, bottom, right, top = bboxes[0]
-    page = pdf_in.getPage( 0 )
-    ivetanim_logger.debug('Original mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+    page = pdf_in.pages[ 0 ]
+    ivetanim_logger.debug('Original mediabox: %s, %s', page.mediabox.lower_left, page.mediabox.upper_right)
     ivetanim_logger.debug('Original boundingbox: %s, %s', (left, bottom), (right, top))
-    page.mediaBox.lowerLeft = (left, bottom)
-    page.mediaBox.upperRight = (right, top)
-    ivetanim_logger.debug('modified mediabox: %s, %s', page.mediaBox.lowerLeft, page.mediaBox.upperRight)
+    page.mediabox.lower_left = (left, bottom)
+    page.mediabox.upper_right = (right, top)
+    ivetanim_logger.debug('modified mediabox: %s, %s', page.mediabox.lower_left, page.mediabox.upper_right)
     #
     ## write out to this new file
     pdf_out = PdfWriter( )
-    pdf_out.addPage( page )
+    pdf_out.add_page( page )
     pdf_out.write( open(outputfile, 'wb') )
     os.chmod( outputfile, 0o644 )
     if sameFile: os.rename( outputfile, inputfile )

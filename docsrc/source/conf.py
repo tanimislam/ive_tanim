@@ -60,7 +60,7 @@ intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'requests': ( 'https://requests.kennethreitz.org/en/latest/', None),
     'beautifulsoup' : ( 'https://www.crummy.com/software/BeautifulSoup/bs4/doc/', '_intersphinx/bs4_objects.inv' ),
-    'PyPDF2' : ( 'https://pypdf2.readthedocs.io/en/latest/', None ),
+    'pypdf' : ( 'https://pypdf.readthedocs.io/en/latest/', None ),
     'Pillow' : ( 'https://pillow.readthedocs.io/en/stable', None ),
     'docutils' : ( 'https://docutils.readthedocs.io/en/master', None ),
 }
