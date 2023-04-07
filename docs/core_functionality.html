@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1. Core Functionality &mdash; ive_tanim 1.0 documentation</title>
@@ -12,10 +12,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -319,7 +317,7 @@
 </div>
 <p>So for example, running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">set_me</span> <span class="pre">-e</span> <span class="pre">&quot;Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;&quot;</span></code> sets the default RFC 5322 email to <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code>.</p>
 <p>You <em>show</em> the <strong>default</strong> sender information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">show_me</span></code>. In the example below,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_me
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config show_me
 <span class="go">DEFAULT EMAIL ADDRESS: Tanim Islam &lt;tanim.islam@gmail.com&gt;.</span>
 </pre></div>
 </div>
@@ -344,7 +342,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code> or <code class="docutils literal notranslate"><span class="pre">-port</span></code> specifies the <em>required</em> port number of the default <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server. A common default choice is 25.</p></li>
 </ol>
 <p>You can then <em>show</em> the <strong>default</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a> server information by running <code class="docutils literal notranslate"><span class="pre">simple_email_config</span> <span class="pre">show_smtp</span></code>. In the example below,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_smtp
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config show_smtp
 <span class="go">DEFAULT SMTP SERVER: localhost.</span>
 <span class="go">DEFAULT SMTP PORT: 25.</span>
 </pre></div>
@@ -364,7 +362,7 @@
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-H</span></code> or <code class="docutils literal notranslate"><span class="pre">--hidealiases</span></code> flag is useful to demonstrate the list of <strong>email aaliases</strong> that you have, because it <em>hides</em> the email or RFC 5322 email address for each <strong>alias</strong>. For example, for me (<a class="reference external" href="https://tanimislam.gitlab.io/blog/i-exist.html#biography-section">Tanim Islam</a></p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>show_aliases<span class="w"> </span>-H
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config show_aliases -H
 <span class="go">FOUND 14 EMAIL ALIASES</span>
 
 <span class="go">ALIAS</span>
@@ -424,7 +422,7 @@
 </pre></div>
 </div>
 <p>Next, let us add an <strong>email alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code> for <code class="docutils literal notranslate"><span class="pre">Tanim</span> <span class="pre">Islam</span> <span class="pre">&lt;tanim.islam&#64;gmail.com&gt;</span></code> with this command,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>add_alias<span class="w"> </span>-a<span class="w"> </span>tanimg<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;Tanim Islam &lt;tanim.islam@gmail.com&gt;&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config add_alias -a tanimg -e <span class="s2">&quot;Tanim Islam &lt;tanim.islam@gmail.com&gt;&quot;</span>
 <span class="go">SUCCESSFULLY ADDED ALIAS = tanimg, EMAIL = Tanim Islam &lt;tanim.islam@gmail.com&gt;.</span>
 </pre></div>
 </div>
@@ -483,7 +481,7 @@
 </pre></div>
 </div>
 <p>Run this command to remove the <strong>email alias</strong> <code class="docutils literal notranslate"><span class="pre">tanimg</span></code>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config<span class="w"> </span>remove_aliases<span class="w"> </span>-r<span class="w"> </span>tanimg
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>simple_email_config remove_aliases -r tanimg
 <span class="go">set of aliases to remove: [&#39;tanimg&#39;].</span>
 </pre></div>
 </div>
@@ -607,7 +605,7 @@
 <span class="linenos"> 37</span>   <span class="go">ffmpeg -ss 00:03:00 -i covid19_7day_conus_LATEST.mp4 -codec copy covid19_7day_conus_LATEST_CLIPPED.mp4</span>
 <span class="linenos"> 38</span>
 <span class="linenos"> 39</span>   <span class="go">convertImage movie -f covid19_7day_conus_LATEST_CLIPPED.mp4 -s 0.5</span>
-<span class="linenos"> 40</span>   
+<span class="linenos"> 40</span>   <span class="go"></span>
 <span class="linenos"> 41</span>Now here&#39;s some stupid code blocks, some Python code in fact that I have here.
 <span class="linenos"> 42</span>
 <span class="linenos"> 43</span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
