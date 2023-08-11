@@ -19,9 +19,8 @@ def find_all_submodules( git_archive_dir ):
         logging.info( str( e ) )
         return( set([ ]) )
 
-def zip_out_archive( git_archive_dir, zip_archive_name, prefix = None ):
+def zip_out_archive( git_archive_dir, zip_archive_name, current_dir, prefix = None ):
     try:
-        current_dir = os.getcwd( )
         if prefix is not None:
             stdout_val = subprocess.check_output(
                 [ _git_exec, '-C', git_archive_dir, 'archive', '--format=zip', '--prefix=%s/' % prefix,
@@ -63,7 +62,7 @@ def create_stuff_to_zipout( git_archive_dir, zip_archive_name_main, prefix ):
             os.path.dirname( zip_archive_name_main ),
             '%s.%02d.zip' % ( re.sub( '\.zip$', '', os.path.basename( zip_archive_name_main ) ).strip( ), tup[ 0 ] ) ),
         'prefix' : None,
-        'submodule_name' : tup[1] }, enumerate( sorted( submodule_names_dirs ) ) ) )
+        'submodule_name' : tup[1] }, enumerate( sorted( submodule_name_dirs ) ) ) )
     stuff_to_zipout += [
         { 'git_archive_dir' : git_archive_dir,
          'zip_archive_name' : zip_archive_name_main,
@@ -87,7 +86,8 @@ def create_archives_val_entries( stuff_to_zipout ):
                 'final_name', zip_out_archive(
                     entry[ 'git_archive_dir' ],
                     entry[ 'zip_archive_name' ],
-                    entry[ 'prefix' ] ) ), ] ), stuff_to_zipout ) )
+                    os.getcwd( ),
+                    prefix = entry[ 'prefix' ] ) ), ] ), stuff_to_zipout ) )
         assert( len( stuff_to_zipout ) == len( vals_entries ) )
         assert( all( filter(lambda entry: entry[ 'final_name' ] is not None, vals_entries ) ) )
         logging.info( 'took %0.3f seconds to move %d submodules into 1 main zip archive.' % (

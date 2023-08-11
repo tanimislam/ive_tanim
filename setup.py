@@ -47,9 +47,10 @@ setup(
             "github_md_2_html = ive_tanim.cli.github_md_2_html:_main",
             "autoCropImage = ive_tanim.cli.autoCropImage:_main",
             "convertImage = ive_tanim.cli.convertImage:_main",
-            "myrst2html = ive_tanim.cli.myrst2html:_main",
+            "gitZipArchive = ive_tanim.cli.gitZipArchive:main",
             "imageFromURL = ive_tanim.cli.imageFromURL:_main",
             "inline_images = ive_tanim.cli.inline_images:_main",
+            "myrst2html = ive_tanim.cli.myrst2html:_main",
             "simple_email = ive_tanim.cli.simple_email:_main",
             "simple_email_config = ive_tanim.cli.simple_email_config:main",
         ]
