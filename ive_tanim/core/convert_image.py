@@ -301,8 +301,10 @@ def mp4togif( input_mp4_file, gif_file = None, duration = None, scale = 1.0 ):
     mp4file_info = json.loads( stdout_val )
     ivetanim_logger.debug( 'mp4file_info = %s.' % mp4file_info )
     # from dictionary, get width
-    width_of_mp4 = int( mp4file_info[ 'streams' ][ 0 ][ 'width' ] )
-    fps_string = mp4file_info[ 'streams' ][ 0 ][ 'avg_frame_rate' ]
+    streams_with_width = list(filter(lambda strm: 'width' in strm, mp4file_info[ 'streams' ] ) )
+    assert( len( streams_with_width ) != 0 )
+    width_of_mp4 = int( streams_with_width[ 0 ][ 'width' ] )
+    fps_string = streams_with_width[ 0 ][ 'avg_frame_rate' ]
     fps = int( float( fps_string.split('/')[0] ) * 1.0 /
               float( fps_string.split('/')[1] ) )
     

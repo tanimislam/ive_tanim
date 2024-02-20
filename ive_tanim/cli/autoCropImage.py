@@ -14,7 +14,7 @@ def _main( ):
     parser.add_argument('--color', dest='color', action='store', type=str,
                         help = 'Name of the color over which to autocrop. Default is white.',
                         default = 'white' )
-    parser.add_argument('--trans', dest='do_trans', action='store_true', default = False,
+    parser.add_argument('-T', '--trans', dest='do_trans', action='store_true', default = False,
                         help = ' '.join([
                             'If chosen, also remove the transparency wrapping around the image.',
                             'Works only for non-PDF images.'  ]) )
