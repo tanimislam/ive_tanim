@@ -160,7 +160,7 @@ def create_rfc5322_email( email_fullname_dict ):
     input_tuple = [ '', '' ]
     if 'email' in email_fullname_dict and len( email_fullname_dict[ 'email' ].strip( ) ) > 0:
         input_tuple[1] = email_fullname_dict[ 'email' ]
-    if 'full name' in email_fullname_dict and len( email_fullname_dict[ 'full name' ].strip( ) ) > 0:
+    if 'full name' in email_fullname_dict and email_fullname_dict[ 'full name' ] is not None and len( email_fullname_dict[ 'full name' ].strip( ) ) > 0:
         input_tuple[0] = email_fullname_dict[ 'full name' ]
     #
     if input_tuple[0] == '' and input_tuple[1] == '':
