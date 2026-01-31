@@ -1,7 +1,7 @@
 #
 ## docutils stuff, which I am putting in one spot now because I don't understand what's going on
 # from docutils.examples import html_parts
-import os, sys, validators, uuid, smtplib, magic, json
+import os, sys, validators, uuid, smtplib, magic, json, logging
 from bs4 import BeautifulSoup
 from docutils import core, nodes
 from docutils.writers.html4css1 import Writer, HTMLTranslator
@@ -332,6 +332,7 @@ def send_email_localsmtp( msg, server = 'localhost', portnumber = 25 ):
     """
     assert( portnumber > 0 )
     assert( len( server.strip( ) ) > 0 )
+    logging.info( 'EMAIL SERVER = %s, PORT = %d.' % ( server.strip( ), portnumber ) )
     smtp_conn = smtplib.SMTP( server.strip( ), portnumber )
     smtp_conn.ehlo( 'test' )
     #smtp_conn.sendmail( msg['From'], sorted(set(map(lambda entry: entry.strip(), msg['To'].split(',')))), msg.as_string( ) )
