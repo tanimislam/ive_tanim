@@ -22,13 +22,6 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
-# TODO: Add your actual dependencies here from requirements.txt
-# Example format:
-# dependencies = [
-#     "requests>=2.28.0",
-#     "pillow>=9.0.0",
-#     "markdown>=3.3.0",
-# ]
 dependencies = [
    "beautifulsoup4",
    "docutils",
@@ -39,6 +32,7 @@ dependencies = [
    "pathos",
    "python-magic",
    "sphinx",
+   "sphinx_rtd_theme",
    "tabulate",
    "validators",
 ]
