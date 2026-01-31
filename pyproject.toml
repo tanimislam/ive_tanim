@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ive_tanim"
+version = "1.5"
+description = "Image-video-email low level functionality from Tanim, initially for Tanim."
+authors = [
+    {name = "Tanim Islam", email = "tanim.islam@gmail.com"}
+]
+readme = "README.md"  # Add this file if you have one, or remove this line
+license = {text = "BSD-2-Clause"}
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: POSIX",
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+
+# TODO: Add your actual dependencies here from requirements.txt
+# Example format:
+# dependencies = [
+#     "requests>=2.28.0",
+#     "pillow>=9.0.0",
+#     "markdown>=3.3.0",
+# ]
+dependencies = [
+   "beautifulsoup4",
+   "docutils",
+   "Pillow",
+   "pypdf",
+   "requests",
+   "matplotlib",
+   "pathos",
+   "python-magic",
+   "sphinx",
+   "tabulate",
+   "validators",
+]
+
+[project.urls]
+Homepage = "https://tanimislam.github.io/ive_tanim"
+Repository = "https://github.com/tanimislam/ive_tanim"
+
+[project.scripts]
+github_md_2_html = "ive_tanim.cli.github_md_2_html:_main"
+autoCropImage = "ive_tanim.cli.autoCropImage:_main"
+convertImage = "ive_tanim.cli.convertImage:_main"
+gitZipArchive = "ive_tanim.cli.gitZipArchive:main"
+imageFromURL = "ive_tanim.cli.imageFromURL:_main"
+inline_images = "ive_tanim.cli.inline_images:_main"
+myrst2html = "ive_tanim.cli.myrst2html:_main"
+simple_email = "ive_tanim.cli.simple_email:_main"
+simple_email_config = "ive_tanim.cli.simple_email_config:main"
+
+[tool.setuptools.packages.find]
+exclude = ["*.tests", "*.tests.*", "tests"]
+
+[tool.setuptools.package-data]
+ive_tanim = ["resources/*.json"]
