@@ -43,7 +43,8 @@ class MyHTMLTranslator( HTMLTranslator ):
     def visit_math(self, node, math_env=''):
         from docutils.utils.math import unichar2tex
         if self.math_output != 'mathjax':
-            super().visit_math(node, math_env)
+            # super().visit_math(node, math_env)
+            super( ).visit_math( node )
             return
 
         if self.math_output == 'mathjax' and not self.math_header:
@@ -55,9 +56,9 @@ class MyHTMLTranslator( HTMLTranslator ):
         math_code = self.encode(math_code)
         # Don't wrap the mathematics with div or span
         if math_env:
-            self.body.append('\[{}\]\n'.format(math_code))
+            self.body.append(r'\[{}\]\n'.format(math_code))
         else:
-            self.body.append('\({}\)'.format(math_code))
+            self.body.append(r'\({}\)'.format(math_code))
         raise nodes.SkipNode
 
 def check_valid_RST( myString, use_mathjax = False ):
